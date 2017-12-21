@@ -14,7 +14,8 @@
     "commerce",
     "protos"
   ],
-  "scripts": {},
+  "scripts": {
+  },
   "engines": {
     "node": ">= 9.2.0"
   }
