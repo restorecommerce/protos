@@ -1,0 +1,22 @@
+{
+  "name": "@restorecommerce/protos",
+  "version": "0.1.0",
+  "description": "Restore Commerce Protos",
+  "main": "index.js",
+  "author": "Invend GmbH",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/restorecommerce/protos.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "restore",
+    "commerce",
+    "protos",
+  ],
+  "scripts": {
+  },
+  "engines": {
+    "node": ">= 9.2.0"
+  }
+}
