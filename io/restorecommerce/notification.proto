@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package io.restorecommerce.notification;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+
+service Service {
+  // direct notifications
+  rpc Send (Notification) returns (google.protobuf.Empty); /// generic fallback
+}
+
+// mimics nodemailer properties for easy configuration
+message Attachment {
+  string filename = 1;
+
+  // the "content" may be on of the following:
+  string text = 2; // for textual data
+  bytes buffer = 3; // for binary data, eg.: images
+
+  string path = 4;
+  string content_type = 5;
+  string content_disposition = 6;
+  string cid = 7;
+  string encoding = 8;
+}
+
+// sendEmail Notification event
+message Notification {
+  string id = 1;
+  string notifyee = 2; /// The person behind this user
+  string subject = 3;
+  string body = 4;  // text/HTML content
+  string transport = 5; /// 'email', 'log', ... default == 'log'
+  string provider = 6; /// specific transport provider, eg: 'console' for transport == 'log'
+  string replyto = 7; // if set, the outgoing mail will have this replyTo header set
+  string target = 8; // if set, do not look up a user but send directly to this email adress
+  repeated Attachment attachments = 9;
+}

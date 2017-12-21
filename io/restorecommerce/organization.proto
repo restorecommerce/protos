@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package io.restorecommerce.organization;
+
+import "io/restorecommerce/api_resource.proto";
+import "google/protobuf/empty.proto";
+
+service Service {
+  rpc Read (io.restorecommerce.apiresource.ReadRequest) returns (OrganizationList);
+  rpc Create (OrganizationList) returns (OrganizationList);
+  rpc Delete (io.restorecommerce.apiresource.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (OrganizationList) returns (OrganizationList);
+  rpc Upsert (OrganizationList) returns (OrganizationList);
+}
+
+message Deleted {
+  string id = 1;
+}
+
+message Address {
+ string postcode = 1;
+ string country = 2;
+ string locality = 3;
+ string street = 4;
+}
+
+message OrganizationList {
+  repeated Organization items = 1;
+  uint32 total_count = 2;
+}
+
+message Organization {
+  string id = 1; /// Organization ID, unique, key
+  double created = 2; /// Date of the Organization creation
+  double modified = 3; /// Last time the Organization was modified
+  string creator = 4; /// User ID of the creator
+  Address address = 5; /// Address for the organization
+}

@@ -1,0 +1,148 @@
+syntax = "proto3";
+
+package io.restorecommerce.user;
+
+import "io/restorecommerce/api_resource.proto";
+import "google/protobuf/empty.proto";
+
+/**
+ * The microservice for the user resource.
+ */
+service Service {
+  rpc Read (io.restorecommerce.apiresource.ReadRequest) returns (UserList);
+  rpc Create (UserList) returns (UserList);
+  rpc Delete (io.restorecommerce.apiresource.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (UserList) returns (UserList);
+  rpc Upsert (UserList) returns (UserList);
+
+  rpc Find (FindRequest) returns (UserList);
+  rpc Register (RegisterRequest) returns (User);
+  rpc Activate (ActivateRequest) returns (google.protobuf.Empty);
+  rpc ChangePassword (ChangePasswordRequest) returns (User);
+  rpc ChangeEmailId (ChangeEmailIdRequest) returns (User);
+  rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
+  rpc VerifyPassword (VerifyPasswordRequest) returns (User);
+  rpc createUsers (UserList) returns (UserList);
+}
+
+message VerifyPasswordRequest {
+  string user = 1; /// User name
+  string password = 2; /// Raw password
+}
+
+message FindRequest {
+  string id = 1; /// User ID
+  string name = 2;
+  string email = 3;
+}
+
+message RegisterRequest {
+  bool guest = 1;
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  string creator = 5;
+  repeated Role roles = 6;
+}
+
+message ActivateRequest {
+  string id = 1; /// User ID
+  string activation_code = 2;
+}
+
+message ChangePasswordRequest {
+  string id = 1; /// User ID
+  string password = 2;
+}
+
+message ChangeEmailIdRequest {
+  string id = 1; /// User ID
+  string email = 2;
+}
+
+message UnregisterRequest {
+  string id = 1; /// User ID
+}
+
+/**
+ * User deletion event.
+ * Send when a user was deleted or unregistered.
+ *
+ * Events:
+ * usersDeleted,
+ * unregistered,
+ */
+message Deleted {
+  string id = 1;
+}
+
+/**
+ * User password changed event.
+ *
+ * Events:
+ * passwordChanged,
+ */
+message PasswordChanged {
+  string id = 1; /// User ID
+  string password_hash = 2;
+}
+
+/**
+ * User email id changed event.
+ *
+ * Events:
+ * emailIdChanged,
+ */
+message EmailIdChanged {
+  string id = 1; /// User ID
+  string email = 2;
+}
+
+/**
+ * A list of User.
+ */
+message UserList {
+  repeated User items = 1;
+  uint32 total_count = 2;
+}
+
+/**
+ * User activation event.
+ *
+ * Events:
+ * activated,
+ */
+message Activate {
+  string id = 1; /// User ID
+}
+
+/**
+ * A User resource.
+ *
+ * Events:
+ * registered,
+ * usersCreated,
+ * usersModfied,
+ * usersDeleted,
+ */
+message User {
+  string id = 1; /// User ID, unique, key
+  double created = 2; /// Date of the user creation
+  double modified = 3; /// Last time the user was modified
+  string creator = 4; /// User ID of the creator
+
+  string name = 10; // The name of the user, can be used for login
+  string email = 11; /// Email address
+  bool active = 12; /// If the user was activated via the activation process
+  string activation_code = 13; /// Activation code used in the activation process
+  string person = 18; /// Person ID, the person behind this user
+  string password = 19; /// Raw password, not stored
+  string password_hash = 20; /// Encrypted password, stored
+  bool guest = 24; /// Is the user a guest. A guest is a automaticly generated user which can later be turned in a none guest user.
+  repeated Role roles = 25; // A user can have multiple roles
+}
+
+message Role {
+  string type = 1; // specifies the role of the user
+}
+
