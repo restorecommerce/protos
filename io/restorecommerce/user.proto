@@ -2,16 +2,16 @@ syntax = "proto3";
 
 package io.restorecommerce.user;
 
-import "io/restorecommerce/api_resource.proto";
+import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 
 /**
  * The microservice for the user resource.
  */
 service Service {
-  rpc Read (io.restorecommerce.apiresource.ReadRequest) returns (UserList);
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (UserList);
   rpc Create (UserList) returns (UserList);
-  rpc Delete (io.restorecommerce.apiresource.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (UserList) returns (UserList);
   rpc Upsert (UserList) returns (UserList);
 

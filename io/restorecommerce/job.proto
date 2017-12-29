@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package io.restorecommerce.job;
 
-import "io/restorecommerce/api_resource.proto";
+import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/any.proto";
 import "google/protobuf/empty.proto";
 
@@ -11,9 +11,9 @@ import "google/protobuf/empty.proto";
  * Provides CRUD operations.
  */
 service Scheduling {
-  rpc Read (io.restorecommerce.apiresource.ReadRequest) returns (JobList);
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (JobList);
   rpc Create (JobList) returns (JobList);
-  rpc Delete (io.restorecommerce.apiresource.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (JobList) returns (JobList);
   rpc Upsert (JobList) returns (JobList);
 }

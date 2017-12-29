@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package io.restorecommerce.organization;
 
-import "io/restorecommerce/api_resource.proto";
+import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 
 service Service {
-  rpc Read (io.restorecommerce.apiresource.ReadRequest) returns (OrganizationList);
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (OrganizationList);
   rpc Create (OrganizationList) returns (OrganizationList);
-  rpc Delete (io.restorecommerce.apiresource.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (OrganizationList) returns (OrganizationList);
   rpc Upsert (OrganizationList) returns (OrganizationList);
 }
