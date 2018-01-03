@@ -34,5 +34,9 @@ message Organization {
   double created = 2; /// Date of the Organization creation
   double modified = 3; /// Last time the Organization was modified
   string creator = 4; /// User ID of the creator
+  string website = 9;
+  string email = 10;
+  string logo = 11; // base64; arangoDB does not support blob storage
+  string name = 16;
   Address address = 5; /// Address for the organization
 }
