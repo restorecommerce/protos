@@ -25,17 +25,6 @@ message RestoreResponse {
 	repeated ResponseTopic topics = 3;
 }
 
-message NotificationRequest {
-  string topic = 1; // topic name
-  string eventName = 2; // event name
-  string message = 3; // message
-  uint32 id = 4; // job id posted from the scheduling service
-  string schedule_type = 5; // Type of schedule ONCE, RECURR etc.
-  string job_resource_id = 6; /// Job reference ID in the database
-  string job_unique_name = 7; /// unique job name in redis
-}
-message NotificationResponse {}
-
 message ResetRequest {}
 message ResetResponse {}
 
@@ -66,9 +55,6 @@ service Service {
 
   /// Re-read all data from the topics the service listens to and re-process the whole stream from the given checkpoint
   rpc Restore(RestoreRequest) returns (RestoreResponse);
-
-  /// sendMailNotification via Command topic
-  rpc SendMailNotification(NotificationRequest) returns (NotificationResponse);
 
   rpc Check(HealthCheckRequest) returns (HealthCheckResponse);
 
