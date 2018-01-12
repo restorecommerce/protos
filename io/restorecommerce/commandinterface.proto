@@ -3,60 +3,16 @@ syntax = "proto3";
 package io.restorecommerce.commandinterface;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
 
-message ReconfigureRequest {}
-message ReconfigureResponse {}
-
-message RestoreRequest {
-  message RestoreTopic {
-    string topic = 1; // Topic name to restore
-    uint32 offset = 2; // Offset at whcich to start the restore process, default is 0.
-    repeated uint32 ignore_offset = 3; // ignore offsets
-  }
-  repeated RestoreTopic topics = 1;
+message CommandRequest {
+  string name = 1;
+  google.protobuf.Any payload = 2;
 }
 
-message RestoreResponse {
-	message ResponseTopic {
-		string topic = 1;
-		uint32 offset = 2;
-	}
-
-	repeated ResponseTopic topics = 3;
-}
-
-message ResetRequest {}
-message ResetResponse {}
-
-message VersionResponse {
-  string version = 1;
-  string nodejs = 2;
-}
-
-message HealthCheckRequest {
-  string service = 1;
-}
-
-message HealthCheckResponse {
-  enum ServingStatus {
-    UNKNOWN = 0;
-    SERVING = 1;
-    NOT_SERVING = 2;
-  }
-  ServingStatus status = 1;
-}
-
+/**
+*
+*/
 service Service {
-  /// Re-read the configuration data
-  rpc Reconfigure(ReconfigureRequest) returns (ReconfigureResponse);
-
-  /// Reset any state, be it transient in-memory or persistent in an external service.
-  rpc Reset(ResetRequest) returns (ResetResponse);
-
-  /// Re-read all data from the topics the service listens to and re-process the whole stream from the given checkpoint
-  rpc Restore(RestoreRequest) returns (RestoreResponse);
-
-  rpc Check(HealthCheckRequest) returns (HealthCheckResponse);
-
-  rpc Version(google.protobuf.Empty) returns (VersionResponse);
+  rpc Command(CommandRequest) returns (google.protobuf.Any);
 }
