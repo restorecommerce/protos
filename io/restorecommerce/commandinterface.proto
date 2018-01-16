@@ -27,7 +27,7 @@ message CommandResource {
   string description = 3; // command description
 }
 
-message CommandParam {
+message CommandParameter {
   string field = 1; //  field name
   string description = 2; // description
 }
