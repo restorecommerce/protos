@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package io.restorecommerce.commandinterface;
 
-import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
 
 // used to send requests through Kafka or gRPC
@@ -21,19 +20,8 @@ message CommandResponse {
   google.protobuf.Any payload = 2;  // variable payload
 }
 
-message CommandResource {
-  string name = 1;  // command name
-  repeated CommandParameter parameters = 2; // all possible parameters
-  string description = 3; // command description
-}
-
-message CommandParameter {
-  string field = 1; //  field name
-  string description = 2; // description
-}
-
 /**
-*
+* RPC service for executing commands
 */
 service Service {
   rpc Command(CommandRequest) returns (google.protobuf.Any);

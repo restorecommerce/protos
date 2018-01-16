@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package io.restorecommerce.command;
+
+import "google/protobuf/empty/proto";
+import "io/restorecommerce/resource_base.proto";
+
+// command resource
+message Command {
+  string name = 1;  // command name
+  repeated CommandParameter parameters = 2; // all possible parameters
+  string description = 3; // command description
+}
+
+message CommandParameter {
+  string field = 1; //  field name
+  string description = 2; // field description
+}
+
+message CommandList {
+  repeated Command items = 1;
+  uint32 total_count = 2;
+}
+
+service Service {
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (CommandList);
+  rpc Create (CommandList) returns (CommandList);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (CommandList) returns (CommandList);
+  rpc Upsert (CommandList) returns (CommandList);
+}
