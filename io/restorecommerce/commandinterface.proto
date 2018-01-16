@@ -10,6 +10,17 @@ message CommandRequest {
   google.protobuf.Any payload = 2;
 }
 
+message CommandResource {
+  string name = 1;  // command name
+  repeated CommandParameter parameters = 2; // all possible parameters
+  string description = 3; // command description
+}
+
+message CommandParam {
+  string field = 1; //  field name
+  string description = 2; // description
+}
+
 /**
 *
 */
