@@ -10,6 +10,11 @@ message CommandRequest {
   google.protobuf.Any payload = 2;
 }
 
+message CommandResponse {
+  string service = 1;
+  google.protobuf.Any payload = 2;
+}
+
 message CommandResource {
   string name = 1;  // command name
   repeated CommandParameter parameters = 2; // all possible parameters
@@ -25,5 +30,5 @@ message CommandParam {
 *
 */
 service Service {
-  rpc Command(CommandRequest) returns (google.protobuf.Any);
+  rpc Command(CommandRequest) returns (CommandResponse);
 }
