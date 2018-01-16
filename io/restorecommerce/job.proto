@@ -54,7 +54,7 @@ message Job {
 
   string name = 10; /// Job name, indicates the job type
   string unique = 11; /// Only one job at a time is allowed when set
-  repeated google.protobuf.Any payload = 12; /// Payload send to the worker.
+  Data data = 12; /// data send to the worker.
   Priority priority = 13; /// Job priority
   uint32 attempts = 14; /// Amount of possible failing runs until job fails
   Backoff backoff = 15; /// Delay settings between failed job runs
@@ -65,6 +65,11 @@ message Job {
   bool now = 22; /// When true, the job is run once immediately
 }
 
+message Data {
+  string timezone = 1;
+  repeated google.protobuf.Any payload = 2;
+}
+
 /**
  * A scheduled Job.
  * Emitted to Kafka by the scheduling service with event name 'queuedJob' and retreived by a service which processes this job.
@@ -72,7 +77,7 @@ message Job {
 message ScheduledJob {
   uint32 id = 1; /// Job instance ID
   string name = 2; /// Job name, indicates the job type
-  repeated google.protobuf.Any payload = 3; /// Payload
+  Data data = 12; /// data send to the worker.
   string schedule_type = 4; /// Type of job ex: ONCE, RECURR etc.
   string job_resource_id = 5; /// Job reference ID in the database
   string job_unique_name = 6; /// unique job name in redis
