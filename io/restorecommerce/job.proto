@@ -10,7 +10,7 @@ import "google/protobuf/empty.proto";
  * The microservice for scheduling jobs.
  * Provides CRUD operations.
  */
-service Scheduling {
+service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (JobList);
   rpc Create (JobList) returns (JobList);
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
