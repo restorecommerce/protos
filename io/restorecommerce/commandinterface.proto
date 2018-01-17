@@ -15,7 +15,7 @@ message CommandRequest {
 message CommandResponse {
   // service identifiers
   // (multiple services may reply to one system command)
-  // (multiple service names can be binded to one microservice)
+  // (multiple service names can be bound to one microservice)
   repeated string services = 1;
   google.protobuf.Any payload = 2;  // variable payload
 }
