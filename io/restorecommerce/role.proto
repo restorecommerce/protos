@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package io.restorecommerce.role;
+
+import "io/restorecommerce/resource_base.proto";
+import "google/protobuf/empty.proto";
+
+service Service {
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (RoleList);
+  rpc Create (RoleList) returns (RoleList);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (RoleList) returns (RoleList);
+  rpc Upsert (RoleList) returns (RoleList);
+}
+
+message Role {
+  string id = 1;
+  string name = 2; // specifies the role of the user
+  string description = 3;
+  // useful key-value pair attributes like the organizational scope
+  map<string, string> attributes = 4;
+  double created = 5;
+  double modified = 6;
+}
+
+message RoleList {
+  repeated Role items = 1;
+  uint32 total_count = 2;
+}
