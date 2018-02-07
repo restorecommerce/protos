@@ -27,3 +27,7 @@ message RoleList {
   repeated Role items = 1;
   uint32 total_count = 2;
 }
+
+message Deleted {
+  string id = 1;
+}
