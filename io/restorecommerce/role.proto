@@ -17,10 +17,8 @@ message Role {
   string id = 1;
   string name = 2; // specifies the role of the user
   string description = 3;
-  // useful key-value pair attributes like the organizational scope
-  map<string, string> attributes = 4;
-  double created = 5;
-  double modified = 6;
+  double created = 4;
+  double modified = 5;
 }
 
 message RoleList {

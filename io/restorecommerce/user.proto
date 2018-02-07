@@ -42,7 +42,7 @@ message RegisterRequest {
   string email = 3;
   string password = 4;
   string creator = 5;
-  repeated string roles = 6;
+  repeated RoleAssociation role_associations = 6;
 }
 
 message ActivateRequest {
@@ -138,5 +138,14 @@ message User {
   string password = 19; /// Raw password, not stored
   string password_hash = 20; /// Encrypted password, stored
   bool guest = 24; /// Is the user a guest. A guest is a automaticly generated user which can later be turned in a none guest user.
-  repeated string roles = 25; // A user can have multiple roles
+  repeated RoleAssociation role_associations = 25; // A user can have multiple roles and different attributes coupled with each role
+}
+
+message RoleAssociation {
+  message Attribute {
+    string id = 1;
+    string value = 2;
+  }
+  string role = 1;  // role ID
+  repeated Attribute attributes = 2;  // useful attributes for RBAC/ABAC like organizational scope
 }
