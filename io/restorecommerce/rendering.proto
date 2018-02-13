@@ -28,9 +28,6 @@ message Payload {
 message RenderRequest {
   string id = 1; // identifies the render request payload
   repeated Payload payload = 2;
-  // optional field with emitter name
-  // useful for building custom response event name
-  string service_name = 3;
 }
 
 message Response {
