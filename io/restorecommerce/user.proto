@@ -22,7 +22,6 @@ service Service {
   rpc ChangeEmailId (ChangeEmailIdRequest) returns (User);
   rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
   rpc VerifyPassword (VerifyPasswordRequest) returns (User);
-  rpc createUsers (UserList) returns (UserList);
 }
 
 message VerifyPasswordRequest {
@@ -42,7 +41,10 @@ message RegisterRequest {
   string email = 3;
   string password = 4;
   string creator = 5;
-  repeated RoleAssociation role_associations = 6;
+  string timezone = 6;
+  string locale = 7;
+
+  repeated RoleAssociation role_associations = 8;
 }
 
 message ActivateRequest {
@@ -137,8 +139,10 @@ message User {
   string activation_code = 13; /// Activation code used in the activation process
   string password = 19; /// Raw password, not stored
   string password_hash = 20; /// Encrypted password, stored
-  bool guest = 24; /// Is the user a guest. A guest is a automaticly generated user which can later be turned in a none guest user.
+  bool guest = 24; /// Is the user a guest. A guest is a automaticly generated user which can later be turned in a non-guest user.
   repeated RoleAssociation role_associations = 25; // A user can have multiple roles and different attributes coupled with each role
+  string timezone = 26;	// timezone specifications
+  string locale = 27;	// locale specifications
 }
 
 message RoleAssociation {
