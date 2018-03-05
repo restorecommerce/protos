@@ -8,7 +8,7 @@ message Payload {
   // json with <key, template> pairs
   // e.g. { 'subject': ..., 'message':....}
   google.protobuf.Any templates = 1;
-  string data = 2;  // data to fill template with
+  google.protobuf.Any data = 2;  // data to fill template with
   string style = 3; // stylesheet URL
 
   enum Strategy { // style-applying 'strategy'
