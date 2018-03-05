@@ -2,14 +2,12 @@ syntax = "proto3";
 
 package io.restorecommerce.rendering;
 
-service Service {
-  rpc Render (RenderRequest) returns (RenderResponse);
-}
+import "google/protobuf/any.proto";
 
 message Payload {
-  // json with multiple hbs templates,
+  // json with <key, template> pairs
   // e.g. { 'subject': ..., 'message':....}
-  string templates = 1;
+  google.protobuf.Any templates = 1;
   string data = 2;  // data to fill template with
   string style = 3; // stylesheet URL
 
@@ -19,24 +17,16 @@ message Payload {
   }
   Strategy strategy = 4;  // inlining, copying CSS into <style>, etc...
   // rendering options JSON object
-  string options = 5;
+  google.protobuf.Any options = 5;
 }
 
-/**
-* List of templates with associated data and rendering options
-*/
 message RenderRequest {
   string id = 1; // identifies the render request payload
+  // List of templates with associated data and rendering options
   repeated Payload payload = 2;
 }
 
-message Response {
-  string content = 1;
-}
-/**
-* HTML contents
-*/
 message RenderResponse {
   string id = 1;
-  repeated Response response = 2;  // error or HTML contents
+  repeated google.protobuf.Any response = 2;  // error or HTML contents
 }
