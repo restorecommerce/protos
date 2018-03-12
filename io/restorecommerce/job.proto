@@ -48,7 +48,7 @@ message Job {
 
   uint32 id = 1; // Job ID
   string type = 11; // Job type
-  Data data = 12; /// Job-specific data with variable payload
+  Data data = 12; // Job-specific data with variable payload
   Priority priority = 13; // Job priority
   uint32 attempts = 14; // Amount of possible failing runs until job fails
   Backoff backoff = 15; // Delay settings between failed job runs
@@ -72,7 +72,6 @@ message Data {
  */
 message ScheduledJob {
   uint32 id = 1; // Job ID
-  string type = 2; // Job type
   Data data = 3; // Job-specific data with variable payload
   string schedule_type = 4; // Type of schedule (ONCE, RECURR, etc)
 }
