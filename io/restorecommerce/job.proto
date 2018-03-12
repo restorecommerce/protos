@@ -11,7 +11,7 @@ import "google/protobuf/empty.proto";
  * Provides CRUD operations.
  */
 service Service {
-  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (JobList);
+  rpc Read (JobReadRequest) returns (JobList);
   rpc Create (JobList) returns (JobList);
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (JobList) returns (JobList);
@@ -23,7 +23,7 @@ service Service {
  * Send when a job resource got deleted.
  */
 message Deleted {
-  string id = 1;
+  uint32 id = 1;
 }
 
 /**
@@ -105,4 +105,22 @@ message Backoff {
   }
   double delay = 1; // Time until retry in milliseconds
   Type type = 2; // Calculation of the delay
+}
+
+// Job-specific read request
+message JobReadRequest {
+  uint32 limit = 1;
+  // only possible to sort jobs by creation date
+  enum SortOrder {
+    UNSORTED = 0;
+    ASCENDING = 1;
+    DESCENDING = 2;
+  }
+  repeated SortOrder sort = 2;
+
+  // a list of IDs; empty if it is aimed to retrieve all the jobs
+  repeated string filter = 3;
+
+  // Fields selector
+  repeated FieldFilter field = 3;
 }
