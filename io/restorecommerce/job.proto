@@ -119,8 +119,14 @@ message JobReadRequest {
   repeated SortOrder sort = 2;
 
   // Filter based on fieldName|operation, value|list
-  google.protobuf.Struct filter = 4;
+  JobFilter filter = 4;
 
   // Fields selector
-  repeated FieldFilter field = 3;
+  repeated io.restorecommerce.resource_base.FieldFilter field = 3;
+}
+
+// filter
+message JobFilter {
+  string creator = 1;
+  repeated string jobs_ids = 2;
 }
