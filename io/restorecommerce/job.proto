@@ -38,7 +38,6 @@ message JobList {
  * A Job resource
  */
 message Job {
-  /// Job Priority
   enum Priority {
     NORMAL = 0;
     LOW = 10;
@@ -47,12 +46,7 @@ message Job {
     CRITICAL = -15;
   }
 
-  string id = 1; // Job ID
-  double created = 2; /// Date of the Job creation
-  double modified = 3; /// Last time the Job was modified
-  string creator = 4; /// User ID of the creator
-
-  string name = 10; // Job name (unique)
+  uint32 id = 1; // Job ID
   string type = 11; // Job type
   Data data = 12; /// Job-specific data with variable payload
   Priority priority = 13; // Job priority
@@ -65,9 +59,11 @@ message Job {
   bool now = 22; // When true, the job is run once immediately
 }
 
+// Data which is stored within a job instance
 message Data {
   string timezone = 1;
-  google.protobuf.Any payload = 2;
+  string creator = 2; // User ID of the creator
+  google.protobuf.Any payload = 3; // optional variable payload
 }
 
 /**
@@ -75,11 +71,10 @@ message Data {
  * Emitted to Kafka by the scheduling service with event name 'queuedJob' and retreived by a service which processes this job.
  */
 message ScheduledJob {
-  uint32 id = 1; /// Job ID
-  string name = 2;
-  string type = 3;
-  Data data = 4; // Job-specific data with variable payload
-  string schedule_type = 5; // Type of job ex: ONCE, RECURR etc.
+  uint32 id = 1; // Job ID
+  string type = 2; // Job type
+  Data data = 3; // Job-specific data with variable payload
+  string schedule_type = 4; // Type of schedule (ONCE, RECURR, etc)
 }
 
 /**
@@ -88,8 +83,7 @@ message ScheduledJob {
  */
 message JobDone {
   uint32 id = 1; // Job instance ID
-  string name = 2;
-  string schedule_type = 3; // Type of job ex: ONCE, RECURR etc.
+  string schedule_type = 2; // Type of schedule (ONCE, RECURR, etc)
 }
 
 /**
@@ -98,9 +92,8 @@ message JobDone {
  */
 message JobFailed {
   uint32 id = 1; // Job instance ID
-  string name = 2;
-  string error = 3; // Error message
-  string schedule_type = 4; // Type of job ex: ONCE, RECURR etc.
+  string error = 2; // Error message
+  string schedule_type = 3; // Type of job ex: ONCE, RECURR etc.
 }
 
 /**
