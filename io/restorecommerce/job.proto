@@ -118,8 +118,8 @@ message JobReadRequest {
   }
   repeated SortOrder sort = 2;
 
-  // a list of IDs; empty if it is aimed to retrieve all the jobs
-  repeated string filter = 3;
+  // Filter based on fieldName|operation, value|list
+  google.protobuf.Struct filter = 4;
 
   // Fields selector
   repeated FieldFilter field = 3;
