@@ -116,13 +116,13 @@ message JobReadRequest {
     ASCENDING = 1;
     DESCENDING = 2;
   }
-  repeated SortOrder sort = 2;
+  SortOrder sort = 2;
 
   // Filter based on fieldName|operation, value|list
   JobFilter filter = 4;
 
   // Fields selector
-  repeated io.restorecommerce.resource_base.FieldFilter field = 3;
+  io.restorecommerce.resource_base.FieldFilter field = 3;
 }
 
 // filter
