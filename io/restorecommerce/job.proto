@@ -72,6 +72,7 @@ message Data {
  */
 message ScheduledJob {
   uint32 id = 1; // Job instance ID
+  string type = 2;
   Data data = 3; // Job-specific data with variable payload
   string schedule_type = 4; // Type of schedule (ONCE, RECURR, etc)
 }
