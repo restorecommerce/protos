@@ -122,7 +122,7 @@ message JobReadRequest {
   JobFilter filter = 4;
 
   // Fields selector
-  io.restorecommerce.resource_base.FieldFilter field = 3;
+  repeated io.restorecommerce.resourcebase.FieldFilter field = 3;
 }
 
 // filter
