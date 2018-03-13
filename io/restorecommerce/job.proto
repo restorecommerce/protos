@@ -23,7 +23,7 @@ service Service {
  * Send when a job resource got deleted.
  */
 message Deleted {
-  uint32 id = 1;
+  string id = 1;
 }
 
 /**
@@ -46,7 +46,7 @@ message Job {
     CRITICAL = -15;
   }
 
-  uint32 id = 1; // Job ID
+  string id = 1; // Job ID
   string type = 11; // Job type
   Data data = 12; // Job-specific data with variable payload
   Priority priority = 13; // Job priority
@@ -71,7 +71,7 @@ message Data {
  * Emitted to Kafka by the scheduling service with event name 'queuedJob' and retreived by a service which processes this job.
  */
 message ScheduledJob {
-  uint32 id = 1; // Job ID
+  uint32 id = 1; // Job instance ID
   Data data = 3; // Job-specific data with variable payload
   string schedule_type = 4; // Type of schedule (ONCE, RECURR, etc)
 }
