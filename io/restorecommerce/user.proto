@@ -31,7 +31,7 @@ service Service {
 message LoginRequest {
   string name = 1; // User name
   string email = 2; // User email
-  string password = 2; // Raw password
+  string password = 3; // Raw password
 }
 
 message FindRequest {
