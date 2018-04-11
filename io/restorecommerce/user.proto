@@ -21,12 +21,17 @@ service Service {
   rpc ChangePassword (ChangePasswordRequest) returns (User);
   rpc ChangeEmailId (ChangeEmailIdRequest) returns (User);
   rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
-  rpc VerifyPassword (VerifyPasswordRequest) returns (User);
+  rpc Login (LoginRequest) returns (User);
 }
 
-message VerifyPasswordRequest {
-  string user = 1; /// User name
-  string password = 2; /// Raw password
+/**
+* Request to verify password and retrieve the user's info. 
+* Either name or email can be provided.
+*/
+message LoginRequest {
+  string name = 1; // User name
+  string email = 2; // User email
+  string password = 2; // Raw password
 }
 
 message FindRequest {
@@ -109,10 +114,7 @@ message UserList {
 }
 
 /**
- * User activation event.
- *
- * Events:
- * activated,
+ * User activation request.
  */
 message Activate {
   string id = 1; /// User ID
@@ -120,12 +122,6 @@ message Activate {
 
 /**
  * A User resource.
- *
- * Events:
- * registered,
- * usersCreated,
- * usersModfied,
- * usersDeleted,
  */
 message User {
   string id = 1; /// User ID, unique, key
@@ -134,7 +130,7 @@ message User {
   string creator = 4; /// User ID of the creator
 
   string name = 10; // The name of the user, can be used for login
-  string email = 11; /// Email address
+  string email = 11; /// Email address, can be used for login
   bool active = 12; /// If the user was activated via the activation process
   string activation_code = 13; /// Activation code used in the activation process
   string password = 19; /// Raw password, not stored
