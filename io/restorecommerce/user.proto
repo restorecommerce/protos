@@ -60,6 +60,7 @@ message ActivateRequest {
 message ChangePasswordRequest {
   string id = 1; /// User ID
   string password = 2;
+  string new_password = 3;
 }
 
 message ChangeEmailIdRequest {
