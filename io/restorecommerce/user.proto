@@ -18,14 +18,14 @@ service Service {
   rpc Find (FindRequest) returns (UserList);
   rpc Register (RegisterRequest) returns (User);
   rpc Activate (ActivateRequest) returns (google.protobuf.Empty);
-  rpc ChangePassword (ChangePasswordRequest) returns (User);
-  rpc ChangeEmailId (ChangeEmailIdRequest) returns (User);
+  rpc ChangePassword (ChangePasswordRequest) returns (google.protobuf.Empty);
+  rpc ChangeEmailId (ChangeEmailIdRequest) returns (google.protobuf.Empty);
   rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
   rpc Login (LoginRequest) returns (User);
 }
 
 /**
-* Request to verify password and retrieve the user's info. 
+* Request to verify password and retrieve the user's info.
 * Either name or email can be provided.
 */
 message LoginRequest {
