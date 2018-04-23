@@ -10,6 +10,8 @@ message Command {
   string name = 1;  // command name
   repeated CommandParameter parameters = 2; // all possible parameters
   string description = 3; // command description
+  double created = 4;
+  double modified = 5;
 }
 
 message CommandParameter {
