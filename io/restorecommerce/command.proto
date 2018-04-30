@@ -7,11 +7,12 @@ import "io/restorecommerce/resource_base.proto";
 
 // command resource
 message Command {
-  string name = 1;  // command name
-  repeated CommandParameter parameters = 2; // all possible parameters
-  string description = 3; // command description
-  double created = 4;
-  double modified = 5;
+  string id = 1;
+  string name = 2;  // command name
+  repeated CommandParameter parameters = 3; // all possible parameters
+  string description = 4; // command description
+  double created = 5;
+  double modified = 6;
 }
 
 message CommandParameter {
