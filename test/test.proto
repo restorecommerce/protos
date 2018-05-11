@@ -1,11 +1,15 @@
 syntax = "proto3";
 package test;
+import "google/protobuf/any.proto";
+import "io/restorecommerce/resource_base.proto";
 
 service Test {
   rpc Test (TestRequest) returns (TestResponse);
   rpc Throw (TestRequest) returns (TestResponse);
   rpc NotImplemented (TestRequest) returns (TestResponse);
   rpc NotFound (TestRequest) returns (TestResponse);
+  rpc Create (TestBufferedDataList) returns (TestBufferedDataList);
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (TestBufferedDataList);
 }
 
 service Stream {
@@ -25,6 +29,20 @@ message TestEvent {
   string value = 1;
   int32 count = 2;
 };
+
+message TestBufferedData {
+  string id = 1;
+  string value = 2;
+  int32 count = 3;
+  google.protobuf.Any data = 4;
+  double created = 5;
+  double modified = 6;
+}
+
+message TestBufferedDataList {
+  repeated TestBufferedData items = 1;
+  uint32 total_count = 2;
+}
 
 message ExtendMe {
   int32 bar = 126;
