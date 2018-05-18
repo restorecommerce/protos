@@ -53,7 +53,7 @@ message RegisterRequest {
 }
 
 message ActivateRequest {
-  string id = 1; /// User ID
+  string name = 1; /// User name (unique)
   string activation_code = 2;
 }
 
