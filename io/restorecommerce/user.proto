@@ -43,13 +43,15 @@ message FindRequest {
 message RegisterRequest {
   bool guest = 1;
   string name = 2;
-  string email = 3;
-  string password = 4;
-  string creator = 5;
-  string timezone = 6;
-  string locale = 7;
+  string first_name = 3;
+  string last_name = 4;
+  string email = 5;
+  string password = 6;
+  string creator = 7;
+  string timezone = 8;
+  string locale = 9;
 
-  repeated RoleAssociation role_associations = 8;
+  repeated RoleAssociation role_associations = 10;
 }
 
 message ActivateRequest {
@@ -130,16 +132,18 @@ message User {
   double modified = 3; /// Last time the user was modified
   string creator = 4; /// User ID of the creator
 
-  string name = 10; // The name of the user, can be used for login
-  string email = 11; /// Email address, can be used for login
-  bool active = 12; /// If the user was activated via the activation process
-  string activation_code = 13; /// Activation code used in the activation process
-  string password = 19; /// Raw password, not stored
-  string password_hash = 20; /// Encrypted password, stored
-  bool guest = 24; /// Is the user a guest. A guest is a automaticly generated user which can later be turned in a non-guest user.
-  repeated RoleAssociation role_associations = 25; // A user can have multiple roles and different attributes coupled with each role
-  string timezone = 26;	// timezone specifications
-  string locale = 27;	// locale specifications
+  string name = 5; // The name of the user, can be used for login
+  string first_name = 6;
+  string last_name = 7;
+  string email = 8; /// Email address, can be used for login
+  bool active = 9; /// If the user was activated via the activation process
+  string activation_code = 10; /// Activation code used in the activation process
+  string password = 11; /// Raw password, not stored
+  string password_hash = 12; /// Encrypted password, stored
+  bool guest = 13; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
+  repeated RoleAssociation role_associations = 14; // A user can have multiple roles and different attributes coupled with each role
+  string timezone = 15;	// timezone specifications
+  string locale = 16;	// locale specifications
 }
 
 message RoleAssociation {
