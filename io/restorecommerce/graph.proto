@@ -1,0 +1,57 @@
+syntax = "proto3";
+package io.restorecommerce.graph;
+import "google/protobuf/any.proto";
+
+// Service provides the CRUD operations
+service Service {
+  rpc Traversal (TraversalRequest) returns (TraversalResponse);
+}
+
+message TraversalRequest {
+  // Document handle either _id or _key value
+  string start_vertex = 1;
+  // Filter based on fieldName|operation, value|list
+  Options opts = 2;
+  string collection_name = 3;
+}
+
+message TraversalResponse {
+  repeated VertexFields vertex_fields = 1;
+  google.protobuf.Any paths = 2;
+  google.protobuf.Any data = 3;
+}
+
+message VertexFields {
+  string _id = 1;
+  string _key = 2;
+  string _rev = 3;
+  string id = 4;
+}
+
+message Options {
+ string sort = 1; // JS code
+ string direction = 2; // either inbound or outbound
+ string min_depth = 3; // ANDed with any existing filters): visits only nodes in at least the given depth
+ string start_vertex = 4; // id of the startVertex
+ string visitor = 5; // JS code
+ string item_order = 6; // item iteration order can be "forward" or "backward"
+ string strategy = 7; // traversal strategy can be "depthfirst" or "breadthfirst"
+ repeated Filter filter = 8; // JS code
+ string init = 9; // JS code
+ string max_iterations = 10; // maximum number of iterations in each traversal
+ string max_depth = 11; // ANDed with any existing filters visits only nodes in at most the given depth
+ string uniqueness = 12; // specifies uniqueness for vertices and edges visited
+ string order = 13; //  "preorder", "postorder" or "preorder-expander"
+ string graph_name = 14; // name of graph that contains the edges
+ repeated Expander expander = 15; // JS code
+ string edge_collection = 16; // name of the collection that contains the edges
+}
+
+message Filter {
+  string vertex = 1; // exclude these vertices
+}
+
+message Expander {
+  string edge = 1; // expand these edges
+  string direction = 2;
+}
