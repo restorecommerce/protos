@@ -22,6 +22,7 @@ service Service {
   rpc ChangeEmailId (ChangeEmailIdRequest) returns (google.protobuf.Empty);
   rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
   rpc Login (LoginRequest) returns (User);
+  rpc FindByRole(FindByRoleRequest) returns (UserList);
 }
 
 /**
@@ -123,6 +124,11 @@ message Activate {
   string id = 1; /// User ID
 }
 
+message FindByRoleRequest {
+  string role = 1;
+  repeated Attribute attributes = 2;
+}
+
 /**
  * A User resource.
  */
@@ -147,10 +153,11 @@ message User {
 }
 
 message RoleAssociation {
-  message Attribute {
-    string id = 1;
-    string value = 2;
-  }
   string role = 1;  // role ID
   repeated Attribute attributes = 2;  // useful attributes for RBAC/ABAC like organizational scope
+}
+
+message Attribute {
+  string id = 1;
+  string value = 2;
 }
