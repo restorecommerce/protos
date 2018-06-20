@@ -130,4 +130,5 @@ message JobReadRequest {
 message JobFilter {
   string creator = 1;
   repeated string jobs_ids = 2;
+  string type = 3;
 }
