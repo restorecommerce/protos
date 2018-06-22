@@ -19,7 +19,8 @@ service Service {
   rpc Register (RegisterRequest) returns (User);
   rpc Activate (ActivateRequest) returns (google.protobuf.Empty);
   rpc ChangePassword (ChangePasswordRequest) returns (google.protobuf.Empty);
-  rpc ChangeEmailId (ChangeEmailIdRequest) returns (google.protobuf.Empty);
+  rpc RequestEmailChange (ChangeEmailRequest) returns (google.protobuf.Empty);
+  rpc ConfirmEmailChange (ConfirmEmailChangeRequest returns (google.protobuf.Empty);
   rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
   rpc Login (LoginRequest) returns (User);
   rpc FindByRole(FindByRoleRequest) returns (UserList);
@@ -66,7 +67,12 @@ message ChangePasswordRequest {
   string new_password = 3;
 }
 
-message ChangeEmailIdRequest {
+message ChangeEmailRequest {
+  string id = 1; /// User ID
+  string email = 2;
+}
+
+message ConfirmEmailChangeRequest {
   string id = 1; /// User ID
   string email = 2;
 }
