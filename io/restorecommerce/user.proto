@@ -108,9 +108,9 @@ message PasswordChanged {
  * User email id changed event.
  *
  * Events:
- * emailIdChanged,
+ * email,
  */
-message EmailIdChanged {
+message EmailChanged {
   string id = 1; /// User ID
   string email = 2;
 }
