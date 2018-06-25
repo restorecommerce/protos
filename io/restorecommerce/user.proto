@@ -106,11 +106,14 @@ message PasswordChanged {
 
 /**
  * User email id changed event.
- *
- * Events:
- * email,
  */
-message EmailChanged {
+message EmailChangeRequested {
+  string id = 1; 
+  string activation_code = 2;
+  string emailNew = 3;
+}
+
+message EmailChangeConfirmed {
   string id = 1; /// User ID
   string email = 2;
 }
