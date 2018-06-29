@@ -6,15 +6,16 @@ import "google/protobuf/empty.proto";
 
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/access_control.proto";
+import "io/restorecommerce/meta.proto";
+
 message PolicySet {
   string id = 1;
-  string name = 2;
-  string description = 3;
-  io.restorecommerce.access_control.Target target = 4;
-  string combining_algorithm = 5;
-  repeated string policies = 6; // policy IDs
-  double created = 7;
-  double modified = 8;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3;
+  string description = 4;
+  io.restorecommerce.access_control.Target target = 5;
+  string combining_algorithm = 6;
+  repeated string policies = 7; // policy IDs
 }
 
 message PolicySetList {

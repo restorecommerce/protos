@@ -7,17 +7,17 @@ import "google/protobuf/any.proto";
 
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/access_control.proto";
+import "io/restorecommerce/meta.proto";
 
 message Rule {
   string id = 1;
-  string name = 2;
-  string description = 3;
-  io.restorecommerce.access_control.Target target = 4;
-  ContextQuery context_query = 5;
-  string condition = 6; // JS code
-  io.restorecommerce.access_control.Effect effect = 7;
-  double created = 8;
-  double modified = 9;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3;
+  string description = 4;
+  io.restorecommerce.access_control.Target target = 5;
+  ContextQuery context_query = 6;
+  string condition = 7; // JS code
+  io.restorecommerce.access_control.Effect effect = 8;
 }
 
 message RuleList {

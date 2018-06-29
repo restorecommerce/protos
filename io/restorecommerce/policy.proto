@@ -6,20 +6,20 @@ import "google/protobuf/empty.proto";
 
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/access_control.proto";
+import "io/restorecommerce/meta.proto";
 
 /**
 * A Policy is defined by a set of Rules.
 */
 message Policy {
   string id = 1;
-  string name = 2;
-  string description = 3;
-  repeated string rules = 4;  // rule IDs
-  io.restorecommerce.access_control.Target target = 5;  // general policy target
-  io.restorecommerce.access_control.Effect effect = 6;
-  string combining_algorithm = 7;
-  double created = 8;
-  double modified = 9;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3;
+  string description = 4;
+  repeated string rules = 5;  // rule IDs
+  io.restorecommerce.access_control.Target target = 6;  // general policy target
+  io.restorecommerce.access_control.Effect effect = 7;
+  string combining_algorithm = 8;
 }
 
 message PolicyList {
