@@ -44,12 +44,12 @@ message FindRequest {
 
 message RegisterRequest {
   bool guest = 1;
-  string name = 2;
-  string first_name = 3;
-  string last_name = 4;
-  string email = 5;
-  string password = 6;
-  string creator = 7;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string email = 6;
+  string password = 7;
   string timezone = 8;
   string locale_id = 9;
 
