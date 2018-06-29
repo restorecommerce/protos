@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package io.restorecommerce.policy;
+
+import "google/protobuf/empty.proto";
+
+import "io/restorecommerce/resource_base.proto";
+import "io/restorecommerce/access_control.proto";
+
+/**
+* A Policy is defined by a set of Rules.
+*/
+message Policy {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  repeated string rules = 4;  // rule IDs
+  io.restorecommerce.access_control.Target target = 5;  // general policy target
+  io.restorecommerce.access_control.Effect effect = 6;
+  string combining_algorithm = 7;
+  double created = 8;
+  double modified = 9;
+}
+
+message PolicyList {
+  repeated Policy items = 1;
+  uint32 total_count = 2;
+}
+
+service Service {
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (PolicyList);
+  rpc Create (PolicyList) returns (PolicyList);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (PolicyList) returns (PolicyList);
+  rpc Upsert (PolicyList) returns (PolicyList);
+}
