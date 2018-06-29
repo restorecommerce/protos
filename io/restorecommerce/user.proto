@@ -73,8 +73,8 @@ message ChangeEmailRequest {
 }
 
 message ConfirmEmailChangeRequest {
-  string id = 1; /// User ID
-  string email = 2;
+  string name = 1;
+  string activation_code = 2;
 }
 
 message UnregisterRequest {
@@ -108,7 +108,7 @@ message PasswordChanged {
  * User email id changed event.
  */
 message EmailChangeRequested {
-  string id = 1; 
+  string id = 1;
   string activation_code = 2;
   string emailNew = 3;
 }
@@ -159,7 +159,7 @@ message User {
   string locale_id = 14;	// locale specifications
   bool guest = 15; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
 
-  
+
 }
 
 message RoleAssociation {
