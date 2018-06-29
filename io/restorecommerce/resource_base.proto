@@ -3,6 +3,7 @@ package io.restorecommerce.resourcebase;
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
+import "io/restorecommerce/meta.proto";
 
 // Service provides the CRUD operations
 service Service {
@@ -81,8 +82,7 @@ message ResourceList {
 /// Example resource
 message Resource {
   string id = 1;
-  double created = 2;
-  double modified = 3;
-  int32 value = 10;
-  string text = 11;
+  io.restorecommerce.meta.Meta meta = 2;
+  int32 value = 3;
+  string text = 4;
 }

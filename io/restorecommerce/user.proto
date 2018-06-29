@@ -4,6 +4,7 @@ package io.restorecommerce.user;
 
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
+import "io/restorecommerce/meta.proto";
 
 /**
  * The microservice for the user resource.
@@ -13,7 +14,6 @@ service Service {
   rpc Create (UserList) returns (UserList);
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (UserList) returns (UserList);
-  rpc Upsert (UserList) returns (UserList);
 
   rpc Find (FindRequest) returns (UserList);
   rpc Register (RegisterRequest) returns (User);
@@ -143,23 +143,23 @@ message FindByRoleRequest {
  */
 message User {
   string id = 1; /// User ID, unique, key
-  double created = 2; /// Date of the user creation
-  double modified = 3; /// Last time the user was modified
-  string creator = 4; /// User ID of the creator
+  io.restorecommerce.meta.Meta meta = 2;
 
-  string name = 5; // The name of the user, can be used for login
-  string first_name = 6;
-  string last_name = 7;
-  string email = 8; /// Email address, can be used for login
-  string emailNew = 9; /// New email address; set by `requestEmailChange` and overrides actual email upon `confirmEmailChange`
-  bool active = 10; /// If the user was activated via the activation process
-  string activation_code = 11; /// Activation code used in the activation process
-  string password = 12; /// Raw password, not stored
-  string password_hash = 13; /// Encrypted password, stored
-  bool guest = 14; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
-  repeated RoleAssociation role_associations = 15; // A user can have multiple roles and different attributes coupled with each role
-  string timezone = 16;	// timezone specifications
-  string locale_id = 17;	// locale specifications
+  string name = 3; // The name of the user, can be used for login
+  string first_name = 4;
+  string last_name = 5;
+  string email = 6; /// Email address, can be used for login
+  string emailNew = 7; /// New email address; set by `requestEmailChange` and overrides actual email upon `confirmEmailChange`
+  bool active = 8; /// If the user was activated via the activation process
+  string activation_code = 9; /// Activation code used in the activation process
+  string password = 10; /// Raw password, not stored
+  string password_hash = 11; /// Encrypted password, stored
+  repeated RoleAssociation role_associations = 12; // A user can have multiple roles and different attributes coupled with each role
+  string timezone = 13;	// timezone specifications
+  string locale_id = 14;	// locale specifications
+  bool guest = 15; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
+
+  
 }
 
 message RoleAssociation {

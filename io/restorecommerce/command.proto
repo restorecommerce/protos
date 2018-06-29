@@ -4,15 +4,15 @@ package io.restorecommerce.command;
 
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
+import "io/restorecommerce/meta.proto";
 
 // command resource
 message Command {
   string id = 1;
-  string name = 2;  // command name
-  repeated CommandParameter parameters = 3; // all possible parameters
-  string description = 4; // command description
-  double created = 5;
-  double modified = 6;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3;  // command name
+  repeated CommandParameter parameters = 4; // all possible parameters
+  string description = 5; // command description
 }
 
 message CommandParameter {

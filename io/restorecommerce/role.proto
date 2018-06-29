@@ -4,6 +4,7 @@ package io.restorecommerce.role;
 
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
+import "io/restorecommerce/meta.proto";
 
 service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (RoleList);
@@ -15,10 +16,9 @@ service Service {
 
 message Role {
   string id = 1;
-  string name = 2; // specifies the role of the user
-  string description = 3;
-  double created = 4;
-  double modified = 5;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3; // specifies the role of the user
+  string description = 4;
 }
 
 message RoleList {

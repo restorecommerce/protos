@@ -5,6 +5,7 @@ package io.restorecommerce.job;
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/any.proto";
 import "google/protobuf/empty.proto";
+import "io/restorecommerce/meta.proto";
 
 /**
  * The microservice for scheduling jobs.
@@ -62,8 +63,8 @@ message Job {
 // Data which is stored within a job instance
 message Data {
   string timezone = 1;
-  string creator = 2; // User ID of the creator
-  google.protobuf.Any payload = 3; // optional variable payload
+  google.protobuf.Any payload = 2; // optional variable payload
+  io.restorecommerce.meta.Meta meta = 3;
 }
 
 /**

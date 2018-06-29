@@ -4,6 +4,7 @@ package io.restorecommerce.organization;
 
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
+import "io/restorecommerce/meta.proto";
 
 service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (OrganizationList);
@@ -31,12 +32,10 @@ message OrganizationList {
 
 message Organization {
   string id = 1; /// Organization ID, unique, key
-  double created = 2; /// Date of the Organization creation
-  double modified = 3; /// Last time the Organization was modified
-  string creator = 4; /// User ID of the creator
-  string website = 9;
-  string email = 10;
-  string logo = 11; // base64; arangoDB does not support blob storage
-  string name = 16;
-  Address address = 5; /// Address for the organization
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3;
+  string website = 4;
+  string email = 5;
+  string logo = 6;
+  Address address = 7; /// Address for the organization
 }
