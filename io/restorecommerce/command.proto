@@ -17,11 +17,11 @@ message Command {
 
 message CommandParameter {
   enum ParameterType {
-    boolean = 0;
-    object = 1;
-    array = 2:
-    number = 3:
-    string = 4;
+    boolean_value = 0;
+    object_value = 1;
+    array_value = 2:
+    number_value = 3:
+    string_value = 4;
   }
 
   string field = 1; //  field name
