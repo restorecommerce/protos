@@ -19,8 +19,8 @@ message CommandParameter {
   enum ParameterType {
     boolean_value = 0;
     object_value = 1;
-    array_value = 2:
-    number_value = 3:
+    array_value = 2;
+    number_value = 3;
     string_value = 4;
   }
 
