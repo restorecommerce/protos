@@ -141,6 +141,9 @@ message ServiceResponse {
   /// Full name of a registered service, including its package name. The format
   /// is <package>.<service>
   string name = 1;
+  // Added a label to map for the service name, since the same service name
+  // could be used across multiple services.
+  string label = 2;
 }
 
 /// The error code and error message sent by the server when an error occurs.
