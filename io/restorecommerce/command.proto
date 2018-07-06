@@ -27,6 +27,7 @@ message CommandParameter {
   string field = 1; //  field name
   string description = 2; // field description
   ParameterType type = 3; // field's type
+  google.protobuf.Any properties = 4; // dump properties in case of `object_value``
 }
 
 message CommandList {
