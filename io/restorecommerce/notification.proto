@@ -36,4 +36,5 @@ message Notification {
   string replyto = 7; // if set, the outgoing mail will have this replyTo header set
   string target = 8; // if set, do not look up a user but send directly to this email adress
   repeated Attachment attachments = 9;
+  string level = 10; // used to specify logging level for Log
 }
