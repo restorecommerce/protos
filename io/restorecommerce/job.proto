@@ -129,6 +129,6 @@ message JobReadRequest {
 
 // filter
 message JobFilter {
-  repeated string jobs_ids = 1;
+  repeated string job_ids = 1;
   string type = 2;
 }
