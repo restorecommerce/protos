@@ -1,7 +1,9 @@
 syntax = "proto3";
 package test;
+
 import "google/protobuf/any.proto";
 import "io/restorecommerce/resource_base.proto";
+import "io/restorecommerce/meta.proto";
 
 service Test {
   rpc Test (TestRequest) returns (TestResponse);
@@ -32,11 +34,10 @@ message TestEvent {
 
 message TestBufferedData {
   string id = 1;
-  string value = 2;
-  int32 count = 3;
-  google.protobuf.Any data = 4;
-  double created = 5;
-  double modified = 6;
+  io.restorecommerce.meta.Meta meta = 2;
+  string value = 3;
+  int32 count = 4;
+  google.protobuf.Any data = 5;
 }
 
 message TestBufferedDataList {
