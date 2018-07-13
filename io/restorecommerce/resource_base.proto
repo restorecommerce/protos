@@ -46,9 +46,6 @@ message ReadRequest {
 
   /// Fields selector
   repeated FieldFilter field = 5;
-
-  /// word search
-  /// uses arangodb and elastic search (see search and fullTextSearch)
   repeated string search = 6;
 
   /** Check the query parameters of HTTP request.
