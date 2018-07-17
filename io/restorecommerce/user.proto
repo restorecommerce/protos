@@ -157,7 +157,8 @@ message User {
   repeated RoleAssociation role_associations = 12; // A user can have multiple roles and different attributes coupled with each role
   string timezone = 13;	// timezone specifications
   string locale_id = 14;	// locale specifications
-  bool guest = 15; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
+  bool unauthenticated = 15; // true in case in case of `register`; set to false after activation
+  bool guest = 16; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
 
 
 }
