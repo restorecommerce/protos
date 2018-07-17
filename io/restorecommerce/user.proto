@@ -159,8 +159,6 @@ message User {
   string locale_id = 14;	// locale specifications
   bool unauthenticated = 15; // true in case in case of `register`; set to false after activation
   bool guest = 16; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
-
-
 }
 
 message RoleAssociation {
