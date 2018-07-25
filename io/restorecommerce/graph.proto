@@ -31,7 +31,7 @@ message VertexFields {
 message Options {
  string sort = 1; // JS code
  string direction = 2; // either inbound or outbound
- string min_depth = 3; // ANDed with any existing filters): visits only nodes in at least the given depth
+ number min_depth = 3; // ANDed with any existing filters): visits only nodes in at least the given depth
  string start_vertex = 4; // id of the startVertex
  string visitor = 5; // JS code
  string item_order = 6; // item iteration order can be "forward" or "backward"
@@ -39,7 +39,7 @@ message Options {
  repeated Filter filter = 8; // JS code
  string init = 9; // JS code
  string max_iterations = 10; // maximum number of iterations in each traversal
- string max_depth = 11; // ANDed with any existing filters visits only nodes in at most the given depth
+ number max_depth = 11; // ANDed with any existing filters visits only nodes in at most the given depth
  string uniqueness = 12; // specifies uniqueness for vertices and edges visited
  string order = 13; //  "preorder", "postorder" or "preorder-expander"
  string graph_name = 14; // name of graph that contains the edges
