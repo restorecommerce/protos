@@ -38,7 +38,7 @@ message Options {
  string strategy = 7; // traversal strategy can be "depthfirst" or "breadthfirst"
  repeated Filter filter = 8; // JS code
  string init = 9; // JS code
- string max_iterations = 10; // maximum number of iterations in each traversal
+ uint32 max_iterations = 10; // maximum number of iterations in each traversal
  uint32 max_depth = 11; // ANDed with any existing filters visits only nodes in at most the given depth
  string uniqueness = 12; // specifies uniqueness for vertices and edges visited
  string order = 13; //  "preorder", "postorder" or "preorder-expander"
