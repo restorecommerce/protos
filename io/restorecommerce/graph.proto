@@ -40,7 +40,7 @@ message Options {
  string init = 9; // JS code
  uint32 max_iterations = 10; // maximum number of iterations in each traversal
  uint32 max_depth = 11; // ANDed with any existing filters visits only nodes in at most the given depth
- string uniqueness = 12; // specifies uniqueness for vertices and edges visited
+ Uniqueness uniqueness = 12; // specifies uniqueness for vertices and edges visited
  string order = 13; //  "preorder", "postorder" or "preorder-expander"
  string graph_name = 14; // name of graph that contains the edges
  repeated Expander expander = 15; // JS code
@@ -54,4 +54,9 @@ message Filter {
 message Expander {
   string edge = 1; // expand these edges
   string direction = 2;
+}
+
+message Uniqueness {
+  string vertices = 1; // "none"|"global"|"path" for unique vertices
+  string edges = 2; // "none"|"global"|"path" for unique edges
 }
