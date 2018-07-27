@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package io.restorecommerce.access_control;
 
-import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
 
 /**
@@ -13,7 +12,13 @@ message Request {
   Target target = 1;
   // generic data structure which can be provided
   // to a contextQuery (see io/restorecommerce/rule.proto)
-  google.protobuf.Any context = 2;
+  Context context = 2;
+}
+
+message Context {
+  google.protobuf.Any subject = 1;
+  repeated google.protobuf.Any resources = 2;
+  google.protobuf.Any security = 3;
 }
 
 message Response {
@@ -31,15 +36,15 @@ message Response {
 * Target specified by a Rule or a Request.
 */
 message Target {
-  repeated Property subject = 1;
-  repeated Property resources = 2;
-  repeated Property action = 3;
+  repeated Attribute subject = 1;
+  repeated Attribute resources = 2;
+  repeated Attribute action = 3;
 }
 
 /**
 * Key-value pair.
 */
-message Property {
+message Attribute {
   string id = 1;
   string value = 2;
 }

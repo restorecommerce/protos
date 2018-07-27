@@ -27,13 +27,14 @@ message RuleList {
 
 // Query to pull resources from an external service
 //  and append them to the request's context.
-// The context can then be passed onto the evaluted `condition` code
-//  for decision making
+// The retrieved data can then be passed onto the request's context
 message ContextQuery {
-  // a list of 'paths' to nested properties
-  // within the context object in a Request
-  // these properties are then passed onto a query
-  repeated string context_args = 1;
+  message Filter {
+    string field = 1;
+    string operation = 2;
+    string value = 3;
+  }
+  repeated Filter filters = 1;
   string query = 2;
 }
 
