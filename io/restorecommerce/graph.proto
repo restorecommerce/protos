@@ -31,16 +31,16 @@ message VertexFields {
 message Options {
  string sort = 1; // JS code
  string direction = 2; // either inbound or outbound
- string min_depth = 3; // ANDed with any existing filters): visits only nodes in at least the given depth
+ uint32 min_depth = 3; // ANDed with any existing filters): visits only nodes in at least the given depth
  string start_vertex = 4; // id of the startVertex
  string visitor = 5; // JS code
  string item_order = 6; // item iteration order can be "forward" or "backward"
  string strategy = 7; // traversal strategy can be "depthfirst" or "breadthfirst"
  repeated Filter filter = 8; // JS code
  string init = 9; // JS code
- string max_iterations = 10; // maximum number of iterations in each traversal
- string max_depth = 11; // ANDed with any existing filters visits only nodes in at most the given depth
- string uniqueness = 12; // specifies uniqueness for vertices and edges visited
+ uint32 max_iterations = 10; // maximum number of iterations in each traversal
+ uint32 max_depth = 11; // ANDed with any existing filters visits only nodes in at most the given depth
+ Uniqueness uniqueness = 12; // specifies uniqueness for vertices and edges visited
  string order = 13; //  "preorder", "postorder" or "preorder-expander"
  string graph_name = 14; // name of graph that contains the edges
  repeated Expander expander = 15; // JS code
@@ -54,4 +54,9 @@ message Filter {
 message Expander {
   string edge = 1; // expand these edges
   string direction = 2;
+}
+
+message Uniqueness {
+  string vertices = 1; // "none"|"global"|"path" for unique vertices
+  string edges = 2; // "none"|"global"|"path" for unique edges
 }

@@ -66,8 +66,6 @@ message DeleteRequest {
   bool collection = 1;
   /// Delete specified documents
   repeated string ids = 2;
-  repeated uint32 id = 3;
-  repeated string job_unique_name = 4;
 }
 
 /// List of resources
