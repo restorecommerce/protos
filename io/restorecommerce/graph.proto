@@ -21,6 +21,7 @@ message TraversalRequest {
   // Filter based on fieldName|operation, value|list
   Options opts = 3;
   string collection_name = 4;
+  string edge_name = 5;
 }
 
 message TraversalResponse {
