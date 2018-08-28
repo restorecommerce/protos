@@ -10,7 +10,7 @@ message Meta {
     string modified_by = 3; // ID from last User who modified it
     repeated Owner owner = 4;
     message Owner {
-        string owner_entity = 1; // a URN for a User or an Organization
-        string owner_id = 2; // a resource UUID
+        string id = 1; // a URN for a User or an Organization
+        string value = 2; // a resource UUID
     }
 }

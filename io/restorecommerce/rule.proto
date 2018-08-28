@@ -20,6 +20,14 @@ message Rule {
   io.restorecommerce.access_control.Effect effect = 8;
 }
 
+message RuleRQ { // used for `whatIsAllowed` / reverse queries
+  string id = 1;
+  io.restorecommerce.access_control.Target target = 2;
+  io.restorecommerce.access_control.Effect effect = 3;
+  string condition = 4;
+  ContextQuery context_query = 5; 
+}
+
 message RuleList {
   repeated Rule items = 1;
   uint32 total_count = 2;

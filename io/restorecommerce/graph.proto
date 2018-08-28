@@ -8,11 +8,20 @@ service Service {
 }
 
 message TraversalRequest {
+  message StartVertices {
+    repeated string vertices = 1;
+  }
+
   // Document handle either _id or _key value
-  string start_vertex = 1;
+  oneof vertex {
+    string start_vertex = 1;
+    StartVertices start_vertices = 2;
+  }
+
   // Filter based on fieldName|operation, value|list
-  Options opts = 2;
-  string collection_name = 3;
+  Options opts = 3;
+  string collection_name = 4;
+  string edge_name = 5;
 }
 
 message TraversalResponse {
@@ -45,6 +54,7 @@ message Options {
  string graph_name = 14; // name of graph that contains the edges
  repeated Expander expander = 15; // JS code
  string edge_collection = 16; // name of the collection that contains the edges
+ bool lowest_common_ancestor = 17;
 }
 
 message Filter {

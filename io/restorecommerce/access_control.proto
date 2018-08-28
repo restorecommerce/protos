@@ -3,6 +3,7 @@ syntax = "proto3";
 package io.restorecommerce.access_control;
 
 import "google/protobuf/any.proto";
+import "io/restorecommerce/policy_set.proto";
 
 /**
 * Access control service interface.
@@ -57,6 +58,11 @@ enum Effect {
   DENY = 1;
 }
 
+message ReverseQuery {
+  repeated io.restorecommerce.policy_set.PolicySetRQ policy_sets = 1;
+}
+
 service Service {
   rpc IsAllowed (Request) returns (Response);
+  rpc WhatIsAllowed(Request) returns (ReverseQuery);
 }
