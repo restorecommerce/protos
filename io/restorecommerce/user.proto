@@ -19,11 +19,14 @@ service Service {
   rpc Register (RegisterRequest) returns (User);
   rpc Activate (ActivateRequest) returns (google.protobuf.Empty);
   rpc ChangePassword (ChangePasswordRequest) returns (google.protobuf.Empty);
+  rpc RequestPasswordChange (ForgotPasswordRequest) returns (google.protobuf.Empty);
   rpc RequestEmailChange (ChangeEmailRequest) returns (google.protobuf.Empty);
+  rpc ConfirmPasswordChange (ConfirmPasswordChangeRequest) returns (google.protobuf.Empty);
   rpc ConfirmEmailChange (ConfirmEmailChangeRequest) returns (google.protobuf.Empty);
   rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
   rpc Login (LoginRequest) returns (User);
   rpc FindByRole(FindByRoleRequest) returns (UserList);
+  rpc DeleteUsersByOrg(OrgIDRequest) returns (UserIDs);
 }
 
 /**
@@ -34,6 +37,14 @@ message LoginRequest {
   string name = 1; // User name
   string email = 2; // User email
   string password = 3; // Raw password
+}
+
+message OrgIDRequest {
+  repeated string org_ids = 1;
+}
+
+message UserIDs {
+  repeated string user_ids = 1;
 }
 
 message FindRequest {
@@ -65,6 +76,19 @@ message ChangePasswordRequest {
   string id = 1; /// User ID
   string password = 2;
   string new_password = 3;
+}
+
+message ForgotPasswordRequest {
+  oneof input_field {
+    string name = 1;
+    string email = 2;
+  }
+}
+
+message ConfirmPasswordChangeRequest {
+  string name = 1;
+  string activation_code = 2;
+  string password = 3;
 }
 
 message ChangeEmailRequest {
@@ -102,6 +126,10 @@ message Deleted {
 message PasswordChanged {
   string id = 1; /// User ID
   string password_hash = 2;
+}
+
+message PasswordChangeRequested {
+  string id = 1; // User ID
 }
 
 /**
