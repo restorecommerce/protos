@@ -2,6 +2,7 @@ syntax = "proto3";
 package io.restorecommerce.resourcebase;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
 import "google/protobuf/struct.proto";
 import "io/restorecommerce/meta.proto";
 
@@ -12,13 +13,6 @@ service Service {
   rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (ResourceList) returns (ResourceList);
   rpc Upsert (ResourceList) returns (ResourceList);
-}
-
-message ScopeFilter {
-  /// Scope to operate on (user,organization,domain)
-  string scope = 1;
-  /// Value to compare
-  string instance = 2;
 }
 
 message FieldFilter {
@@ -57,8 +51,8 @@ message ReadRequest {
     */
   repeated string locales_limiter = 7;
 
-  /// Only return documents located in this scope
-  ScopeFilter scope = 8;
+  string custom_query = 8;
+  google.protobuf.Any custom_arguments = 9;
 }
 
 message DeleteRequest {
