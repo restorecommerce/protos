@@ -29,6 +29,7 @@ message PolicyRQ {
   string combining_algorithm = 3;
   repeated io.restorecommerce.rule.RuleRQ rules = 4;
   io.restorecommerce.access_control.Effect effect = 5;
+  bool has_rules = 6;
 }
 
 message PolicyList {
