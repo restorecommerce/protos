@@ -51,7 +51,7 @@ message ReadRequest {
     */
   repeated string locales_limiter = 7;
 
-  string custom_query = 8;
+  repeated string custom_queries = 8;
   google.protobuf.Any custom_arguments = 9;
 }
 
