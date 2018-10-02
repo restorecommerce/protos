@@ -12,6 +12,13 @@ message Offer {
   io.restorecommerce.meta.Meta meta = 2;
   string name = 3; 
   string description = 4;
+
+  oneof offer_target {
+    string bundle_id = 5;
+    string product_ids = 6;
+  }
+
+  dobule price = 7;
 }
 
 message OfferList {
