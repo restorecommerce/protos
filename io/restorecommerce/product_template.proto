@@ -11,7 +11,7 @@ message ProductTemplate {
   string id = 1;
   io.restorecommerce.meta.Meta meta = 2;
   string name = 3; 
-  string description = 3;
+  string description = 4;
 }
 
 message ProductTemplateList {
