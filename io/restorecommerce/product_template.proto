@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package io.restorecommerce.product_template;
+
+import "google/protobuf/empty.proto";
+import "io/restorecommerce/resource_base.proto";
+import "io/restorecommerce/meta.proto";
+
+// ProductTemplate resource
+message ProductTemplate {
+  string id = 1;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3; 
+  string description = 3;
+}
+
+message ProductTemplateList {
+  repeated ProductTemplate items = 1;
+  uint32 total_count = 2;
+}
+
+message Deleted {
+  string id = 1;
+}
+
+service Service {
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (ProductTemplateList);
+  rpc Create (ProductTemplateList) returns (ProductTemplateList);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (ProductTemplateList) returns (ProductTemplateList);
+  rpc Upsert (ProductTemplateList) returns (ProductTemplateList);
+}
