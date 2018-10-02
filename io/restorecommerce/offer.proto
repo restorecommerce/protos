@@ -18,7 +18,7 @@ message Offer {
     string product_ids = 6;
   }
 
-  dobule price = 7;
+  double price = 7;
 }
 
 message OfferList {
