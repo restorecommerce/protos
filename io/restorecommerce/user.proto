@@ -61,7 +61,7 @@ message RegisterRequest {
   string last_name = 5;
   string email = 6;
   string password = 7;
-  string timezone = 8;
+  string timezone_id = 8;
   string locale_id = 9;
 
   repeated RoleAssociation role_associations = 10;
@@ -184,7 +184,7 @@ message User {
   string password = 10; /// Raw password, not stored
   string password_hash = 11; /// Encrypted password, stored
   repeated RoleAssociation role_associations = 12; // A user can have multiple roles and different attributes coupled with each role
-  string timezone = 13;	// timezone specifications
+  string timezone_id = 13;	// timezone_id specifications
   string locale_id = 14;	// locale specifications
   string default_scope = 15; // default hierarchical scope
   bool unauthenticated = 16; // true in case in case of `register`; set to false after activation
