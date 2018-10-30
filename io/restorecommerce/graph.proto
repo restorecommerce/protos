@@ -22,6 +22,8 @@ message TraversalRequest {
   Options opts = 3;
   string collection_name = 4;
   string edge_name = 5;
+  bool data = 6;
+  bool path = 7;
 }
 
 message TraversalResponse {
