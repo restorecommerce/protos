@@ -4,7 +4,7 @@ import "google/protobuf/any.proto";
 
 // Service provides the CRUD operations
 service Service {
-  rpc Traversal (TraversalRequest) returns (TraversalResponse);
+  rpc Traversal (TraversalRequest) returns (stream TraversalResponse);
 }
 
 message TraversalRequest {
@@ -24,6 +24,7 @@ message TraversalRequest {
   string edge_name = 5;
   bool data = 6;
   bool path = 7;
+  bool aql = 8;
 }
 
 message TraversalResponse {
