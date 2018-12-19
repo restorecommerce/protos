@@ -9,38 +9,35 @@ import "io/restorecommerce/address.proto";
 import "io/restorecommerce/contact_point.proto";
 
 /*
-* Microservice definition.
+
+ Microservice definition.
 */
 service Service {
-    rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (CustomerList);
-    rpc Create (CustomerList) returns (CustomerList);
-    rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
-    rpc Update (CustomerList) returns (CustomerList);
-    rpc Upsert (CustomerList) returns (CustomerList);
+rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (CustomerList);
+rpc Create (CustomerList) returns (CustomerList);
+rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+rpc Update (CustomerList) returns (CustomerList);
+rpc Upsert (CustomerList) returns (CustomerList);
 }
 
-message Deleted {
-    string id = 1;
-}
 
 message CustomerList {
-    repeated Customer items = 1;
-    uint32 total_count = 2;
+repeated Customer items = 1;
+uint32 total_count = 2;
 }
-message Guest {
-    bool guest = 1;
-    io.restorecommerce.address.Address address = 2;
-    io.restorecommerce.contact_point.ContactPoint contact_point = 3;
 
+message Guest {
+bool guest = 1;
+io.restorecommerce.address.Address address = 2;
+io.restorecommerce.contact_point.ContactPoint contact_point = 3;
 }
+
 message Customer {
-    string id = 1;
-    io.restorecommerce.meta.Meta meta = 2;
-    oneof customer_target {
-        string user_id = 3;
-        string organization_id = 4;
-        Guest guest = 5;
-    }
-    string email = 6;
-    string address = 7;
+string id = 1;
+io.restorecommerce.meta.Meta meta = 2;
+oneof customer_target {
+string user_id = 3;
+string organization_id = 4;
+Guest guest = 5;
+}
 }
