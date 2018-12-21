@@ -15,7 +15,7 @@ message Offer {
 
   oneof offer_target {
     string bundle_id = 5;
-    repeated string product_ids = 6;
+    string product_ids = 6;
   }
 
   double price = 7;
