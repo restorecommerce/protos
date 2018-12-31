@@ -10,15 +10,25 @@ import "io/restorecommerce/meta.proto";
 message Offer {
   string id = 1;
   io.restorecommerce.meta.Meta meta = 2;
-  string name = 3; 
+  string name = 3;
   string description = 4;
+  OfferTarget offer = 5;
+  double price = 6;
+}
 
-  oneof offer_target {
-    string bundle_id = 5;
-    string product_ids = 6;
+message OfferTarget {
+  oneof offertarget {
+    Products products = 1;
+    Bundle bundle = 2;
   }
+}
 
-  double price = 7;
+message Products {
+  repeated string product_ids = 1;
+}
+
+message Bundle {
+  string bundle_id = 2;
 }
 
 message OfferList {
