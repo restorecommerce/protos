@@ -9,9 +9,11 @@ import "io/restorecommerce/meta.proto";
 // Product resource
 message Product {
   string id = 1;
-  io.restorecommerce.meta.Meta meta = 2;
-  string manufacturer_id = 3;
-  string prototype_id = 4;
+  string name = 2;
+  string description = 3;
+  io.restorecommerce.meta.Meta meta = 4;
+  string manufacturer_id = 5;
+  string prototype_id = 6;
 }
 
 message ProductList {

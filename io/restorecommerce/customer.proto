@@ -36,8 +36,12 @@ message Customer {
 string id = 1;
 io.restorecommerce.meta.Meta meta = 2;
 oneof customer_target {
-string user_id = 3;
-string organization_id = 4;
-Guest guest = 5;
+User user = 3;
+Guest guest = 4;
 }
+}
+
+message User {
+string user_id = 1;
+string organization_id = 2; // optional in case if he is a private user
 }
