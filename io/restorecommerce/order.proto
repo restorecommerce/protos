@@ -10,8 +10,15 @@ import "io/restorecommerce/meta.proto";
 message Order {
   string id = 1;
   io.restorecommerce.meta.Meta meta = 2;
-  string name = 3; 
+  string name = 3;
   string description = 4;
+}
+
+message Items{
+  string offer_id = 1;
+  double price = 2;
+  int32 quantity = 3;
+  string manufacturer = 4;
 }
 
 message OrderList {

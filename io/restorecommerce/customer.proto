@@ -9,7 +9,6 @@ import "io/restorecommerce/address.proto";
 import "io/restorecommerce/contact_point.proto";
 
 /*
-
  Microservice definition.
 */
 service Service {
@@ -36,12 +35,19 @@ message Customer {
 string id = 1;
 io.restorecommerce.meta.Meta meta = 2;
 oneof customer_target {
-User user = 3;
+OrgUser user = 3;
 Guest guest = 4;
+IndividualUser individualUser = 5;
 }
 }
 
-message User {
+message OrgUser {
 string user_id = 1;
-string organization_id = 2; // optional in case if he is a private user
+string organization_id = 2;
+}
+
+message IndividualUser {
+string user_id = 1;
+io.restorecommerce.contact_point.ContactPoint contact_point = 2;
+io.restorecommerce.address.Address address = 3;
 }
