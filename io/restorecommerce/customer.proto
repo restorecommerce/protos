@@ -9,8 +9,7 @@ import "io/restorecommerce/address.proto";
 import "io/restorecommerce/contact_point.proto";
 
 /*
-
- Microservice definition.
+Microservice definition.
 */
 service Service {
 rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (CustomerList);
@@ -20,7 +19,6 @@ rpc Update (CustomerList) returns (CustomerList);
 rpc Upsert (CustomerList) returns (CustomerList);
 }
 
-
 message CustomerList {
 repeated Customer items = 1;
 uint32 total_count = 2;
@@ -29,19 +27,26 @@ uint32 total_count = 2;
 message Guest {
 bool guest = 1;
 io.restorecommerce.address.Address address = 2;
-io.restorecommerce.contact_point.ContactPoint contact_point = 3;
+repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
 }
 
 message Customer {
 string id = 1;
 io.restorecommerce.meta.Meta meta = 2;
 oneof customer_target {
-User user = 3;
-Guest guest = 4;
+IndividualUser individualUser = 3;
+OrgUser orgUser = 4;
+Guest guest = 5;
 }
 }
 
-message User {
+message OrgUser {
 string user_id = 1;
-string organization_id = 2; // optional in case if he is a private user
+string organization_id = 2;
+}
+
+message IndividualUser {
+string user_id = 1;
+repeated io.restorecommerce.contact_point.ContactPoint contact_point = 2;
+io.restorecommerce.address.Address address = 3;
 }
