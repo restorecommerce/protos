@@ -24,20 +24,20 @@ repeated Customer items = 1;
 uint32 total_count = 2;
 }
 
-message Guest {
-bool guest = 1;
-io.restorecommerce.address.Address address = 2;
-repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
-}
-
 message Customer {
 string id = 1;
 io.restorecommerce.meta.Meta meta = 2;
-oneof customer_target {
+oneof customer {
 IndividualUser individualUser = 3;
 OrgUser orgUser = 4;
 Guest guest = 5;
 }
+}
+
+message IndividualUser {
+string user_id = 1;
+io.restorecommerce.address.Address address = 2;
+repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
 }
 
 message OrgUser {
@@ -45,8 +45,8 @@ string user_id = 1;
 string organization_id = 2;
 }
 
-message IndividualUser {
-string user_id = 1;
-repeated io.restorecommerce.contact_point.ContactPoint contact_point = 2;
-io.restorecommerce.address.Address address = 3;
+message Guest {
+bool guest = 1;
+io.restorecommerce.address.Address address = 2;
+repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
 }
