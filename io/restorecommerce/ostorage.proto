@@ -6,6 +6,13 @@ import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/meta.proto";
 
+service Service {
+  rpc Get (GetRequest) returns (Object);
+  rpc Put (Object) returns (Url);
+  rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
+  rpc List (Bucket) returns (FilesInformation);
+}
+
 message Object {
   string key = 1;
   string bucket = 2;
@@ -17,11 +24,9 @@ message Object {
 }
 
 message GetRequest {
-    string key = 1;
-    string bucket = 2;
-    bool flag =4;
-   
-
+  string key = 1;
+  string bucket = 2;
+  bool flag =3;
 }
 
 message FilesInformation {
@@ -41,14 +46,8 @@ message DeleteRequest {
 
 message Url
 {
-  string url =1;
+  string url = 1;
 }
 message Bucket{
-  string bucket =1;
-}
-service Service {
-  rpc Get (GetRequest) returns (Object);
-  rpc Put (Object) returns (Url);
-  rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
-  rpc List (Bucket) returns (FilesInformation);
+  string bucket = 1;
 }
