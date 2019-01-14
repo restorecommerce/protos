@@ -6,6 +6,14 @@ import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/meta.proto";
 
+service Service {
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (ProductList);
+  rpc Create (ProductList) returns (ProductList);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (ProductList) returns (ProductList);
+  rpc Upsert (ProductList) returns (ProductList);
+}
+
 // Product resource
 message Product {
   string id = 1;
@@ -24,12 +32,4 @@ message ProductList {
 
 message Deleted {
   string id = 1;
-}
-
-service Service {
-  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (ProductList);
-  rpc Create (ProductList) returns (ProductList);
-  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
-  rpc Update (ProductList) returns (ProductList);
-  rpc Upsert (ProductList) returns (ProductList);
 }
