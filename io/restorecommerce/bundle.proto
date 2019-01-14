@@ -12,7 +12,12 @@ message Bundle {
   io.restorecommerce.meta.Meta meta = 2;
   string name = 3; 
   string description = 4;
-  repeated string product_ids = 5;
+  repeated Product product = 5;
+}
+
+message Product {
+  string product_id = 1;
+  uint32 quantity = 2;
 }
 
 message BundleList {
