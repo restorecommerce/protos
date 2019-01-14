@@ -6,25 +6,34 @@ import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/meta.proto";
 
+service Service {
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (OfferList);
+  rpc Create (OfferList) returns (OfferList);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (OfferList) returns (OfferList);
+  rpc Upsert (OfferList) returns (OfferList);
+}
+
 // Offer resource
 message Offer {
   string id = 1;
   io.restorecommerce.meta.Meta meta = 2;
   string name = 3;
   string description = 4;
-  OfferTarget offer = 5;
-  double price = 6;
-}
-
-message OfferTarget {
-  oneof offertarget {
-    Products products = 1;
-    Bundle bundle = 2;
+  oneof offer {
+    Products products = 5;
+    Bundle bundle = 6;
   }
+  double price = 7;
 }
 
 message Products {
-  repeated string product_ids = 1;
+  repeated Product product = 1;
+}
+
+message Product {
+  string product_id = 1;
+  uint32 quantity = 2;
 }
 
 message Bundle {
@@ -38,12 +47,4 @@ message OfferList {
 
 message Deleted {
   string id = 1;
-}
-
-service Service {
-  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (OfferList);
-  rpc Create (OfferList) returns (OfferList);
-  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
-  rpc Update (OfferList) returns (OfferList);
-  rpc Upsert (OfferList) returns (OfferList);
 }
