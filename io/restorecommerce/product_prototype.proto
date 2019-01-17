@@ -11,8 +11,9 @@ message ProductPrototype {
   string id = 1;
   io.restorecommerce.meta.Meta meta = 2;
   string name = 3; 
-  string description = 4;
-  string category_id = 5;
+  string version = 4;
+  string description = 5;
+  string category_id = 6;
 }
 
 message ProductPrototypeList {

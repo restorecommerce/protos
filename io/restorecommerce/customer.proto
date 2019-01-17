@@ -12,41 +12,41 @@ import "io/restorecommerce/contact_point.proto";
 Microservice definition.
 */
 service Service {
-rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (CustomerList);
-rpc Create (CustomerList) returns (CustomerList);
-rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
-rpc Update (CustomerList) returns (CustomerList);
-rpc Upsert (CustomerList) returns (CustomerList);
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (CustomerList);
+  rpc Create (CustomerList) returns (CustomerList);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+  rpc Update (CustomerList) returns (CustomerList);
+  rpc Upsert (CustomerList) returns (CustomerList);
 }
 
 message CustomerList {
-repeated Customer items = 1;
-uint32 total_count = 2;
+  repeated Customer items = 1;
+  uint32 total_count = 2;
 }
 
 message Customer {
-string id = 1;
-io.restorecommerce.meta.Meta meta = 2;
-oneof customer {
-IndividualUser individualUser = 3;
-OrgUser orgUser = 4;
-Guest guest = 5;
-}
+  string id = 1;
+  io.restorecommerce.meta.Meta meta = 2;
+  oneof customer {
+    IndividualUser individualUser = 3;
+    OrgUser orgUser = 4;
+    Guest guest = 5;
+  }
 }
 
 message IndividualUser {
-string user_id = 1;
-io.restorecommerce.address.Address address = 2;
-repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
+  string user_id = 1;
+  io.restorecommerce.address.Address address = 2;
+  repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
 }
 
 message OrgUser {
-string user_id = 1;
-string organization_id = 2;
+  string user_id = 1;
+  string organization_id = 2;
 }
 
 message Guest {
-bool guest = 1;
-io.restorecommerce.address.Address address = 2;
-repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
+  bool guest = 1;
+  io.restorecommerce.address.Address address = 2;
+  repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
 }
