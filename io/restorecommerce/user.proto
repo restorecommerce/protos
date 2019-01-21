@@ -5,6 +5,8 @@ package io.restorecommerce.user;
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/address.proto";
+import "io/restorecommerce/contact_point.proto";
 
 /**
  * The microservice for the user resource.
@@ -53,6 +55,12 @@ message FindRequest {
   string email = 3;
 }
 
+enum UserType {
+  INDIVIDUAL_USER = 1;
+  ORG_USER = 2;
+  GUEST = 3;
+}
+
 message RegisterRequest {
   bool guest = 1;
   io.restorecommerce.meta.Meta meta = 2;
@@ -63,9 +71,12 @@ message RegisterRequest {
   string password = 7;
   string timezone_id = 8;
   string locale_id = 9;
-
+  
   repeated RoleAssociation role_associations = 10;
   string default_scope = 11; // default hierarchical scope
+  io.restorecommerce.address.Address address = 12;
+  repeated io.restorecommerce.contact_point.ContactPoint contact_point = 13;
+  UserType userType = 14;
 }
 
 message ActivateRequest {
@@ -173,7 +184,6 @@ message FindByRoleRequest {
 message User {
   string id = 1; /// User ID, unique, key
   io.restorecommerce.meta.Meta meta = 2;
-
   string name = 3; // The name of the user, can be used for login
   string first_name = 4;
   string last_name = 5;
@@ -189,6 +199,9 @@ message User {
   string default_scope = 15; // default hierarchical scope
   bool unauthenticated = 16; // true in case in case of `register`; set to false after activation
   bool guest = 17; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
+  io.restorecommerce.address.Address address = 18;
+  repeated io.restorecommerce.contact_point.ContactPoint contact_point = 19;
+  UserType userType = 20;
 }
 
 message RoleAssociation {

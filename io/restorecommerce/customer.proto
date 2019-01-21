@@ -28,16 +28,16 @@ message Customer {
   string id = 1;
   io.restorecommerce.meta.Meta meta = 2;
   oneof customer {
-    IndividualUser individualUser = 3;
-    OrgUser orgUser = 4;
+    IndividualUser individual_user = 3;
+    OrgUser org_user = 4;
     Guest guest = 5;
   }
 }
 
 message IndividualUser {
   string user_id = 1;
-  io.restorecommerce.address.Address address = 2;
-  repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
+  string address_id = 2;
+  repeated string contact_point_ids = 3;
 }
 
 message OrgUser {
@@ -47,6 +47,6 @@ message OrgUser {
 
 message Guest {
   bool guest = 1;
-  io.restorecommerce.address.Address address = 2;
-  repeated io.restorecommerce.contact_point.ContactPoint contact_point = 3;
+  string address_id = 2;
+  repeated string contact_point_ids = 3;
 }
