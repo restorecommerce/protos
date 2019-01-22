@@ -71,7 +71,7 @@ message RegisterRequest {
   string password = 7;
   string timezone_id = 8;
   string locale_id = 9;
-  
+
   repeated RoleAssociation role_associations = 10;
   string default_scope = 11; // default hierarchical scope
   io.restorecommerce.address.Address address = 12;
@@ -202,6 +202,7 @@ message User {
   io.restorecommerce.address.Address address = 18;
   repeated io.restorecommerce.contact_point.ContactPoint contact_point = 19;
   UserType userType = 20;
+  string profile_img_url = 21;
 }
 
 message RoleAssociation {
