@@ -41,6 +41,7 @@ message Item {
   string prototype_name = 5;
   string prototype_description = 6;
   int32 quantity = 7;
+  int32 vat = 8;
 }
 
 message OrderList {
