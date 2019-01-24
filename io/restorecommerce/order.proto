@@ -24,7 +24,8 @@ message Order {
   io.restorecommerce.meta.Meta meta = 2;
   string name = 3;
   string description = 4;
-  Items items = 5;
+  string status = 5;
+  Items items = 6;
 }
 
 message Items {

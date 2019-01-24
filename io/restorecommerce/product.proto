@@ -76,7 +76,15 @@ message Bundle {
   string name = 3;
   string description = 4;
   Image image = 5;
+  repeated BundleProduct product = 6;
+  double price = 7;
 }
+
+message BundleProduct {
+  string product_id = 1;
+  uint32 quantity = 2;
+}
+
 
 message Deleted {
   string id = 1;
