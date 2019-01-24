@@ -39,7 +39,7 @@ message Image {
 }
 
 message Parent {
-  string id = 1;
+  string parent_id = 1;
 }
 
 service Service {
