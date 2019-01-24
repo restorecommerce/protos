@@ -48,12 +48,11 @@ message Image {
   string caption = 2;
   io.restorecommerce.meta.Meta meta = 3;
   double length = 4;
-  string md5 = 5;
-  string filename = 6;
-  string content_type = 7;
-  string url = 8;
-  double width = 9;
-  double height = 10;
+  string filename = 5;
+  string content_type = 6;
+  string url = 7;
+  double width = 8;
+  double height = 9;
 }
 
 message Variant {
