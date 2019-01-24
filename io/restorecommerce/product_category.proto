@@ -10,10 +10,11 @@ import "io/restorecommerce/meta.proto";
 message ProductCategory {
   string id = 1;
   io.restorecommerce.meta.Meta meta = 2;
-  string name = 3; 
+  string name = 3;
   string description = 4;
   string price_group_id = 5;
   Image image = 6;
+  Parent parent = 7;
 }
 
 message ProductCategoryList {
@@ -36,6 +37,10 @@ message Image {
   string url = 8;
   double width = 9;
   double height = 10;
+}
+
+message Parent {
+  string id = 1;
 }
 
 service Service {

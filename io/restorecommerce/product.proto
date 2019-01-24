@@ -15,7 +15,14 @@ service Service {
 }
 
 // Product resource
-message Product {
+message MainProduct {
+  oneof product {
+    Product product = 1;
+    Bundle bundle = 2;
+  }
+}
+
+message Product{
   string id = 1;
   string name = 2;
   string description = 3;
@@ -29,11 +36,10 @@ message Product {
   double sale_price = 11;
   Image image = 12;
   repeated Variant variants = 13;
-  Bundle bundle = 14;
 }
 
 message ProductList {
-  repeated Product items = 1;
+  repeated MainProduct items = 1;
   uint32 total_count = 2;
 }
 
