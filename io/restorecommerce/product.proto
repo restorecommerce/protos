@@ -23,11 +23,54 @@ message Product {
   string manufacturer_id = 5;
   string prototype_id = 6;
   double taric_code = 7;
+  int32 stock_level = 8;
+  double price = 9;
+  bool sale = 10;
+  double sale_price = 11;
+  Image image = 12;
+  repeated Variant variants = 13;
+  Bundle bundle = 14;
 }
 
 message ProductList {
   repeated Product items = 1;
   uint32 total_count = 2;
+}
+
+message Image {
+  string id = 1;
+  string caption = 2;
+  io.restorecommerce.meta.Meta meta = 3;
+  double length = 4;
+  string md5 = 5;
+  string filename = 6;
+  string content_type = 7;
+  string url = 8;
+  double width = 9;
+  double height = 10;
+}
+
+message Variant {
+  string id = 1;
+  string parent_id = 2;
+  string parent_link = 3;
+  io.restorecommerce.meta.Meta meta = 4;
+  string name = 5;
+  string description = 6;
+  double price = 7;
+  bool sale = 8;
+  double sale_price = 9;
+  repeated Image image = 10;
+  int32 stock_level   = 11;
+}
+
+
+message Bundle {
+  string id = 1;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3;
+  string description = 4;
+  Image image = 5;
 }
 
 message Deleted {
