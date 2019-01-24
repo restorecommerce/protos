@@ -16,7 +16,7 @@ service Service {
 
 // Product resource
 message MainProduct {
-  oneof product {
+  oneof product_type {
     Product product = 1;
     Bundle bundle = 2;
   }
