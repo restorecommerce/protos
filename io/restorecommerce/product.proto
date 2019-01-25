@@ -5,6 +5,7 @@ package io.restorecommerce.product;
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/image.proto";
 
 service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (ProductList);
@@ -34,7 +35,7 @@ message Product{
   double price = 9;
   bool sale = 10;
   double sale_price = 11;
-  Image image = 12;
+  io.restorecommerce.image.Image image = 12;
   repeated Variant variants = 13;
 }
 

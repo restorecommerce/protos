@@ -5,6 +5,7 @@ package io.restorecommerce.product_category;
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/image.proto";
 
 // ProductCategory resource
 message ProductCategory {
@@ -13,7 +14,7 @@ message ProductCategory {
   string name = 3;
   string description = 4;
   string price_group_id = 5;
-  Image image = 6;
+  io.restorecommerce.image.Image image = 6;
   Parent parent = 7;
 }
 
@@ -24,18 +25,6 @@ message ProductCategoryList {
 
 message Deleted {
   string id = 1;
-}
-
-message Image {
-  string id = 1;
-  string caption = 2;
-  io.restorecommerce.meta.Meta meta = 3;
-  double length = 4;
-  string filename = 5;
-  string content_type = 6;
-  string url = 7;
-  double width = 8;
-  double height = 9;
 }
 
 message Parent {
