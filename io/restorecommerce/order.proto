@@ -15,7 +15,7 @@ service Service {
 }
 
 message ProductIDs {
-  repeated string product_ids = 1;
+  repeated Order products = 1;
 }
 
 // Order resource
