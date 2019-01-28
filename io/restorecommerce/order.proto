@@ -8,14 +8,14 @@ import "io/restorecommerce/meta.proto";
 
 service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (OrderList);
-  rpc Create (OfferIDs) returns (Order);
+  rpc Create (ProductIDs) returns (Order);
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (OrderList) returns (OrderList);
   rpc Upsert (OrderList) returns (OrderList);
 }
 
-message OfferIDs {
-  repeated string offer_ids = 1;
+message ProductIDs {
+  repeated string product_ids = 1;
 }
 
 // Order resource
@@ -29,7 +29,7 @@ message Order {
 }
 
 message Items {
-  string offer_id = 1;
+  string product_id = 1;
   double price = 2;
   repeated Item item = 3;
 }
