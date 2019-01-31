@@ -10,19 +10,12 @@ import "io/restorecommerce/meta.proto";
 message Image {
     string id = 1;
     string caption = 2;
-    io.restorecommerce.meta.Meta meta = 3;
-    double length = 4;
-    string filename = 5;
-    string content_type = 6;
-    string url = 7;
-    double width = 8;
-    double height = 9;
-    oneof image_type {
-        string product_id = 10;
-        string bundle_id = 11;
-        string product_category = 12;
-        string user_id = 13;
-    }
+    string filename = 3;
+    string content_type = 4;
+    string url = 5;
+    double width = 6;
+    double height = 7;
+    double length = 8;
 }
 
 message ImageList {
@@ -32,16 +25,4 @@ message ImageList {
 
 message Deleted {
     string id = 1;
-}
-
-message Parent {
-    string parent_id = 1;
-}
-
-service Service {
-    rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (ImageList);
-    rpc Create (ImageList) returns (ImageList);
-    rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
-    rpc Update (ImageList) returns (ImageList);
-    rpc Upsert (ImageList) returns (ImageList);
 }
