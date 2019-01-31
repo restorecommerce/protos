@@ -37,6 +37,7 @@ message Product{
   double sale_price = 11;
   io.restorecommerce.image.Image image = 12;
   repeated Variant variants = 13;
+  bool active = 14;
 }
 
 message ProductList {
