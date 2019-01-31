@@ -21,6 +21,7 @@ message MainProduct {
     Product product = 1;
     Bundle bundle = 2;
   }
+  bool active = 3;
 }
 
 message Product{
@@ -37,7 +38,6 @@ message Product{
   double sale_price = 11;
   io.restorecommerce.image.Image image = 12;
   repeated Variant variants = 13;
-  bool active = 14;
 }
 
 message ProductList {
