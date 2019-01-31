@@ -45,18 +45,6 @@ message ProductList {
   uint32 total_count = 2;
 }
 
-message Image {
-  string id = 1;
-  string caption = 2;
-  io.restorecommerce.meta.Meta meta = 3;
-  double length = 4;
-  string filename = 5;
-  string content_type = 6;
-  string url = 7;
-  double width = 8;
-  double height = 9;
-}
-
 message Variant {
   string id = 1;
   string parent_id = 2;
@@ -67,7 +55,7 @@ message Variant {
   double price = 7;
   bool sale = 8;
   double sale_price = 9;
-  repeated Image image = 10;
+  repeated io.restorecommerce.image.Image image = 10;
   int32 stock_level   = 11;
 }
 
@@ -77,7 +65,7 @@ message Bundle {
   io.restorecommerce.meta.Meta meta = 2;
   string name = 3;
   string description = 4;
-  Image image = 5;
+  io.restorecommerce.image.Image image = 5;
   repeated BundleProduct product = 6;
   double price = 7;
 }
