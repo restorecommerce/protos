@@ -47,16 +47,14 @@ message ProductList {
 
 message Variant {
   string id = 1;
-  string parent_id = 2;
-  string parent_link = 3;
-  io.restorecommerce.meta.Meta meta = 4;
-  string name = 5;
-  string description = 6;
-  double price = 7;
-  bool sale = 8;
-  double sale_price = 9;
-  repeated io.restorecommerce.image.Image image = 10;
-  int32 stock_level   = 11;
+  io.restorecommerce.meta.Meta meta = 2;
+  string name = 3;
+  string description = 4;
+  double price = 5;
+  bool sale = 6;
+  double sale_price = 7;
+  repeated io.restorecommerce.image.Image image = 8;
+  int32 stock_level   = 9;
 }
 
 
