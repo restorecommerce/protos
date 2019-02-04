@@ -21,7 +21,7 @@ message Order {
   string name = 3;
   string description = 4;
   string status = 5;
-  Items items = 6;
+  repeated Items items = 6;
 }
 
 message Items {
