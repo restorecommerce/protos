@@ -8,7 +8,7 @@ import "io/restorecommerce/meta.proto";
 
 service Service {
   rpc Get (GetRequest) returns (Object);
-  rpc Put (Object) returns (Url);
+  rpc Put (Object) returns (Result);
   rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
   rpc List (Bucket) returns (FilesInformation);
 }
@@ -44,9 +44,10 @@ message DeleteRequest {
   string bucket = 2;
 }
 
-message Url
-{
+message Result{
   string url = 1;
+  string bucket =2 ;
+  string key =3;
 }
 message Bucket{
   string bucket = 1;
