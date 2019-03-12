@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package io.restorecommerce.payment;
 
-service PaymentGatewayGrpc {
+service Service {
 	// Initiates either Authorize or Purchase action. Initiation can only be cardless.
 	rpc InitiateCardless (InitiateCardlessRequest) returns (InitiateCardlessResponse);
 
