@@ -9,7 +9,10 @@ service Service {
 	// Based on intent executes either Authorize or Purchase action for standard payment.
 	rpc PayStandard (PayStandardRequest) returns (PayResponse);
 
-	// Based on intent executes either Authorize or Purchase action for cardless payment.
+	// Based on intent executes either Authorize action for cardless payment.
+	rpc AuthCardless (PayCardlessRequest) returns (PayResponse);
+
+	// Based on intent executes either Purchase action for cardless payment.
 	rpc PayCardless (PayCardlessRequest) returns (PayResponse);
 
 	// Can capture both cardless and standard authorization.
