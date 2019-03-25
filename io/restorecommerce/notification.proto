@@ -28,7 +28,7 @@ message Attachment {
 // sendEmail Notification event
 message Notification {
   string id = 1;
- repeated string notifyee = 2; /// list of teams leads emails
+ repeated string notifyee = 2; /// list of notifications identifier
   string subject = 3;
   string body = 4;  // text/HTML content
   string transport = 5; /// 'email', 'log', ... default == 'log'
