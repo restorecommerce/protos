@@ -28,7 +28,7 @@ message Attachment {
 // sendEmail Notification event
 message Notification {
   string id = 1;
-  string notifyee = 2; /// The person behind this user
+ repeated string notifyee = 2; /// list of teams leads emails
   string subject = 3;
   string body = 4;  // text/HTML content
   string transport = 5; /// 'email', 'log', ... default == 'log'
@@ -37,4 +37,6 @@ message Notification {
   string target = 8; // if set, do not look up a user but send directly to this email adress
   repeated Attachment attachments = 9;
   string level = 10; // used to specify logging level for Log
+  repeated string bcc = 11;  //list of bcc emails
+  repeated string cc = 12 ;// list of cc'd emails
 }
