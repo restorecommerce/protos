@@ -3,55 +3,53 @@ syntax = "proto3";
 package io.restorecommerce.payment;
 
 service Service {
-	// Initiates either Authorize or Purchase action. Initiation can only be cardless.
-	rpc InitiateCardless (InitiateCardlessRequest) returns (InitiateCardlessResponse);
 
-	// Based on intent executes either Authorize or Purchase action for standard payment.
-	rpc PayStandard (PayStandardRequest) returns (PayResponse);
+	// Wrapper for setup_authorization in ActiveMerchant
+	rpc SetupAuthorization (SetupRequest) returns (SetupResponse);
 
-	// Based on intent executes either Authorize action for cardless payment.
-	rpc AuthCardless (PayCardlessRequest) returns (PayResponse);
-
-	// Based on intent executes either Purchase action for cardless payment.
-	rpc PayCardless (PayCardlessRequest) returns (PayResponse);
-
-	// Can capture both cardless and standard authorization.
-	rpc Capture (CaptureRequest) returns (PayResponse);
+	// Wrapper for setup_purchase in ActiveMerchant
+	rpc SetupPurchase (SetupRequest) returns (SetupResponse);
 
 	// Gets payment details by token or transaction. Only supported by PayPal Express Checkout.
-	rpc GetDetails (GetDetailsRequest) returns (GetDetailsResponse);
+	rpc Authorize (PaymentRequest) returns (PaymentResponse);
+
+	// Gets payment details by token or transaction. Only supported by PayPal Express Checkout.
+	rpc Purchase (PaymentRequest) returns (PaymentResponse);
+
+	// Can capture both cardless and standard authorization.
+	rpc Capture (CaptureRequest) returns (PaymentResponse);
 }
 
-// Request object for initiation procedure call.
-message InitiateCardlessRequest {
-	Provider provider = 1;
- 	int32 payment_sum = 2;
- 	string currency = 3;
- 	Intent intent = 4;
- 	string return_url = 5;
- 	string cancel_return_url = 6;
- 	bool allow_guest_checkout = 7;
- 	repeated Item items = 8;
+// Request object for setup calls
+message SetupRequest {
+	string ip = 1;
+	repeated Item items = 2;
+	int32 subtotal = 3;
+	int32 shipping = 4;
+	int32 handling = 5;
+	int32 tax = 6;
+	string currency = 7;
+	string return_url = 8;
+	string cancel_return_url = 9;
+	bool allow_guest_checkout = 10;
 }
 
-// Request object for authorization or purchase call for standard payment.
-message PayStandardRequest {
-	Provider provider = 1;
-	int32 payment_sum = 2;
-	string currency = 3;
-	PaymentCard payment_card = 4;
-	Intent intent = 5;
-	repeated Item items = 6;
+// Response object for setup calls.
+message SetupResponse {
+	repeated PaymentError payment_errors = 1;
+ 	string token = 2;
+ 	string confirm_initiation_url = 3;
+ 	string initiated_on = 4;
 }
 
 // Request object for authorization or purchase call for cardless payment.
-message PayCardlessRequest {
+message PaymentRequest {
 	Provider provider = 1;
 	int32 payment_sum = 2;
 	string currency = 3;
 	string payment_id = 4;
 	string payer_id = 5;
-	Intent intent = 6;
+	PaymentCard card_info = 6;
 }
 
 // Request object for capture call for both standard and cardless payments.
@@ -62,33 +60,12 @@ message CaptureRequest {
 	string payment_id = 4;
 }
 
-// Request object for getting payment details.
-message GetDetailsRequest {
-	Provider provider = 1;
-	string identifier = 2;
-	PaymentIdType id_type = 3;
-}
-
-// Response object for initiation procedure call.
-message InitiateCardlessResponse {
-	repeated PaymentError payment_errors = 1;
- 	string token = 2;
- 	string confirm_initiation_url = 3;
- 	string initiated_on = 4;
-}
-
 // Unified response object for authorization, purchase and capture calls
 // for both standard and cardless payments.
-message PayResponse {
+message PaymentResponse {
 	repeated PaymentError payment_errors = 1;
 	string payment_id = 2;
 	string executed_on = 3;
-}
-
-// Response object for payment details.
-message GetDetailsResponse {
-	repeated PaymentError errors = 1;
-	string details = 2;
 }
 
 // Used for building ActiveMerchant::Billing::CreditCard instance.
@@ -120,13 +97,6 @@ enum Provider {
 	NO_PROVIDER = 0;
 	PaypalExpressGateway = 1;
 	AuthorizeNetGateway = 2;
-}
-
-// Possible payment intents.
-enum Intent {
-	NO_INTENT = 0;
-	PURCHASE = 1;
-	AUTHORIZATION = 2;
 }
 
 // Possible payment identifiers.
