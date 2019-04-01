@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package io.restorecommerce.payment;
 
+import "google/protobuf/wrappers.proto";
+
 service Service {
 
 	// Wrapper for setup_authorization in ActiveMerchant
@@ -89,8 +91,12 @@ message Item {
 
 // Error details.
 message PaymentError {
-	string source = 1;
-	string error_code = 2;
+    bool killed = 1;
+    int32 code = 2;
+    google.protobuf.StringValue signal = 3;
+    string cmd = 4;
+    string stdout = 5;
+    string stderr = 6;
 }
 
 // Possible service providers. Provider names must be exactly as in config.yml.
