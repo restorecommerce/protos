@@ -50,6 +50,7 @@ message PaymentRequest {
 	string payment_id = 4;
 	string payer_id = 5;
 	PaymentCard card_info = 6;
+	string token = 7;
 }
 
 // Request object for capture call for both standard and cardless payments.
