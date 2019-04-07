@@ -63,21 +63,20 @@ enum UserType {
 }
 
 message RegisterRequest {
-  bool guest = 1;
-  io.restorecommerce.meta.Meta meta = 2;
-  string name = 3;
-  string first_name = 4;
-  string last_name = 5;
-  string email = 6;
-  string password = 7;
-  string timezone_id = 8;
-  string locale_id = 9;
+  string id = 1;
+  bool guest = 2;
+  io.restorecommerce.meta.Meta meta = 3;
+  string name = 4;
+  string first_name = 5;
+  string last_name = 6;
+  string email = 7;
+  string password = 8;
+  string timezone_id = 9;
+  string locale_id = 10;
 
-  repeated RoleAssociation role_associations = 10;
-  string default_scope = 11; // default hierarchical scope
-  io.restorecommerce.address.Address address = 12;
-  repeated io.restorecommerce.contact_point.ContactPoint contact_point = 13;
-  UserType userType = 14;
+  repeated RoleAssociation role_associations = 11;
+  string default_scope = 12; // default hierarchical scope
+  UserType user_type = 13;
 }
 
 message ActivateRequest {
@@ -200,10 +199,8 @@ message User {
   string default_scope = 15; // default hierarchical scope
   bool unauthenticated = 16; // true in case in case of `register`; set to false after activation
   bool guest = 17; /// Is the user a guest. A guest is a automatically generated user which can later be turned in a non-guest user.
-  io.restorecommerce.address.Address address = 18;
-  repeated io.restorecommerce.contact_point.ContactPoint contact_point = 19;
-  UserType userType = 20;
-  io.restorecommerce.image.Image image = 21;
+  io.restorecommerce.image.Image image = 18;
+  UserType user_type = 19;
 }
 
 message RoleAssociation {

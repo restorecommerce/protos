@@ -21,11 +21,16 @@ message Order {
   string name = 3;
   string description = 4;
   string status = 5;
-  repeated Items items = 6;
+  // below identifier is id of product, variant or bundle
+  repeated string product_variant_bundle_id = 6;
+  // do not expose items, calcuate this and send via gRPC request
+  repeated Items items = 7;
+  // sum of all the quantity_price will be total_price
+  double total_price = 8;
 }
 
 message Items {
-  double price = 1;
+  double quantity_price = 1;
   repeated Item item = 2;
 }
 
@@ -38,6 +43,7 @@ message Item {
   string prototype_description = 6;
   int32 quantity = 7;
   int32 vat = 8;
+  double price = 10;
 }
 
 message OrderList {
