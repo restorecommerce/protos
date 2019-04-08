@@ -8,7 +8,7 @@ import "io/restorecommerce/meta.proto";
 
 service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (OrderList);
-  rpc Create (OrderList) returns (Order);
+  rpc Create (OrderList) returns (OrderList);
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (OrderList) returns (OrderList);
   rpc Upsert (OrderList) returns (OrderList);
@@ -21,33 +21,35 @@ message Order {
   string name = 3;
   string description = 4;
   string status = 5;
-  // below identifier is id of product, variant or bundle
-  repeated string product_variant_bundle_id = 6;
-  // do not expose items, calcuate this and send via gRPC request
-  repeated Items items = 7;
+  repeated Items items = 6;
   // sum of all the quantity_price will be total_price
-  double total_price = 8;
+  double total_price = 7;
+  // shipping address
+  string contact_point_id = 8;
 }
 
 message Items {
   double quantity_price = 1;
-  repeated Item item = 2;
+  Item item = 2;
 }
 
 message Item {
-  string product_name = 1;
-  string product_description = 2;
-  string manufacturer_name = 3;
-  string manufacturer_description = 4;
-  string prototype_name = 5;
-  string prototype_description = 6;
-  int32 quantity = 7;
-  int32 vat = 8;
+  // below identifier is id of product, variant or bundle
+  string product_variant_bundle_id = 1;
+  string product_name = 2;
+  string product_description = 3;
+  string manufacturer_name = 4;
+  string manufacturer_description = 5;
+  string prototype_name = 6;
+  string prototype_description = 7;
+  int32 quantity = 8;
+  int32 vat = 9;
   double price = 10;
+  string item_type = 11;
 }
 
 message OrderList {
-  repeated Order order = 1;
+  repeated Order items = 1;
   uint32 total_count = 2;
 }
 
