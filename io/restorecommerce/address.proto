@@ -42,4 +42,11 @@ message Address {
   
   GeoPoint geo_coordinates = 8;
   double altitude = 9;
+  uint32 building_number = 10;
+  AddressAddition addressAddition = 11;
+}
+
+message AddressAddition {
+  string field1 = 1;
+  string field2 = 2;
 }
