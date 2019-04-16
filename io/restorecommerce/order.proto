@@ -51,10 +51,10 @@ message Item {
   string item_type = 11;
   double taric_code = 12;
   string stock_keeping_unit = 13;
-  string weight_in_kg = 14;
-  string length_in_cm = 15;
-  string width_in_cm = 16;
-  string height_in_cm = 17;
+  double weight_in_kg = 14;
+  int32 length_in_cm = 15;
+  int32 width_in_cm = 16;
+  int32 height_in_cm = 17;
 }
 
 message OrderList {
