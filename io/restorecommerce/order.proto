@@ -12,6 +12,7 @@ service Service {
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (OrderList) returns (OrderList);
   rpc Upsert (OrderList) returns (OrderList);
+  rpc TriggerFulfillment (OrderIdsList) returns (TriggerStatus);
 }
 
 // Order resource
@@ -25,7 +26,9 @@ message Order {
   // sum of all the quantity_price will be total_price
   double total_price = 7;
   // shipping address
-  string contact_point_id = 8;
+  string shipping_contact_point_id = 8;
+  string billing_contact_point_id = 9;
+  double total_weight_in_kg = 10;
 }
 
 message Items {
@@ -46,6 +49,12 @@ message Item {
   int32 vat = 9;
   double price = 10;
   string item_type = 11;
+  double taric_code = 12;
+  string stock_keeping_unit = 13;
+  double weight_in_kg = 14;
+  int32 length_in_cm = 15;
+  int32 width_in_cm = 16;
+  int32 height_in_cm = 17;
 }
 
 message OrderList {
@@ -55,4 +64,12 @@ message OrderList {
 
 message Deleted {
   string id = 1;
+}
+
+message OrderIdsList {
+  repeated string order_id = 1;
+}
+
+message TriggerStatus {
+  string fulfillment_trigger_status = 1;
 }
