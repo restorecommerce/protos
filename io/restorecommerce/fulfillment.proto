@@ -13,7 +13,7 @@ import "io/restorecommerce/rule.proto";
 * Microservice definition.
 */
 service Service {
-  rpc CreateFulfillment (shipmentOrderLists) returns (responseDetails);
+  rpc CreateFulfillment (shipmentOrderLists) returns (FulfillmentResults);
   rpc getLabels (OrderId) returns (LabelResult);
   rpc trackFulfillment(TrackingNumber) returns ( Status);
   rpc deleteFulfillment (OrderId) returns (DeleteStatus);
@@ -179,6 +179,26 @@ message ExportDocPosition{
   uint32 amount = 4;
   uint32 netWeightInKG = 5;
   double customsValue = 6;
+}
+
+message FulfillmentResults {
+  repeated responseDetails1 fulfillmentResults =1;
+}
+
+message responseDetails1{
+  OrderStaus Status  = 1;
+  OrderError error = 2;
+}
+
+message OrderError {
+  string OrderId = 1;
+  string code = 2;
+  string message = 3;
+}
+
+message OrderStaus {
+  string OrderId = 1;
+  string OrderStatus =2;
 }
 
 message responseDetails{
