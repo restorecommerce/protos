@@ -182,20 +182,15 @@ message ExportDocPosition{
 }
 
 message FulfillmentResults {
-  repeated responseDetails1 fulfillmentResults =1;
+  repeated ResponseDetailsList fulfillmentResults =1;
 }
 
-message responseDetails1{
-  OrderStaus Status  = 1;
-  OrderError error = 2;
+message ResponseDetailsList {
+  OrderStatus Status  = 1;
+  Error error = 2;
 }
 
-message OrderError {
-  string code = 1;
-  string message = 2;
- }
-
-message OrderStaus {
+message OrderStatus {
   string OrderId = 1;
   string OrderStatus =2;
 }
