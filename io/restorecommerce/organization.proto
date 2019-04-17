@@ -73,5 +73,5 @@ message Organization {
   string name = 14;
   repeated Account accounts = 15;
   google.protobuf.Any data = 16; /// additional data
-  boolean system_owner = 17;
+  bool system_owner = 17;
 }

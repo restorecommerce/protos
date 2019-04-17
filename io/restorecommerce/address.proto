@@ -44,7 +44,9 @@ message Address {
   double altitude = 9;
   string building_number = 10;
   AddressAddition addressAddition = 11;
-  string full_name = 12;
+  string first_name = 12;
+  string last_name = 13;
+  string org_name = 14;
 }
 
 message AddressAddition {
