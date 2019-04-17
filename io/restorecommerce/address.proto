@@ -46,6 +46,7 @@ message Address {
   AddressAddition addressAddition = 11;
   string first_name = 12;
   string last_name = 13;
+  string org_name = 14;
 }
 
 message AddressAddition {
