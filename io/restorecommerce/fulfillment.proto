@@ -191,10 +191,9 @@ message responseDetails1{
 }
 
 message OrderError {
-  string OrderId = 1;
-  string code = 2;
-  string message = 3;
-}
+  string code = 1;
+  string message = 2;
+ }
 
 message OrderStaus {
   string OrderId = 1;
