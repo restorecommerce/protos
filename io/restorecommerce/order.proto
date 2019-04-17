@@ -68,6 +68,7 @@ message Deleted {
 
 message OrderIdsList {
   repeated string order_id = 1;
+  io.restorecommerce.meta.Meta meta = 2;
 }
 
 message TriggerStatus {
