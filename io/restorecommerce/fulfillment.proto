@@ -17,7 +17,7 @@ service Service {
   rpc getLabels (OrderId) returns (LabelResult);
   rpc trackFulfillment(TrackingNumber) returns ( Status);
   rpc deleteFulfillment (OrderId) returns (DeleteStatus);
-  rpc getAllFulfillments(google.protobuf.Empty) returns (AllFulfillments);
+  rpc getAllFulfillments(FulfillmentStatus) returns (AllFulfillments);
 }
 
 message OrderId {
@@ -44,7 +44,7 @@ message Items {
   string fulfillment_status = 1;
   string order_id = 2;
   string serviceType =3 ;
-  repeated string shipment_numbers = 4;
+  repeated string shipment_number = 4;
 }
 
 message DeleteStatus {
@@ -186,11 +186,11 @@ message FulfillmentResults {
 }
 
 message ResponseDetailsList {
-  OrderStatus Status  = 1;
+  FulfillmentStatus Status  = 1;
   Error error = 2;
 }
 
-message OrderStatus {
+message FulfillmentStatus {
   string OrderId = 1;
   string OrderStatus =2;
 }
