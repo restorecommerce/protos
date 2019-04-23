@@ -12,7 +12,7 @@ service Service {
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (OrderList) returns (OrderList);
   rpc Upsert (OrderList) returns (OrderList);
-  rpc TriggerFulfillment (OrderIdsList) returns (TriggerStatus);
+  rpc TriggerFulfillment (OrderDataList) returns (FulfillmentResults);
 }
 
 // Order resource
@@ -66,11 +66,43 @@ message Deleted {
   string id = 1;
 }
 
-message OrderIdsList {
-  repeated string order_id = 1;
+message OrderDataList {
+  repeated OrderData order_data = 1;
   io.restorecommerce.meta.Meta meta = 2;
 }
 
-message TriggerStatus {
-  string fulfillment_trigger_status = 1;
+message OrderData {
+  string order_id = 1;
+  repeated Shipments shipments = 2;
+}
+
+message Shipments {
+  double total_weight_in_kg = 1;
+  // below properties are used for international packaging
+  double individual_weight_in_kg = 2; // each items weight
+  int32 amount = 3; // number of items
+  string export_type = 4;
+  string export_description = 5;
+  string customs_tariff_number = 6;
+  string invoice_number = 7;
+  double customs_value = 8;
+}
+
+message FulfillmentResults {
+  repeated ResponseDetailsList fulfillmentResults =1;
+}
+
+message ResponseDetailsList {
+  OrderStatus Status  = 1;
+  Error error = 2;
+}
+
+message OrderStatus {
+  string OrderId = 1;
+  string OrderStatus =2;
+}
+
+message Error {
+  string code = 1;
+  string message = 2;
 }
