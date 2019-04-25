@@ -12,8 +12,7 @@ import "io/restorecommerce/rule.proto";
 Microservice defination   
 */
 
-
-service service{
+service Service{
     rpc createFulfillmentcourrier (Courrier) returns (Status);
 }
 
