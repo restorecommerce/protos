@@ -39,9 +39,10 @@ message SetupRequest {
 // Response object for setup calls.
 message SetupResponse {
 	repeated PaymentError payment_errors = 1;
- 	string token = 2;
- 	string confirm_initiation_url = 3;
- 	string initiated_on = 4;
+	string token = 2;
+	string payerId = 3; 
+ 	string confirm_initiation_url = 4;
+ 	string initiated_on = 5;
 }
 
 // Request object for authorization or purchase call for cardless payment.
