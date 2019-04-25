@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package io.restorecommerce.fulfillmentcourrier;
+
+import "google/protobuf/empty.proto";
+import "io/restorecommerce/resource_base.proto";
+import "io/restorecommerce/access_control.proto";
+import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/rule.proto";
+
+/**
+Microservice defination   
+*/
+
+
+service service{
+    rpc createFulfillmentcourrier (Courrier) returns (Status);
+}
+
+message Courrier {
+    string name =1;
+    string  description =2;
+}
+
+message Status {
+    string status = 1;
+}
