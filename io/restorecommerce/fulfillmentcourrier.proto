@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package io.restorecommerce.fulfillmentcourrier;
-
+ 
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/access_control.proto";
@@ -13,14 +13,17 @@ Microservice defination
 */
 
 service Service{
-    rpc createFulfillmentcourrier (Courrier) returns (Status);
+    rpc Create (CourrierList) returns (CourrierList);
+}
+
+message CourrierList  {
+    repeated Courrier items = 1;
+    uint32 total_count = 2;
 }
 
 message Courrier {
     string name =1;
     string  description =2;
-}
-
-message Status {
-    string status = 1;
+    io.restorecommerce.meta.Meta meta = 3;
+    string id = 4;
 }
