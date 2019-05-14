@@ -77,6 +77,7 @@ message RegisterRequest {
   repeated RoleAssociation role_associations = 11;
   string default_scope = 12; // default hierarchical scope
   UserType user_type = 13;
+  string captcha_code = 14;
 }
 
 message ActivateRequest {
