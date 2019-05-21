@@ -24,10 +24,10 @@ message DeleteOrgData {
   repeated string user_ids = 2;
 }
 
-message Account {
-  oneof account {
-    BankAccount bank = 1;
-    PaypalAccount paypal = 2;
+message PaymentMethod {
+  oneof payment_method {
+    WireTransfer wiretransfer = 1;
+    Paypal paypal = 2;
   }
 
   enum TransferType {
@@ -39,13 +39,13 @@ message Account {
   TransferType transferType = 10;
 }
 
-message BankAccount {
+message WireTransfer {
   string iban = 1;
   string bic = 2;
   string bankName = 3;  
 }
 
-message PaypalAccount {
+message Paypal {
   string username = 1;
   string email = 2;
   string password = 3;
@@ -71,7 +71,7 @@ message Organization {
   string registration = 12;
   string registration_court = 13;
   string name = 14;
-  repeated Account accounts = 15;
+  repeated PaymentMethod payment_methods = 15;
   google.protobuf.Any data = 16; /// additional data
   bool system_owner = 17;
 }
