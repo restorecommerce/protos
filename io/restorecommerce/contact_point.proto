@@ -30,8 +30,7 @@ message ContactPoint {
   string website = 4;
   string email = 5;
   string contact_point_type_id = 6;
-  uint32 phone_country_code = 7;
-  uint64 phone_number = 8;
+  string telephone = 8;
   string timezone_id = 9;
   string locale_id = 10;
 }
