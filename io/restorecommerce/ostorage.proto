@@ -18,9 +18,6 @@ message Object {
   string bucket = 2;
   bytes object = 3;
   io.restorecommerce.meta.Meta meta = 4;
-  string fileName =5;
-  string url = 6;
-  string prefix = 7;
 }
 
 message GetRequest {
