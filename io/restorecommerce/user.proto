@@ -30,7 +30,7 @@ service Service {
   rpc Login (LoginRequest) returns (User);
   rpc FindByRole(FindByRoleRequest) returns (UserList);
   rpc DeleteUsersByOrg(OrgIDRequest) returns (UserIDs);
-  rpc ConfirmUserInvitation(ActivateInvitationRequest) returns (google.protobuf.Empty);
+  rpc ConfirmUserInvitation(ConfirmUserInvitationRequest) returns (google.protobuf.Empty);
 }
 
 /**
@@ -86,7 +86,7 @@ message ActivateRequest {
   string activation_code = 2;
 }
 
-message ActivateInvitationRequest {
+message ConfirmUserInvitationRequest {
   string name = 1;
   string password = 2;
   string activation_code = 3;
