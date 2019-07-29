@@ -3,14 +3,13 @@ syntax = "proto3";
 package io.restorecommerce.ostorage;
 
 import "google/protobuf/empty.proto";
-import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/meta.proto";
 
 service Service {
   rpc Get (GetRequest) returns (Object);
-  rpc Put (Object) returns (Result);
+  rpc Put (Object) returns (Response);
   rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
-  rpc List (Bucket) returns (FilesInformation);
+  rpc List (Bucket) returns (ObjectsData);
 }
 
 message Object {
@@ -18,9 +17,7 @@ message Object {
   string bucket = 2;
   bytes object = 3;
   io.restorecommerce.meta.Meta meta = 4;
-  string fileName =5;
-  string url = 6;
-  string prefix = 7;
+  string url = 5;
 }
 
 message GetRequest {
@@ -29,12 +26,12 @@ message GetRequest {
   bool flag =3;
 }
 
-message FilesInformation {
-  repeated  FileInformation file_information = 1;
+message ObjectsData {
+  repeated  ObjectData object_data = 1;
 }
 
-message FileInformation {
-  string file_name = 1;
+message ObjectData {
+  string object_name = 1;
   string url = 2;
   io.restorecommerce.meta.Meta meta = 3;
 }
@@ -44,11 +41,12 @@ message DeleteRequest {
   string bucket = 2;
 }
 
-message Result{
+message Response {
   string url = 1;
   string bucket =2 ;
   string key =3;
 }
-message Bucket{
+
+message Bucket {
   string bucket = 1;
 }
