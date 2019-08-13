@@ -210,9 +210,9 @@ message User {
   io.restorecommerce.image.Image image = 18;
   UserType user_type = 19;
   bool invite = 20; // For user invitation
-  string inviting_name = 21; // user who is inviting
-  string inviting_first_name = 22; // First name of user inviting
-  string inviting_last_name = 23; // Last name of user inviting
+  string invited_by_user_name = 21; // user who is inviting
+  string invited_by_user_first_name = 22; // First name of user inviting
+  string invited_by_user_last_name = 23; // Last name of user inviting
 }
 
 message RoleAssociation {
