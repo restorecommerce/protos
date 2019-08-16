@@ -6,8 +6,8 @@ import "google/protobuf/empty.proto";
 import "io/restorecommerce/meta.proto";
 
 service Service {
-  rpc Get (GetRequest) returns (Object);
-  rpc Put (Object) returns (Response);
+  rpc Get (GetRequest) returns (stream Object);
+  rpc Put (stream Object) returns (Response);
   rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
   rpc List (Bucket) returns (ObjectsData);
 }
