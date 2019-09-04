@@ -28,7 +28,7 @@ service Service {
   rpc ConfirmPasswordChange (ConfirmPasswordChangeRequest) returns (google.protobuf.Empty);
   rpc ConfirmEmailChange (ConfirmEmailChangeRequest) returns (google.protobuf.Empty);
   rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
-  rpc Login (LoginRequest) returns (User);
+  rpc Login (Identifier) returns (User);
   rpc FindByRole(FindByRoleRequest) returns (UserList);
   rpc DeleteUsersByOrg(OrgIDRequest) returns (UserIDs);
   rpc ConfirmUserInvitation(ConfirmUserInvitationRequest) returns (google.protobuf.Empty);
@@ -38,9 +38,8 @@ service Service {
 * Request to verify password and retrieve the user's info.
 * Either name or email can be provided.
 */
-message LoginRequest {
-  string name = 1; // User name
-  string email = 2; // User email
+message Identifier {
+  string identifier = 1; // User name or email
   string password = 3; // Raw password
 }
 
