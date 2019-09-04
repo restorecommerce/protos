@@ -17,6 +17,7 @@ service Service {
   rpc Create (UserList) returns (UserList);
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (UserList) returns (UserList);
+  rpc Upsert (UserList) returns (UserList);
 
   rpc Find (FindRequest) returns (UserList);
   rpc Register (RegisterRequest) returns (User);
