@@ -9,7 +9,7 @@ message Payload {
   // e.g. { 'subject': ..., 'message':....}
   google.protobuf.Any templates = 1;
   google.protobuf.Any data = 2;  // data to fill template with
-  string style = 3; // stylesheet URL
+  string style_url = 3; // stylesheet URL
 
   enum Strategy { // style-applying 'strategy'
     INLINE = 1;
