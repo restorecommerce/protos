@@ -30,21 +30,9 @@ message Product {
   string id = 1;
   string name = 2;
   string description = 3;
-  string manufacturer_id = 4;
-  string prototype_id = 5;
-  double taric_code = 6;
-  int32 stock_level = 7;
-  double price = 8;
-  bool sale = 9;
-  double sale_price = 10;
-  repeated io.restorecommerce.image.Image image = 11;
-  repeated Variant variants = 12;
-  string stock_keeping_unit = 13;
-  double weight_in_kg = 14;
-  int32 length_in_cm = 15;
-  int32 width_in_cm = 16;
-  int32 height_in_cm = 17;
-}
+  repeated string tax_type_id = 4;
+  repeated Variant variants = 5;
+  }
 
 message ProductList {
   repeated MainProduct items = 1;
@@ -57,19 +45,21 @@ message Variant {
   string description = 3;
   string manufacturer_id = 4;
   string prototype_id = 5;
-  double taric_code = 6;
-  int32 stock_level = 7;
-  double price = 8;
-  bool sale = 9;
-  double sale_price = 10;
-  repeated io.restorecommerce.image.Image image = 11;
-  string stock_keeping_unit = 12;
-  double weight_in_kg = 13;
-  int32 length_in_cm = 14;
-  int32 width_in_cm = 15;
-  int32 height_in_cm = 16;
+  string category_id = 6;
+  double taric_code = 7;
+  int32 stock_level = 8;
+  double price = 9;
+  bool sale = 10;
+  double sale_price = 11;
+  repeated io.restorecommerce.image.Image image = 12;
+  string stock_keeping_unit = 13;
+  repeated VariantAttribute attributes = 14;
 }
 
+message VariantAttribute {
+  string key = 1;
+  repeated string values = 2;
+}
 
 message Bundle {
   string id = 1;
