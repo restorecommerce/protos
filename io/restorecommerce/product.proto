@@ -44,8 +44,10 @@ message Variant {
   string name = 2;
   string description = 3;
   string manufacturer_id = 4;
-  string prototype_id = 5;
-  string category_id = 6;
+  oneof prototype_or_category {
+    string prototype_id = 5;
+    string category_id = 6;
+  }
   double taric_code = 7;
   int32 stock_level = 8;
   double price = 9;
