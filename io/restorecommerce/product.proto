@@ -30,9 +30,15 @@ message Product {
   string id = 1;
   string name = 2;
   string description = 3;
-  repeated string tax_type_id = 4;
-  repeated Variant variants = 5;
+  string manufacturer_id = 4;
+  string taric_code = 5;
+  oneof classification {
+    string prototype_id = 6;
+    string category_id = 7;
   }
+  repeated string tax_type_id = 8;
+  repeated Variant variants = 9;
+}
 
 message ProductList {
   repeated MainProduct items = 1;
@@ -43,19 +49,13 @@ message Variant {
   string id = 1;
   string name = 2;
   string description = 3;
-  string manufacturer_id = 4;
-  oneof prototype_or_category {
-    string prototype_id = 5;
-    string category_id = 6;
-  }
-  double taric_code = 7;
-  int32 stock_level = 8;
-  double price = 9;
-  bool sale = 10;
-  double sale_price = 11;
-  repeated io.restorecommerce.image.Image image = 12;
-  string stock_keeping_unit = 13;
-  repeated VariantAttribute attributes = 14;
+  int32 stock_level = 4;
+  double price = 5;
+  bool sale = 6;
+  double sale_price = 7;
+  repeated io.restorecommerce.image.Image image = 8;
+  string stock_keeping_unit = 9;
+  repeated VariantAttribute attributes = 10;
 }
 
 message VariantAttribute {
