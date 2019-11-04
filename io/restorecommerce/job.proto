@@ -39,6 +39,20 @@ message JobList {
  * A Job resource
  */
 message Job {
+  string id = 1; // Job ID
+
+  string type = 11; // Job type
+  Data data = 12; // Job-specific data with variable payload
+
+  string when = 21; // Used to specify the time at which the job is run
+
+  JobOptions options = 30; // The job options
+}
+
+/**
+ * Job Options
+ */
+message JobOptions {
   enum Priority {
     NORMAL = 0;
     LOW = 10;
@@ -47,17 +61,20 @@ message Job {
     CRITICAL = -15;
   }
 
-  string id = 1; // Job ID
-  string type = 11; // Job type
-  Data data = 12; // Job-specific data with variable payload
   Priority priority = 13; // Job priority
   uint32 attempts = 14; // Amount of possible failing runs until job fails
   Backoff backoff = 15; // Delay settings between failed job runs
-  uint32 parallel = 16; // Number of parallel jobs
+  uint32 timeout = 16; // The timeout of the job
 
-  string interval = 20; // Used for periodic jobs
-  string when = 21; // Used to specify the time at which the job is run
-  bool now = 22; // When true, the job is run once immediately
+  Repeat repeat = 20; // Used for periodic jobs
+}
+
+message Repeat {
+  uint32 every = 1;
+  string cron = 2;
+  string startDate = 3;
+  string endDate = 4;
+  uint32 count = 5;
 }
 
 // Data which is stored within a job instance
@@ -72,7 +89,7 @@ message Data {
  * Emitted to Kafka by the scheduling service with event name 'queuedJob' and retreived by a service which processes this job.
  */
 message ScheduledJob {
-  uint32 id = 1; // Job instance ID
+  string id = 1; // Job instance ID
   string type = 2;
   Data data = 3; // Job-specific data with variable payload
   string schedule_type = 4; // Type of schedule (ONCE, RECURR, etc)
@@ -83,8 +100,9 @@ message ScheduledJob {
  * Emitted to Kafka by the service which processed the job with event name 'done' and retrieved by the scheduling service.
  */
 message JobDone {
-  uint32 id = 1; // Job instance ID
+  string id = 1; // Job instance ID
   string schedule_type = 2; // Type of schedule (ONCE, RECURR, etc)
+  bool delete_scheduled = 3; // Whether to delete scheduled job
 }
 
 /**
