@@ -33,11 +33,15 @@ message Product {
   string manufacturer_id = 4;
   string taric_code = 5;
   oneof classification {
-    string prototype_id = 6;
-    string category_id = 7;
+    Identifier prototype = 6;
+    Identifier category = 7;
   }
   repeated string tax_type_id = 8;
   repeated Variant variants = 9;
+}
+
+message Identifier {
+  string id = 1;
 }
 
 message ProductList {
