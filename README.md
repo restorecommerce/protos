@@ -1,6 +1,6 @@
 # Protocol Buffers
 
-Shared [Protocol Buffers](https://developers.google.com/protocol-buffers/) interfaces for Restore Commerce.
+Shared [Protocol Buffers](https://developers.google.com/protocol-buffers/) interfaces for Restorecommerce.
 
 ## Structure
 
