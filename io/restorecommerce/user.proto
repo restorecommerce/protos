@@ -29,9 +29,9 @@ service Service {
   rpc ConfirmEmailChange (ConfirmEmailChangeRequest) returns (google.protobuf.Empty);
   rpc Unregister (UnregisterRequest) returns (google.protobuf.Empty);
   rpc Login (LoginRequest) returns (User);
-  rpc FindByRole(FindByRoleRequest) returns (UserList);
-  rpc DeleteUsersByOrg(OrgIDRequest) returns (UserIDs);
-  rpc ConfirmUserInvitation(ConfirmUserInvitationRequest) returns (google.protobuf.Empty);
+  rpc FindByRole (FindByRoleRequest) returns (UserList);
+  rpc DeleteUsersByOrg (OrgIDRequest) returns (UserIDs);
+  rpc ConfirmUserInvitation (ConfirmUserInvitationRequest) returns (google.protobuf.Empty);
 }
 
 /**
@@ -172,6 +172,17 @@ message EmailChangeConfirmed {
 message UserList {
   repeated User items = 1;
   uint32 total_count = 2;
+  Context auth_context = 3;
+}
+
+/**
+ * Authentication Context of creating User
+ */
+message Context {
+  string id = 1; // user id
+  string scope = 2; // target scope
+  repeated RoleAssociation role_associations = 3; //  role_associations of user creating the user
+  repeated HierarchicalScope hierarchical_scopes = 4; // HR scope of user creating the User
 }
 
 /**
@@ -213,6 +224,12 @@ message User {
   string invited_by_user_name = 21; // user who is inviting
   string invited_by_user_first_name = 22; // First name of user inviting
   string invited_by_user_last_name = 23; // Last name of user inviting
+}
+
+message HierarchicalScope {
+  string id = 1; // root node
+  repeated HierarchicalScope children = 2; // children nodes
+  string role = 3; // role identifier associated with root node scope
 }
 
 message RoleAssociation {
