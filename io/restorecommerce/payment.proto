@@ -40,9 +40,8 @@ message SetupRequest {
 message SetupResponse {
 	repeated PaymentError payment_errors = 1;
 	string token = 2;
-	string payerId = 3; 
- 	string confirm_initiation_url = 4;
- 	string initiated_on = 5;
+ 	string confirm_initiation_url = 3;
+ 	string initiated_on = 4;
 }
 
 // Request object for authorization or purchase call for cardless payment.
@@ -52,8 +51,7 @@ message PaymentRequest {
 	string currency = 3;
 	string payment_id = 4;
 	string payer_id = 5;
-	PaymentCard card_info = 6;
-	string token = 7;
+	string token = 6;
 }
 
 // Request object for capture call for both standard and cardless payments.
