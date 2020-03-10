@@ -7,7 +7,6 @@ import "io/restorecommerce/meta.proto";
 
 service Test {
   rpc Test (TestRequest) returns (TestResponse);
-  rpc TestBufferFields (HelloRequest) returns (HelloReply);
   rpc Throw (TestRequest) returns (TestResponse);
   rpc NotImplemented (TestRequest) returns (TestResponse);
   rpc NotFound (TestRequest) returns (TestResponse);
@@ -48,13 +47,4 @@ message TestBufferedDataList {
 
 message ExtendMe {
   int32 bar = 126;
-}
-
-message HelloRequest {
-  string value = 1;
-}
-
-message HelloReply {
-  string result = 1;
-  bytes data = 2;
 }
