@@ -34,6 +34,7 @@ message SetupRequest {
 	string return_url = 8;
 	string cancel_return_url = 9;
 	bool allow_guest_checkout = 10;
+	Provider provider = 11;
 }
 
 // Response object for setup calls.
