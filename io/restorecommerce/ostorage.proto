@@ -3,13 +3,14 @@ syntax = "proto3";
 package io.restorecommerce.ostorage;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
 import "io/restorecommerce/meta.proto";
 
 service Service {
   rpc Get (GetRequest) returns (stream Object);
   rpc Put (stream Object) returns (Response);
   rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
-  rpc List (Bucket) returns (ObjectsData);
+  rpc List (ListRequest) returns (ObjectsData);
 }
 
 message Object {
@@ -47,6 +48,7 @@ message Response {
   string key =3;
 }
 
-message Bucket {
+message ListRequest {
   string bucket = 1;
+  google.protobuf.Struct filter = 2; /// Filter based on fieldName|operation, value|list
 }
