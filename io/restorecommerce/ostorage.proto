@@ -13,22 +13,34 @@ service Service {
   rpc List (ListRequest) returns (ObjectsData);
 }
 
+message Options {
+  string encoding = 1;
+  string content_type = 2;
+  string content_language = 3;
+  string content_disposition = 4;
+  int32 length = 5;
+  string version = 6;
+  string md5 = 7;
+}
+
 message Object {
   string key = 1;
   string bucket = 2;
   bytes object = 3;
   io.restorecommerce.meta.Meta meta = 4;
   string url = 5;
+  Options options = 6;
 }
 
 message GetRequest {
   string key = 1;
   string bucket = 2;
-  bool flag =3;
+  bool flag = 3;
+  bool downloadFile = 4;
 }
 
 message ObjectsData {
-  repeated  ObjectData object_data = 1;
+  repeated ObjectData object_data = 1;
 }
 
 message ObjectData {
@@ -44,8 +56,9 @@ message DeleteRequest {
 
 message Response {
   string url = 1;
-  string bucket =2 ;
-  string key =3;
+  string bucket = 2 ;
+  string key = 3;
+  io.restorecommerce.meta.Meta meta = 4;
 }
 
 message ListRequest {
