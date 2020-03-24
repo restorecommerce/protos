@@ -1,3 +1,8 @@
+### 0.0.3 (March 24th, 2020)
+
+- updated ostorage protos to include encoding and content options
+- updates for payment proto
+
 ### 0.0.2 (February 10th, 2020)
 
 Updated user proto to include auth_context and roles proto to include `assignable_by_roles` field
