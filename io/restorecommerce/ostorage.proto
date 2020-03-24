@@ -36,7 +36,6 @@ message GetRequest {
   string key = 1;
   string bucket = 2;
   bool flag = 3;
-  bool downloadFile = 4;
 }
 
 message ObjectsData {
