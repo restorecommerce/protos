@@ -56,7 +56,7 @@ message DeleteRequest {
 
 message Response {
   string url = 1;
-  string bucket = 2 ;
+  string bucket = 2;
   string key = 3;
   io.restorecommerce.meta.Meta meta = 4;
 }

@@ -1,3 +1,7 @@
+### 0.0.4 (April 1st, 2020)
+
+- added download option to ostorage proto
+
 ### 0.0.3 (March 24th, 2020)
 
 - updated ostorage protos to include encoding and content options
