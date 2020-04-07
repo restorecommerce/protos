@@ -45,7 +45,10 @@ message LoginRequest {
 
 message OrgIDRequest {
   repeated string org_ids = 1;
-  Subject subject = 2;
+  oneof authorization_mode {
+    Subject subject = 2;
+    string api_key = 3;
+  }
 }
 
 message UserIDs {
@@ -56,7 +59,10 @@ message FindRequest {
   string id = 1; /// User ID
   string name = 2;
   string email = 3;
-  Subject subject = 4;
+  oneof authorization_mode {
+    Subject subject = 4;
+    string api_key = 5;
+  }
 }
 
 enum UserType {
@@ -86,21 +92,30 @@ message RegisterRequest {
 message ActivateRequest {
   string name = 1; /// User name (unique)
   string activation_code = 2;
-  Subject subject = 3;
+  oneof authorization_mode {
+    Subject subject = 3;
+    string api_key = 4;
+  }
 }
 
 message ConfirmUserInvitationRequest {
   string name = 1;
   string password = 2;
   string activation_code = 3;
-  Subject subject = 4;
+  oneof authorization_mode {
+    Subject subject = 4;
+    string api_key = 5;
+  }
 }
 
 message ChangePasswordRequest {
   string id = 1; /// User ID
   string password = 2;
   string new_password = 3;
-  Subject subject = 4;
+  oneof authorization_mode {
+    Subject subject = 4;
+    string api_key = 5;
+  }
 }
 
 message RequestPasswordChangeRequest {
@@ -108,31 +123,46 @@ message RequestPasswordChangeRequest {
     string name = 1;
     string email = 2;
   }
-  Subject subject = 3;
+  oneof authorization_mode {
+    Subject subject = 3;
+    string api_key = 4;
+  }
 }
 
 message ConfirmPasswordChangeRequest {
   string name = 1;
   string activation_code = 2;
   string password = 3;
-  Subject subject = 4;
+  oneof authorization_mode {
+    Subject subject = 4;
+    string api_key = 5;
+  }
 }
 
 message ChangeEmailRequest {
   string id = 1; /// User ID
   string email = 2;
-  Subject subject = 3;
+  oneof authorization_mode {
+    Subject subject = 3;
+    string api_key = 4;
+  }
 }
 
 message ConfirmEmailChangeRequest {
   string name = 1;
   string activation_code = 2;
-  Subject subject = 3;
+  oneof authorization_mode {
+    Subject subject = 3;
+    string api_key = 4;
+  }
 }
 
 message UnregisterRequest {
   string id = 1; /// User ID
-  Subject subject = 2;
+  oneof authorization_mode {
+    Subject subject = 2;
+    string api_key = 3;
+  }
 }
 
 /**
@@ -182,7 +212,10 @@ message EmailChangeConfirmed {
 message UserList {
   repeated User items = 1;
   uint32 total_count = 2;
-  Subject subject = 3;
+  oneof authorization_mode {
+    Subject subject = 3;
+    string api_key = 4;
+  }
 }
 
 /**
@@ -206,7 +239,10 @@ message Activate {
 message FindByRoleRequest {
   string role = 1;
   repeated Attribute attributes = 2;
-  Subject subject = 3;
+  oneof authorization_mode {
+    Subject subject = 3;
+    string api_key = 4;
+  }
 }
 
 /**
