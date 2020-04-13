@@ -93,8 +93,8 @@ message FulfillmentResults {
 }
 
 message ResponseDetailsList {
-  OrderStatus Status  = 1;
-  Error error = 2;
+  OrderStatus Status = 1;
+  ErrorList error = 2;
 }
 
 message OrderStatus {
@@ -105,4 +105,9 @@ message OrderStatus {
 message Error {
   string code = 1;
   string message = 2;
+}
+
+message ErrorList {
+  repeated string code = 1;
+  repeated string message = 2;
 }
