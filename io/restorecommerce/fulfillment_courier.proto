@@ -17,7 +17,7 @@ service Service {
 }
 
 message CourierList  {
-    repeated Courrier items = 1;
+    repeated Courier items = 1;
     uint32 total_count = 2;
 }
 
