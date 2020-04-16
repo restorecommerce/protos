@@ -1,3 +1,7 @@
+### 0.0.5 (April 16th, 2020)
+
+- added tags option to ostorage proto
+
 ### 0.0.4 (April 1st, 2020)
 
 - added download option to ostorage proto

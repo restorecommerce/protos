@@ -4,6 +4,7 @@ package io.restorecommerce.ostorage;
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
+import "io/restorecommerce/access_control.proto";
 import "io/restorecommerce/meta.proto";
 
 service Service {
@@ -21,6 +22,7 @@ message Options {
   int32 length = 5;
   string version = 6;
   string md5 = 7;
+  repeated io.restorecommerce.access_control.Attribute tags = 8;
 }
 
 message Object {
@@ -56,9 +58,11 @@ message DeleteRequest {
 
 message Response {
   string url = 1;
-  string bucket = 2;
+  string bucket = 2 ;
   string key = 3;
   io.restorecommerce.meta.Meta meta = 4;
+  repeated io.restorecommerce.access_control.Attribute tags = 5;
+  int32 length = 6; // file size of uploaded object
 }
 
 message ListRequest {
