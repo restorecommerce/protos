@@ -13,7 +13,11 @@ Microservice defination
 */
 
 service Service {
+    rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (CourierList);
     rpc Create (CourierList) returns (CourierList);
+    rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
+    rpc Update (CourierList) returns (CourierList);
+    rpc Upsert (CourierList) returns (CourierList);
 }
 
 message CourierList  {
@@ -22,8 +26,8 @@ message CourierList  {
 }
 
 message Courier {
-    string name =1;
-    string description =2;
+    string name = 1;
+    string description = 2;
     io.restorecommerce.meta.Meta meta = 3;
     string id = 4;
 }
