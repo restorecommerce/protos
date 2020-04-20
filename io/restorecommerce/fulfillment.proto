@@ -13,187 +13,181 @@ import "io/restorecommerce/rule.proto";
 * Microservice definition.
 */
 service Service {
-  rpc CreateFulfillment (shipmentOrderLists) returns (FulfillmentResults);
-  rpc getLabels (OrderId) returns (LabelResult);
-  rpc trackFulfillment(TrackingNumber) returns ( Status);
-  rpc deleteFulfillment (OrderId) returns (DeleteStatus);
-  rpc getAllFulfillments(FulfillmentStatus) returns (AllFulfillments);
-}
+  rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (FulfillmentList);
+  rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
 
-message OrderId {
-  string orderId = 1;
-}
-
-message TrackingNumber {
-  string orderId = 1;
-  string shipmentType = 2;
-}
-
-message Status {
-  string Status = 1;
-  repeated shipmentStatus shipmentStatus = 2;
-  string OrderId = 3;
-
-}
-
-message AllFulfillments {
-  repeated Items items = 1;
-}
-
-message Items {
-  string fulfillment_status = 1;
-  string order_id = 2;
-  string serviceType =3 ;
-  repeated string shipment_number = 4;
-}
-
-message DeleteStatus {
-  string deleteStatus = 1;
-  Error error = 2;
-}
-
-message shipmentStatus {
-  repeated ShipmentData ShipmentData = 1;
-}
-
-message ShipmentData {
-  string ShipmentNumber = 1;
-  string Status = 2;
-  string ShortStatus = 3;
-  string TimeStamp = 4;
-  string Receiver = 5;
-  string ReceipientName = 6;
-  string Recepientemail = 7;
-  repeated EventDetails EventDetails = 8;
-  string Customer_Reference = 9;
-}
-
-message  EventDetails {
-  string Status = 1;
-  string Location = 2;
-  string Time = 3;
-  string Coutnry = 4;
-}
-
-message  LabelResult{
-  repeated Labels labels  = 1;
-  Error error = 2;
-}
-
-message Labels {
-  string labelUrl = 1;
-  string shipmentNumber= 2;
-  string exportLabelUrl = 3;
-}
-
-message shipmentOrderLists {
-  ShipmentOrder  ShipmentOrder = 1;
-}
-
-message ShipmentOrder {
- repeated FulfillmentList fulfillmentList = 1;
- io.restorecommerce.meta.Meta meta = 3;
+  rpc CreateFulfillment (FulfillmentRequestList) returns (CreationStatusList); // also adds database entry
+  rpc TrackFulfillment (OrderId) returns (ShipmentStatusList);
+  rpc CancelFulfillment (OrderId) returns (CancelStatusList);
+  rpc GetShippingLabels (OrderId) returns (LabelsList);
 }
 
 message FulfillmentList {
-  Shipment Shipment = 1;
-  string OrderId = 2;
-  string fulFillmentService = 4;
+  repeated FulfillmentData fulfillment_data = 1;
 }
 
+message FulfillmentData {
+  string fulfillment_status = 1;
+  string order_id = 2;
+  string courier_service = 3;
+  repeated string shipment_numbers = 4;
+}
+
+
+
+message FulfillmentRequestList {
+  repeated FulfillmentRequest fulfillment_requests = 1;
+  io.restorecommerce.meta.Meta meta = 3;
+}
+ 
+message FulfillmentRequest {
+  Shipment shipment = 1;
+  string order_id = 2;
+  string courier_service = 4;
+}
+ 
 message Shipment {
-  repeated ShipmentDetails ShipmentDetails = 1;
-  string customerReference = 2;
-  Receiver Receiver = 3;
-  Shipper Shipper = 4;
-  string returnShipmentAccountNumber = 5;
-  string returnShipmentReference = 6;
-  Notification Notification = 7;
+  repeated ShipmentItem shipment_items = 1;
+  string customer_reference = 2;
+  Receiver receiver = 3;
+  Shipper shipper = 4;
+  string return_shipment_account_number = 5;
+  string return_shipment_reference = 6;
+  Notification notification = 7;
 }
-
-message ShipmentDetails {
-  ShipmentItem ShipmentItem = 1;
-}
-
+ 
 message ShipmentItem {
-  double weightInKG = 1;
-  string lengthInCM = 2;
-  string widthInCM = 3;
-  string heightInCM = 4;
-  ExportDocument ExportDocument = 5;
+  double weight_in_kg = 1;
+  string length_in_cm = 2;
+  string width_in_cm = 3;
+  string height_in_cm = 4;
+  ExportDocument export_document = 5;
 }
 
-message Notification {
-  string recipientEmailAddress =1;
+message ExportDocument {
+  string invoice_number = 1;
+  string export_type = 2;
+  string export_type_description = 3;
+  string terms_of_trade = 4;
+  string place_of_commital = 5;
+  double additional_fee = 6;
+  ExportDocPosition export_doc_position = 7;
+}
+
+message ExportDocPosition {
+  string description = 1 ;
+  string country_code_origin = 2;
+  string customs_tariff_number = 3;
+  uint32 amount = 4;
+  uint32 net_weight_in_kg = 5;
+  double customs_value = 6;
+}
+
+message Receiver {
+  string name_1 = 1;
+  Address address = 2;
+  Communication communication = 3;
+}
+
+message Shipper {
+  Name name = 1;
+  Address address = 2;
+  Communication communication = 3;
+}
+
+message Name {
+  string name_1 = 1;
 }
 
 message Address {
-  string streetName = 1;
-  string streetNumber = 2;
-  string addressAddition = 3;
+  string street_name = 1;
+  string street_number = 2;
+  string address_addition = 3;
   string zip = 4;
   string city = 5;
-  Origin Origin = 6;
+  Origin origin = 6;
 }
 
 message Origin {
   string country = 1;
-  string countryISOCode = 2;
-}
-
-message Shipper {
-  Name Name = 1;
-  Address Address = 2;
-  Communication Communication = 3;
-}
-
-message Name {
-  string name1 = 1;
-}
-
-message Receiver {
-  string name1 = 1;
-  Address Address = 2;
-  Communication Communication = 3;
+  string country_iso_code = 2;
 }
 
 message Communication{
   string phone = 1;
   string email = 2;
 }
-
-message ExportDocument {
-  string invoiceNumber = 1;
-  string exportType = 2;
-  string exportTypeDescription = 3;
-  string termsOfTrade = 4;
-  string placeOfCommital = 5;
-  double additionalFee = 6;
-  ExportDocPosition ExportDocPosition = 7;
+ 
+message Notification {
+  string recipient_email_address = 1;
 }
 
-message ExportDocPosition{
-  string description = 1 ;
-  string countryCodeOrigin = 2;
-  string customsTariffNumber = 3;
-  uint32 amount = 4;
-  uint32 netWeightInKG = 5;
-  double customsValue = 6;
+
+
+message CreationStatusList {
+  repeated CreationStatus creation_results = 1;
 }
 
-message FulfillmentResults {
-  repeated ResponseDetailsList fulfillmentResults =1;
+message CreationStatus {
+  string order_id = 1;
+  string fulfillment_status = 2;
+  ErrorList error = 3;
 }
 
-message ResponseDetailsList {
-  FulfillmentStatus Status  = 1;
+
+
+message OrderId {
+  string order_id = 1;
+}
+
+
+
+message ShipmentStatusList {
+  string status = 1;
+  repeated ShipmentData shipment_data = 2;
+  string order_id = 3;
+}
+
+message ShipmentData {
+  string shipment_number = 1;
+  string status = 2;
+  string short_status = 3;
+  string timestamp = 4;
+  string receiver = 5;
+  string recipient_name = 6;
+  string recipient_email = 7;
+  repeated EventDetails event_details = 8;
+  string customer_reference = 9;
+}
+
+message EventDetails {
+  string status = 1;
+  string location = 2;
+  string time = 3;
+  string country = 4;
+}
+
+
+
+message CancelStatusList {
+  repeated string cancel_status = 1;
   ErrorList error = 2;
 }
 
-message FulfillmentStatus {
-  string OrderId = 1;
-  string OrderStatus =2;
+
+
+message LabelsList {
+  repeated Labels labels  = 1;
+  Error error = 2;
 }
+
+message Labels {
+  string label_url = 1;
+  string shipment_number= 2;
+  string export_label_url = 3;
+}
+
+
 
 message Error {
   string code = 1;

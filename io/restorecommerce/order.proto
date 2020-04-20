@@ -12,6 +12,7 @@ service Service {
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
   rpc Update (OrderList) returns (OrderList);
   rpc Upsert (OrderList) returns (OrderList);
+  
   rpc TriggerFulfillment (OrderDataList) returns (FulfillmentResults);
 }
 
