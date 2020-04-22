@@ -17,9 +17,9 @@ service Service {
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
 
   rpc CreateFulfillment (FulfillmentRequestList) returns (CreationStatusList); // also adds database entry
-  rpc TrackFulfillment (OrderId) returns (ShipmentStatusList);
-  rpc CancelFulfillment (OrderId) returns (CancelStatusList);
-  rpc GetShippingLabels (OrderId) returns (LabelsList);
+  rpc TrackAndUpdateFulfillment (OrderIdList) returns (ShipmentStatusLists);
+  rpc CancelFulfillment (OrderIdList) returns (CancelStatusLists);
+  rpc GetShippingLabels (OrderIdList) returns (LabelsLists);
 }
 
 message FulfillmentList {
@@ -136,11 +136,14 @@ message CreationStatus {
 
 
 
-message OrderId {
-  string order_id = 1;
+message OrderIdList {
+  repeated string order_ids = 1;
 }
 
 
+message ShipmentStatusLists {
+  repeated ShipmentStatusList shipment_status_lists = 1;
+}
 
 message ShipmentStatusList {
   string status = 1;
@@ -169,12 +172,20 @@ message EventDetails {
 
 
 
+message CancelStatusLists {
+  repeated CancelStatusList cancel_status_lists = 1;
+}
+
 message CancelStatusList {
   repeated string cancel_status = 1;
   ErrorList error = 2;
 }
 
 
+
+message LabelsLists {
+  repeated LabelsList labels_lists = 1;
+}
 
 message LabelsList {
   repeated Labels labels  = 1;
