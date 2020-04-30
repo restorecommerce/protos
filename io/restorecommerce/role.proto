@@ -5,6 +5,7 @@ package io.restorecommerce.role;
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/user.proto";
 
 service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (RoleList);
@@ -25,6 +26,7 @@ message Role {
 message RoleList {
   repeated Role items = 1;
   uint32 total_count = 2;
+  io.restorecommerce.user.Subject subject = 10;
 }
 
 message Deleted {
