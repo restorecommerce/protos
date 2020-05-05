@@ -26,7 +26,10 @@ message Role {
 message RoleList {
   repeated Role items = 1;
   uint32 total_count = 2;
-  io.restorecommerce.user.Subject subject = 3;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    string api_key = 4;
+  }
 }
 
 message Deleted {
