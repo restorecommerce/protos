@@ -54,7 +54,10 @@ message ReadRequest {
 
   repeated string custom_queries = 8;
   google.protobuf.Any custom_arguments = 9;
-  io.restorecommerce.user.Subject subject = 10;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 10;
+    string api_key = 11;
+  }
 }
 
 message DeleteRequest {
@@ -62,7 +65,10 @@ message DeleteRequest {
   bool collection = 1;
   /// Delete specified documents
   repeated string ids = 2;
-  io.restorecommerce.user.Subject subject = 3;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    string api_key = 4;
+  }
 }
 
 /// List of resources
