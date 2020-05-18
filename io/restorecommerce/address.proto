@@ -43,7 +43,7 @@ message Address {
   GeoPoint geo_coordinates = 8;
   double altitude = 9;
   string building_number = 10;
-  AddressAddition addressAddition = 11;
+  AddressAddition address_addition = 11;
 }
 
 message AddressAddition {
