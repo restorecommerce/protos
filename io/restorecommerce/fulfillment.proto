@@ -16,7 +16,8 @@ service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (FulfillmentList);
   rpc Delete (io.restorecommerce.resourcebase.DeleteRequest) returns (google.protobuf.Empty);
 
-  rpc TriggerFulfillment (FulfillmentRequestList) returns (CreationStatusList); // also adds database entry + updates order
+  rpc CreateFulfillment (FulfillmentRequestList) returns (CreationStatusList); // also adds database entry + updates order
+  rpc UpdatePendingFulfillments (google.protobuf.Empty) returns (ErrorList); // updates with current status in database and emits event if complete
   rpc TrackAndUpdateFulfillment (OrderIdList) returns (ShipmentStatusLists);
   rpc CancelFulfillment (OrderIdList) returns (CancelStatusLists);
   rpc GetShippingLabels (OrderIdList) returns (LabelsLists);
@@ -33,8 +34,6 @@ message Fulfillment {
   string courier_service = 3;
   repeated string shipment_numbers = 4;
 }
-
-
 
 message FulfillmentRequestList {
   repeated FulfillmentRequest fulfillment_requests = 1;
@@ -83,17 +82,19 @@ message ShipmentStatusLists {
 }
 
 message ShipmentStatusList {
-  string status = 1;
+  string shipment_status = 1;
   repeated ShipmentData shipment_data = 2;
   string order_id = 3;
+  Error error = 4;
+
 }
 
 message ShipmentData {
-  string shipment_number = 1;
+  string number = 1;
   string status = 2;
   string short_status = 3;
   string timestamp = 4;
-  string receiver = 5;
+  string recipient = 5;
   string recipient_name = 6;
   string recipient_email = 7;
   repeated EventDetails event_details = 8;
