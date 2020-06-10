@@ -1,3 +1,8 @@
+### 0.0.6 (April 16th, 2020)
+
+- added sendInvitation rpc for user proto
+- updates for fulfillment proto
+
 ### 0.0.5 (April 16th, 2020)
 
 - added tags option to ostorage proto
