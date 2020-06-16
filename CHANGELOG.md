@@ -1,4 +1,8 @@
-### 0.0.6 (April 16th, 2020)
+### 0.0.7 (June 16th, 2020)
+
+- added subject_id for job protos
+
+### 0.0.6 (June 10th, 2020)
 
 - added sendInvitation rpc for user proto
 - updates for fulfillment proto

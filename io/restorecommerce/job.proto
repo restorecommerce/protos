@@ -82,6 +82,7 @@ message Data {
   string timezone = 1;
   google.protobuf.Any payload = 2; // optional variable payload
   io.restorecommerce.meta.Meta meta = 3;
+  string subject_id = 4; // id of job creator
 }
 
 /**
