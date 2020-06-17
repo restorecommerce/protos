@@ -12,6 +12,31 @@ service Service {
   rpc Put (stream Object) returns (Response);
   rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
   rpc List (ListRequest) returns (ObjectsData);
+  rpc Copy (CopyRequest) returns (CopyResponse);
+}
+
+message CopyRequest {
+  repeated CopyRequestItem items = 1;
+}
+
+message CopyResponse {
+  repeated CopyResponseItem response = 1;
+}
+
+message CopyRequestItem {
+  string bucket = 1;
+  string copySource = 2;
+  string key = 3;
+  io.restorecommerce.meta.Meta meta = 4;
+  Options options = 5;
+}
+
+message CopyResponseItem {
+  string bucket = 1;
+  string copySource = 2;
+  string key = 3;
+  io.restorecommerce.meta.Meta meta = 4;
+  Options options = 5;
 }
 
 message Options {
