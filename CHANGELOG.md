@@ -1,3 +1,7 @@
+### 0.0.8 (June 18th, 2020)
+
+- added copy operation for ostorage-srv
+
 ### 0.0.7 (June 16th, 2020)
 
 - added subject_id for job protos
