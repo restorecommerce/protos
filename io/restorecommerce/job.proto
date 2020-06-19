@@ -151,8 +151,8 @@ message JobReadRequest {
   // Fields selector
   repeated io.restorecommerce.resourcebase.FieldFilter field = 3;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 3;
-    string api_key = 4;
+    io.restorecommerce.user.Subject subject = 5;
+    string api_key = 6;
   }
 }
 
