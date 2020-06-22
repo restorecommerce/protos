@@ -1,3 +1,24 @@
+### 0.0.8 (June 18th, 2020)
+
+- added copy operation for ostorage-srv
+
+### 0.0.7 (June 16th, 2020)
+
+- added subject_id for job protos
+
+### 0.0.6 (June 10th, 2020)
+
+- added sendInvitation rpc for user proto
+- updates for fulfillment proto
+
+### 0.0.5 (April 16th, 2020)
+
+- added tags option to ostorage proto
+
+### 0.0.4 (April 1st, 2020)
+
+- added download option to ostorage proto
+
 ### 0.0.3 (March 24th, 2020)
 
 - updated ostorage protos to include encoding and content options
