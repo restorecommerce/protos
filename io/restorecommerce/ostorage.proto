@@ -71,11 +71,10 @@ message Object {
 message GetRequest {
   string key = 1;
   string bucket = 2;
-  bool flag = 3;
-  bool download = 4;
+  bool download = 3;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 5;
-    string api_key = 6;
+    io.restorecommerce.user.Subject subject = 4;
+    string api_key = 5;
   }
 }
 
