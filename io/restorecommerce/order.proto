@@ -62,6 +62,10 @@ message Item {
   int32 height_in_cm = 17;
 }
 
+message Deleted {
+  string id = 1;
+}
+
 message OrderDataList {
   repeated OrderData order_data = 1;
   io.restorecommerce.meta.Meta meta = 2;
