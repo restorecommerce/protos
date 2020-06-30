@@ -6,6 +6,7 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "io/restorecommerce/access_control.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/user.proto";
 
 service Service {
   rpc Get (GetRequest) returns (stream Object);
@@ -17,6 +18,10 @@ service Service {
 
 message CopyRequest {
   repeated CopyRequestItem items = 1;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 5;
+    string api_key = 6;
+  }
 }
 
 message CopyResponse {
@@ -57,6 +62,10 @@ message Object {
   io.restorecommerce.meta.Meta meta = 4;
   string url = 5;
   Options options = 6;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 7;
+    string api_key = 8;
+  }
 }
 
 message GetRequest {
@@ -64,6 +73,10 @@ message GetRequest {
   string bucket = 2;
   bool flag = 3;
   bool download = 4;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 5;
+    string api_key = 6;
+  }
 }
 
 message ObjectsData {
@@ -79,6 +92,10 @@ message ObjectData {
 message DeleteRequest {
   string key = 1;
   string bucket = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 5;
+    string api_key = 6;
+  }
 }
 
 message Response {
@@ -93,4 +110,8 @@ message Response {
 message ListRequest {
   string bucket = 1;
   google.protobuf.Struct filter = 2; /// Filter based on fieldName|operation, value|list
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 5;
+    string api_key = 6;
+  }
 }
