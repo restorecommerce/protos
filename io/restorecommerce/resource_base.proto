@@ -75,6 +75,10 @@ message DeleteRequest {
 message ResourceList {
   repeated Resource items = 1;
   uint32 total_count = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 10;
+    io.restorecommerce.user.ApiKey api_key = 11;
+  }
 }
 
 /// Example resource
