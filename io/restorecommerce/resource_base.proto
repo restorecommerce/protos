@@ -56,7 +56,7 @@ message ReadRequest {
   google.protobuf.Any custom_arguments = 9;
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 10;
-    string api_key = 11;
+    io.restorecommerce.user.ApiKey api_key = 11;
   }
 }
 
@@ -67,7 +67,7 @@ message DeleteRequest {
   repeated string ids = 2;
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 3;
-    string api_key = 4;
+    io.restorecommerce.user.ApiKey api_key = 4;
   }
 }
 
