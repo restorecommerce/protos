@@ -36,7 +36,7 @@ message JobList {
   uint32 total_count = 2;
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 3;
-    io.restorecommerce.user.ApiKey api_key = 4;
+    io.restorecommerce.user.ApiKey key = 4;
   }
 }
 
@@ -153,7 +153,7 @@ message JobReadRequest {
   repeated io.restorecommerce.resourcebase.FieldFilter field = 3;
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 5;
-    io.restorecommerce.user.ApiKey api_key = 6;
+    io.restorecommerce.user.ApiKey key = 6;
   }
 }
 

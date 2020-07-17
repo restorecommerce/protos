@@ -47,7 +47,7 @@ message OrgIDRequest {
   repeated string org_ids = 1;
   oneof authorization_mode {
     Subject subject = 2;
-    ApiKey api_key = 3;
+    ApiKey key = 3;
   }
 }
 
@@ -61,7 +61,7 @@ message FindRequest {
   string email = 3;
   oneof authorization_mode {
     Subject subject = 4;
-    ApiKey api_key = 5;
+    ApiKey key = 5;
   }
 }
 
@@ -94,7 +94,7 @@ message ActivateRequest {
   string activation_code = 2;
   oneof authorization_mode {
     Subject subject = 3;
-    ApiKey api_key = 4;
+    ApiKey key = 4;
   }
 }
 
@@ -104,7 +104,7 @@ message ConfirmUserInvitationRequest {
   string activation_code = 3;
   oneof authorization_mode {
     Subject subject = 4;
-    ApiKey api_key = 5;
+    ApiKey key = 5;
   }
 }
 
@@ -114,7 +114,7 @@ message ChangePasswordRequest {
   string new_password = 3;
   oneof authorization_mode {
     Subject subject = 4;
-    ApiKey api_key = 5;
+    ApiKey key = 5;
   }
 }
 
@@ -125,7 +125,7 @@ message RequestPasswordChangeRequest {
   }
   oneof authorization_mode {
     Subject subject = 3;
-    ApiKey api_key = 4;
+    ApiKey key = 4;
   }
 }
 
@@ -135,7 +135,7 @@ message ConfirmPasswordChangeRequest {
   string password = 3;
   oneof authorization_mode {
     Subject subject = 4;
-    ApiKey api_key = 5;
+    ApiKey key = 5;
   }
 }
 
@@ -144,7 +144,7 @@ message ChangeEmailRequest {
   string email = 2;
   oneof authorization_mode {
     Subject subject = 3;
-    ApiKey api_key = 4;
+    ApiKey key = 4;
   }
 }
 
@@ -153,7 +153,7 @@ message ConfirmEmailChangeRequest {
   string activation_code = 2;
   oneof authorization_mode {
     Subject subject = 3;
-    ApiKey api_key = 4;
+    ApiKey key = 4;
   }
 }
 
@@ -161,7 +161,7 @@ message UnregisterRequest {
   string id = 1; /// User ID
   oneof authorization_mode {
     Subject subject = 2;
-    ApiKey api_key = 3;
+    ApiKey key = 3;
   }
 }
 
@@ -214,7 +214,7 @@ message UserList {
   uint32 total_count = 2;
   oneof authorization_mode {
     Subject subject = 3;
-    ApiKey api_key = 4;
+    ApiKey key = 4;
   }
 }
 
@@ -248,7 +248,7 @@ message FindByRoleRequest {
   repeated Attribute attributes = 2;
   oneof authorization_mode {
     Subject subject = 3;
-    ApiKey api_key = 4;
+    ApiKey key = 4;
   }
 }
 

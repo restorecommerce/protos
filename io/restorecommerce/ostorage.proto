@@ -20,7 +20,7 @@ message CopyRequest {
   repeated CopyRequestItem items = 1;
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 5;
-    io.restorecommerce.user.ApiKey api_key = 6;
+    io.restorecommerce.user.ApiKey key = 6;
   }
 }
 
@@ -64,7 +64,7 @@ message Object {
   Options options = 6;
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 7;
-    io.restorecommerce.user.ApiKey api_key = 8;
+    io.restorecommerce.user.ApiKey key = 8;
   }
 }
 
@@ -74,7 +74,7 @@ message GetRequest {
   bool download = 3;
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 4;
-    io.restorecommerce.user.ApiKey api_key = 5;
+    io.restorecommerce.user.ApiKey key = 5;
   }
 }
 
@@ -93,7 +93,7 @@ message DeleteRequest {
   string bucket = 2;
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 5;
-    io.restorecommerce.user.ApiKey api_key = 6;
+    io.restorecommerce.user.ApiKey key = 6;
   }
 }
 
@@ -111,6 +111,6 @@ message ListRequest {
   google.protobuf.Struct filter = 2; /// Filter based on fieldName|operation, value|list
   oneof authorization_mode {
     io.restorecommerce.user.Subject subject = 5;
-    io.restorecommerce.user.ApiKey api_key = 6;
+    io.restorecommerce.user.ApiKey key = 6;
   }
 }
