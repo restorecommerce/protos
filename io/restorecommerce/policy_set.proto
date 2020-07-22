@@ -8,6 +8,7 @@ import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/access_control.proto";
 import "io/restorecommerce/meta.proto";
 import "io/restorecommerce/policy.proto";
+import "io/restorecommerce/user.proto";
 
 message PolicySet {
   string id = 1;
@@ -22,6 +23,10 @@ message PolicySet {
 message PolicySetList {
   repeated PolicySet items = 1;
   uint32 total_count = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 message PolicySetRQ {

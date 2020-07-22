@@ -8,6 +8,7 @@ import "google/protobuf/any.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/access_control.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/user.proto";
 
 message Rule {
   string id = 1;
@@ -31,6 +32,10 @@ message RuleRQ { // used for `whatIsAllowed` / reverse queries
 message RuleList {
   repeated Rule items = 1;
   uint32 total_count = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 // Query to pull resources from an external service
