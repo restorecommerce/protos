@@ -5,6 +5,7 @@ package io.restorecommerce.locale;
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/user.proto";
 
 /*
 * Microservice definition.
@@ -24,6 +25,10 @@ message Deleted {
 message LocaleList {
   repeated Locale items = 1;
   uint32 total_count = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 message Locale {

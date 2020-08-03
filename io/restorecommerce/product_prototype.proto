@@ -5,6 +5,7 @@ package io.restorecommerce.product_prototype;
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/user.proto";
 
 // ProductPrototype resource
 message ProductPrototype {
@@ -19,6 +20,10 @@ message ProductPrototype {
 message ProductPrototypeList {
   repeated ProductPrototype items = 1;
   uint32 total_count = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 message Deleted {

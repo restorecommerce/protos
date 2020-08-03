@@ -7,6 +7,7 @@ import "google/protobuf/empty.proto";
 import "io/restorecommerce/meta.proto";
 import "io/restorecommerce/address.proto";
 import "io/restorecommerce/contact_point.proto";
+import "io/restorecommerce/user.proto";
 
 /*
 Microservice definition.
@@ -22,6 +23,10 @@ service Service {
 message CustomerList {
   repeated Customer items = 1;
   uint32 total_count = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 message Customer {

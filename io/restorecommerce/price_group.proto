@@ -5,6 +5,7 @@ package io.restorecommerce.price_group;
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/meta.proto";
+import "io/restorecommerce/user.proto";
 
 // PriceGroup resource
 message PriceGroup {
@@ -17,6 +18,10 @@ message PriceGroup {
 message PriceGroupList {
   repeated PriceGroup items = 1;
   uint32 total_count = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 message Deleted {

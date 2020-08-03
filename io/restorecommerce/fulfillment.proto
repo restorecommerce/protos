@@ -8,6 +8,7 @@ import "io/restorecommerce/resource_base.proto";
 import "io/restorecommerce/access_control.proto";
 import "io/restorecommerce/meta.proto";
 import "io/restorecommerce/rule.proto";
+import "io/restorecommerce/user.proto";
 
 /*
 * Microservice definition.
@@ -22,11 +23,19 @@ service Service {
 
 message OrderId {
   string orderId = 1;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 2;
+    io.restorecommerce.user.ApiKey api_key = 3;
+  }
 }
 
 message TrackingNumber {
   string orderId = 1;
   string shipmentType = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 message Status {
@@ -88,6 +97,10 @@ message Labels {
 
 message shipmentOrderLists {
   ShipmentOrder  ShipmentOrder = 1;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 2;
+    io.restorecommerce.user.ApiKey api_key = 3;
+  }
 }
 
 message ShipmentOrder {
@@ -193,6 +206,10 @@ message ResponseDetailsList {
 message FulfillmentStatus {
   string OrderId = 1;
   string OrderStatus =2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 message Error {

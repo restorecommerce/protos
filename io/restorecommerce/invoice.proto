@@ -6,6 +6,7 @@ import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/meta.proto";
 import "io/restorecommerce/organization.proto";
+import "io/restorecommerce/user.proto";
 
 /*
 * Microservice definition.
@@ -28,6 +29,10 @@ message Deleted {
 message InvoiceList {
   repeated Invoice items = 1;
   uint32 total_count = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 /*
