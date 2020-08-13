@@ -23,6 +23,10 @@ message Deleted {
 message DeleteOrgData {
   repeated string org_ids = 1;
   repeated string user_ids = 2;
+  oneof authorization_mode {
+    io.restorecommerce.user.Subject subject = 3;
+    io.restorecommerce.user.ApiKey api_key = 4;
+  }
 }
 
 message PaymentMethod {
