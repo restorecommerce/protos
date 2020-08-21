@@ -4,7 +4,7 @@ package io.restorecommerce.contact_point_type;
 
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
-import "google/protobuf/user.proto";
+import "io/restorecommerce/user.proto";
 
 /*
 * Microservice definition.
