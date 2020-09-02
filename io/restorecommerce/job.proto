@@ -110,7 +110,7 @@ message JobDone {
   string schedule_type = 2; // Type of schedule (ONCE, RECURR, etc)
   bool delete_scheduled = 3; // Whether to delete scheduled job
   string type = 4; // Job type
-  google.protobuf.Any message = 5;
+  google.protobuf.Any result = 5;
 }
 
 /**
