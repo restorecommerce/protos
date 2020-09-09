@@ -41,7 +41,8 @@ service Service {
 */
 message LoginRequest {
   string identifier = 1; // User name or email
-  string password = 3; // Raw password
+  string password = 2; // Raw password
+  string token = 3;
 }
 
 message OrgIDRequest {
@@ -56,6 +57,17 @@ message UserIDs {
   repeated string user_ids = 1;
 }
 
+message HierarchicalScopesRequest {
+  string subject_id = 1;
+  string token_name = 2;
+}
+
+message HierarchicalScopesResponse {
+  string subject_id = 1;
+  repeated HierarchicalScope hierarchical_scopes = 2;
+  string token_name = 3;
+}
+
 message FindRequest {
   string id = 1; /// User ID
   string name = 2;
@@ -67,9 +79,10 @@ message FindRequest {
 }
 
 enum UserType {
-  INDIVIDUAL_USER = 1;
+  PRIVATE_USER = 1;
   ORG_USER = 2;
   GUEST = 3;
+  TECHNICAL_USER = 4;
 }
 
 message RegisterRequest {
@@ -237,6 +250,7 @@ message Subject {
   repeated RoleAssociation role_associations = 3; //  role_associations of user creating the user
   repeated HierarchicalScope hierarchical_scopes = 4; // HR scope of user creating the User
   bool unauthenticated = 5; // for unauthenticated context
+  string token_name = 6;
 }
 
 /**
@@ -289,6 +303,14 @@ message User {
   string invited_by_user_name = 21; // user who is inviting
   string invited_by_user_first_name = 22; // First name of user inviting
   string invited_by_user_last_name = 23; // Last name of user inviting
+  repeated Tokens tokens = 24;
+}
+
+message Tokens {
+  string name = 1; // token name
+  double expires_at = 2; // expiration date for token
+  string token = 3; // token
+  repeated string scopes = 4; // identifier for role_association
 }
 
 message HierarchicalScope {
@@ -300,6 +322,7 @@ message HierarchicalScope {
 message RoleAssociation {
   string role = 1;  // role ID
   repeated Attribute attributes = 2;  // useful attributes for RBAC/ABAC like organizational scope
+  string id = 3; // identifier for role_association
 }
 
 message Attribute {
