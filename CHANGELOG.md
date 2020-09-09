@@ -1,3 +1,8 @@
+### 0.0.9 (September 9th, 2020)
+
+- updated all protos to include subject in request
+- updated user proto to include subject, tokens and HR scope request
+
 ### 0.0.8 (June 18th, 2020)
 
 - added copy operation for ostorage-srv
