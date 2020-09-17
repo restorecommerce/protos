@@ -2,7 +2,7 @@ syntax = "proto3";
 package io.restorecommerce.search;
 
 import "google/protobuf/any.proto";
-import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
 
 // Service provides the CRUD operations
 service Service {
@@ -14,8 +14,8 @@ message SearchRequest {
   string text = 2;
   repeated string acl = 3;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 4;
-    io.restorecommerce.user.ApiKey api_key = 5;
+    io.restorecommerce.auth.Subject subject = 4;
+    io.restorecommerce.auth.ApiKey api_key = 5;
   }
 }
 

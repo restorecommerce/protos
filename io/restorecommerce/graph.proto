@@ -1,7 +1,7 @@
 syntax = "proto3";
 package io.restorecommerce.graph;
 import "google/protobuf/any.proto";
-import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
 
 // Service provides the CRUD operations
 service Service {
@@ -27,8 +27,8 @@ message TraversalRequest {
   bool path = 7;
   bool aql = 8;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 9;
-    io.restorecommerce.user.ApiKey api_key = 10;
+    io.restorecommerce.auth.Subject subject = 9;
+    io.restorecommerce.auth.ApiKey api_key = 10;
   }
 }
 

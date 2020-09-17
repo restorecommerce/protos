@@ -6,7 +6,7 @@ import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
 import "io/restorecommerce/meta.proto";
-import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
 
 service Service {
   rpc Read (io.restorecommerce.resourcebase.ReadRequest) returns (OrganizationList);
@@ -24,8 +24,8 @@ message DeleteOrgData {
   repeated string org_ids = 1;
   repeated string user_ids = 2;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 3;
-    io.restorecommerce.user.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 3;
+    io.restorecommerce.auth.ApiKey api_key = 4;
   }
 }
 
@@ -36,9 +36,9 @@ message PaymentMethod {
   }
 
   enum TransferType {
-    RECEIVE = 1;
-    SEND = 2;
-    BOTH = 3;
+    RECEIVE = 0;
+    SEND = 1;
+    BOTH = 2;
   }
 
   TransferType transferType = 10;
@@ -60,8 +60,8 @@ message OrganizationList {
   repeated Organization items = 1;
   uint32 total_count = 2;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 3;
-    io.restorecommerce.user.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 3;
+    io.restorecommerce.auth.ApiKey api_key = 4;
   }
 }
 

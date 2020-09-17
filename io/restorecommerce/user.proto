@@ -5,8 +5,8 @@ package io.restorecommerce.user;
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 import "io/restorecommerce/meta.proto";
-import "io/restorecommerce/address.proto";
-import "io/restorecommerce/contact_point.proto";
+import "io/restorecommerce/auth.proto";
+import "io/restorecommerce/attribute.proto";
 import "io/restorecommerce/image.proto";
 
 /**
@@ -64,7 +64,7 @@ message HierarchicalScopesRequest {
 
 message HierarchicalScopesResponse {
   string subject_id = 1;
-  repeated HierarchicalScope hierarchical_scopes = 2;
+  repeated io.restorecommerce.auth.HierarchicalScope hierarchical_scopes = 2;
   string token_name = 3;
 }
 
@@ -79,10 +79,10 @@ message FindRequest {
 }
 
 enum UserType {
-  PRIVATE_USER = 1;
-  ORG_USER = 2;
-  GUEST = 3;
-  TECHNICAL_USER = 4;
+  PRIVATE_USER = 0;
+  ORG_USER = 1;
+  GUEST = 2;
+  TECHNICAL_USER = 3;
 }
 
 message RegisterRequest {
@@ -97,7 +97,7 @@ message RegisterRequest {
   string timezone_id = 9;
   string locale_id = 10;
 
-  repeated RoleAssociation role_associations = 11;
+  repeated io.restorecommerce.auth.RoleAssociation role_associations = 11;
   string default_scope = 12; // default hierarchical scope
   UserType user_type = 13;
   string captcha_code = 14;
@@ -247,8 +247,8 @@ message UserList {
 message Subject {
   string id = 1; // user id
   string scope = 2; // target scope
-  repeated RoleAssociation role_associations = 3; //  role_associations of user creating the user
-  repeated HierarchicalScope hierarchical_scopes = 4; // HR scope of user creating the User
+  repeated io.restorecommerce.auth.RoleAssociation role_associations = 3; //  role_associations of user creating the user
+  repeated io.restorecommerce.auth.HierarchicalScope hierarchical_scopes = 4; // HR scope of user creating the User
   bool unauthenticated = 5; // for unauthenticated context
   string token_name = 6;
 }
@@ -269,7 +269,7 @@ message Activate {
 
 message FindByRoleRequest {
   string role = 1;
-  repeated Attribute attributes = 2;
+  repeated io.restorecommerce.attribute.Attribute attributes = 2;
   oneof authorization_mode {
     Subject subject = 3;
     ApiKey api_key = 4;
@@ -291,7 +291,7 @@ message User {
   string activation_code = 9; /// Activation code used in the activation process
   string password = 10; /// Raw password, not stored
   string password_hash = 11; /// Encrypted password, stored
-  repeated RoleAssociation role_associations = 12; // A user can have multiple roles and different attributes coupled with each role
+  repeated io.restorecommerce.auth.RoleAssociation role_associations = 12; // A user can have multiple roles and different attributes coupled with each role
   string timezone_id = 13;	// timezone_id specifications
   string locale_id = 14;	// locale specifications
   string default_scope = 15; // default hierarchical scope
@@ -303,29 +303,5 @@ message User {
   string invited_by_user_name = 21; // user who is inviting
   string invited_by_user_first_name = 22; // First name of user inviting
   string invited_by_user_last_name = 23; // Last name of user inviting
-  repeated Tokens tokens = 24;
-}
-
-message Tokens {
-  string name = 1; // token name
-  double expires_at = 2; // expiration date for token
-  string token = 3; // token
-  repeated string scopes = 4; // identifier for role_association
-}
-
-message HierarchicalScope {
-  string id = 1; // root node
-  repeated HierarchicalScope children = 2; // children nodes
-  string role = 3; // role identifier associated with root node scope
-}
-
-message RoleAssociation {
-  string role = 1;  // role ID
-  repeated Attribute attributes = 2;  // useful attributes for RBAC/ABAC like organizational scope
-  string id = 3; // identifier for role_association
-}
-
-message Attribute {
-  string id = 1;
-  string value = 2;
+  repeated io.restorecommerce.auth.Tokens tokens = 24;
 }

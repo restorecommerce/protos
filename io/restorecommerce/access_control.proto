@@ -3,6 +3,7 @@ syntax = "proto3";
 package io.restorecommerce.access_control;
 
 import "google/protobuf/any.proto";
+import "io/restorecommerce/rule.proto";
 import "io/restorecommerce/policy_set.proto";
 
 /**
@@ -10,7 +11,7 @@ import "io/restorecommerce/policy_set.proto";
 */
 
 message Request {
-  Target target = 1;
+  io.restorecommerce.rule.Target target = 1;
   // generic data structure which can be provided
   // to a contextQuery (see io/restorecommerce/rule.proto)
   Context context = 2;
@@ -33,30 +34,9 @@ message Response {
   string obligation = 2;
 }
 
-/**
-* Target specified by a Rule or a Request.
-*/
-message Target {
-  repeated Attribute subject = 1;
-  repeated Attribute resources = 2;
-  repeated Attribute action = 3;
-}
 
-/**
-* Key-value pair.
-*/
-message Attribute {
-  string id = 1;
-  string value = 2;
-}
 
-/**
-* Resulting effect from a Policy or Rule.
-*/
-enum Effect {
-  PERMIT = 0;
-  DENY = 1;
-}
+
 
 message ReverseQuery {
   repeated io.restorecommerce.policy_set.PolicySetRQ policy_sets = 1;

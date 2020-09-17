@@ -5,7 +5,7 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
 import "google/protobuf/struct.proto";
 import "io/restorecommerce/meta.proto";
-import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
 
 // Service provides the CRUD operations
 service Service {
@@ -55,8 +55,8 @@ message ReadRequest {
   repeated string custom_queries = 8;
   google.protobuf.Any custom_arguments = 9;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 10;
-    io.restorecommerce.user.ApiKey api_key = 11;
+    io.restorecommerce.auth.Subject subject = 10;
+    io.restorecommerce.auth.ApiKey api_key = 11;
   }
 }
 
@@ -66,8 +66,8 @@ message DeleteRequest {
   /// Delete specified documents
   repeated string ids = 2;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 3;
-    io.restorecommerce.user.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 3;
+    io.restorecommerce.auth.ApiKey api_key = 4;
   }
 }
 
@@ -76,8 +76,8 @@ message ResourceList {
   repeated Resource items = 1;
   uint32 total_count = 2;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 3;
-    io.restorecommerce.user.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 3;
+    io.restorecommerce.auth.ApiKey api_key = 4;
   }
 }
 

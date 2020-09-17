@@ -4,9 +4,9 @@ package io.restorecommerce.ostorage;
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
-import "io/restorecommerce/access_control.proto";
 import "io/restorecommerce/meta.proto";
-import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
+import "io/restorecommerce/attribute.proto";
 
 service Service {
   rpc Get (GetRequest) returns (stream Object);
@@ -19,8 +19,8 @@ service Service {
 message CopyRequest {
   repeated CopyRequestItem items = 1;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 5;
-    io.restorecommerce.user.ApiKey api_key = 6;
+    io.restorecommerce.auth.Subject subject = 5;
+    io.restorecommerce.auth.ApiKey api_key = 6;
   }
 }
 
@@ -52,7 +52,7 @@ message Options {
   int32 length = 5;
   string version = 6;
   string md5 = 7;
-  repeated io.restorecommerce.access_control.Attribute tags = 8;
+  repeated io.restorecommerce.attribute.Attribute tags = 8;
 }
 
 message Object {
@@ -63,8 +63,8 @@ message Object {
   string url = 5;
   Options options = 6;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 7;
-    io.restorecommerce.user.ApiKey api_key = 8;
+    io.restorecommerce.auth.Subject subject = 7;
+    io.restorecommerce.auth.ApiKey api_key = 8;
   }
 }
 
@@ -73,8 +73,8 @@ message GetRequest {
   string bucket = 2;
   bool download = 3;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 4;
-    io.restorecommerce.user.ApiKey api_key = 5;
+    io.restorecommerce.auth.Subject subject = 4;
+    io.restorecommerce.auth.ApiKey api_key = 5;
   }
 }
 
@@ -92,8 +92,8 @@ message DeleteRequest {
   string key = 1;
   string bucket = 2;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 5;
-    io.restorecommerce.user.ApiKey api_key = 6;
+    io.restorecommerce.auth.Subject subject = 5;
+    io.restorecommerce.auth.ApiKey api_key = 6;
   }
 }
 
@@ -102,7 +102,7 @@ message Response {
   string bucket = 2 ;
   string key = 3;
   io.restorecommerce.meta.Meta meta = 4;
-  repeated io.restorecommerce.access_control.Attribute tags = 5;
+  repeated io.restorecommerce.attribute.Attribute tags = 5;
   int32 length = 6; // file size of uploaded object
 }
 
@@ -110,7 +110,7 @@ message ListRequest {
   string bucket = 1;
   google.protobuf.Struct filter = 2; /// Filter based on fieldName|operation, value|list
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 5;
-    io.restorecommerce.user.ApiKey api_key = 6;
+    io.restorecommerce.auth.Subject subject = 5;
+    io.restorecommerce.auth.ApiKey api_key = 6;
   }
 }

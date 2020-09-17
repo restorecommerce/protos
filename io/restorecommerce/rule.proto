@@ -3,28 +3,45 @@ syntax = "proto3";
 package io.restorecommerce.rule;
 
 import "google/protobuf/empty.proto";
-import "google/protobuf/any.proto";
 
 import "io/restorecommerce/resource_base.proto";
-import "io/restorecommerce/access_control.proto";
 import "io/restorecommerce/meta.proto";
-import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
+import "io/restorecommerce/attribute.proto";
+
+
+/**
+* Target specified by a Rule or a Request.
+*/
+message Target {
+  repeated io.restorecommerce.attribute.Attribute subject = 1;
+  repeated io.restorecommerce.attribute.Attribute resources = 2;
+  repeated io.restorecommerce.attribute.Attribute action = 3;
+}
+
+/**
+* Resulting effect from a Policy or Rule.
+*/
+enum Effect {
+  PERMIT = 0;
+  DENY = 1;
+}
 
 message Rule {
   string id = 1;
   io.restorecommerce.meta.Meta meta = 2;
   string name = 3;
   string description = 4;
-  io.restorecommerce.access_control.Target target = 5;
+  Target target = 5;
   ContextQuery context_query = 6;
   string condition = 7; // JS code
-  io.restorecommerce.access_control.Effect effect = 8;
+  Effect effect = 8;
 }
 
 message RuleRQ { // used for `whatIsAllowed` / reverse queries
   string id = 1;
-  io.restorecommerce.access_control.Target target = 2;
-  io.restorecommerce.access_control.Effect effect = 3;
+  Target target = 2;
+  Effect effect = 3;
   string condition = 4;
   ContextQuery context_query = 5; 
 }
@@ -33,8 +50,8 @@ message RuleList {
   repeated Rule items = 1;
   uint32 total_count = 2;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 3;
-    io.restorecommerce.user.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 3;
+    io.restorecommerce.auth.ApiKey api_key = 4;
   }
 }
 

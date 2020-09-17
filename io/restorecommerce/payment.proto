@@ -1,8 +1,8 @@
 syntax = "proto3";
 package io.restorecommerce.payment;
 import "google/protobuf/wrappers.proto";
-import "io/restorecommerce/user.proto";
-
+import "io/restorecommerce/auth.proto";
+ 
 service Service {
   // Wrapper for setup_authorization in ActiveMerchant
   rpc SetupAuthorization (SetupRequest) returns (SetupResponse);
@@ -34,8 +34,8 @@ message SetupRequest {
   bool allow_guest_checkout = 10;
   Provider provider = 11;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 12;
-    io.restorecommerce.user.ApiKey api_key = 13;
+    io.restorecommerce.auth.Subject subject = 12;
+    io.restorecommerce.auth.ApiKey api_key = 13;
   }
 }
 
@@ -56,8 +56,8 @@ message PaymentRequest {
   string payer_id = 5;
   string token = 6;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 7;
-    io.restorecommerce.user.ApiKey api_key = 8;
+    io.restorecommerce.auth.Subject subject = 7;
+    io.restorecommerce.auth.ApiKey api_key = 8;
   }
 }
 
@@ -68,8 +68,8 @@ message CaptureRequest {
   string currency = 3;
   string payment_id = 4;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 5;
-    io.restorecommerce.user.ApiKey api_key = 6;
+    io.restorecommerce.auth.Subject subject = 5;
+    io.restorecommerce.auth.ApiKey api_key = 6;
   }
 }
 

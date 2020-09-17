@@ -6,7 +6,7 @@ import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
 import "io/restorecommerce/meta.proto";
-import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
 
 /*
 * Microservice definition.
@@ -27,8 +27,8 @@ message LocationList {
   repeated Location items = 1;
   uint32 total_count = 2;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 3;
-    io.restorecommerce.user.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 3;
+    io.restorecommerce.auth.ApiKey api_key = 4;
   }
 }
 

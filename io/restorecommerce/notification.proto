@@ -3,7 +3,6 @@ syntax = "proto3";
 package io.restorecommerce.notification;
 
 import "google/protobuf/empty.proto";
-import "google/protobuf/struct.proto";
 
 service Service {
   // direct notifications

@@ -4,7 +4,8 @@ package io.restorecommerce.contact_point_type;
 
 import "io/restorecommerce/resource_base.proto";
 import "google/protobuf/empty.proto";
-import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
+import "io/restorecommerce/meta.proto";
 
 /*
 * Microservice definition.
@@ -25,8 +26,8 @@ message ContactPointTypeList {
   repeated ContactPointType items = 1;
   uint32 total_count = 2;
   oneof authorization_mode {
-    io.restorecommerce.user.Subject subject = 3;
-    io.restorecommerce.user.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 3;
+    io.restorecommerce.auth.ApiKey api_key = 4;
   }
 }
 

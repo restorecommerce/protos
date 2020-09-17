@@ -12,8 +12,8 @@ message Payload {
   string style_url = 3; // stylesheet URL
 
   enum Strategy { // style-applying 'strategy'
-    INLINE = 1;
-    COPY = 2;
+    INLINE = 0;
+    COPY = 1;
   }
   Strategy strategy = 4;  // inlining, copying CSS into <style>, etc...
   // rendering options JSON object
