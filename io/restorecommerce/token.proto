@@ -21,42 +21,42 @@ service Service {
 
 message TokenData {
   string id = 1;
-  google.protobuf.any payload = 2;
+  google.protobuf.Any payload = 2;
   double expires_in = 3;
   oneof authorization_mode {
-    io.restorecommerce.auth.Subject subject = 3;
-    io.restorecommerce.auth.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 4;
+    io.restorecommerce.auth.ApiKey api_key = 5;
   }
 }
 
 message Identifier {
   string id = 1;
   oneof authorization_mode {
-    io.restorecommerce.auth.Subject subject = 3;
-    io.restorecommerce.auth.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 2;
+    io.restorecommerce.auth.ApiKey api_key = 3;
   }
 }
 
 message UniqueIdentifier {
   string uid = 1;
   oneof authorization_mode {
-    io.restorecommerce.auth.Subject subject = 3;
-    io.restorecommerce.auth.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 2;
+    io.restorecommerce.auth.ApiKey api_key = 3;
   }
 }
 
 message UserCode {
  string user_code = 1;
  oneof authorization_mode {
-    io.restorecommerce.auth.Subject subject = 3;
-    io.restorecommerce.auth.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 2;
+    io.restorecommerce.auth.ApiKey api_key = 3;
   }
 }
 
 message GrantId {
   string grant_id = 1;
   oneof authorization_mode {
-    io.restorecommerce.auth.Subject subject = 3;
-    io.restorecommerce.auth.ApiKey api_key = 4;
+    io.restorecommerce.auth.Subject subject = 2;
+    io.restorecommerce.auth.ApiKey api_key = 3;
   }
 }
