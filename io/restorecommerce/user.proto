@@ -304,4 +304,6 @@ message User {
   string invited_by_user_first_name = 22; // First name of user inviting
   string invited_by_user_last_name = 23; // Last name of user inviting
   repeated io.restorecommerce.auth.Tokens tokens = 24;
+  double last_login = 25;
+  double last_access = 26;
 }
