@@ -23,7 +23,7 @@ message Deleted {
 message DeleteOrgData {
   repeated string org_ids = 1;
   repeated string user_ids = 2;
-  oneof authorization_mode {
+  oneof authorization {
     io.restorecommerce.auth.Subject subject = 3;
     io.restorecommerce.auth.ApiKey api_key = 4;
   }
@@ -59,7 +59,7 @@ message Paypal {
 message OrganizationList {
   repeated Organization items = 1;
   uint32 total_count = 2;
-  oneof authorization_mode {
+  oneof authorization {
     io.restorecommerce.auth.Subject subject = 3;
     io.restorecommerce.auth.ApiKey api_key = 4;
   }

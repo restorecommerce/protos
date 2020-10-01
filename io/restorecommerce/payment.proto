@@ -33,7 +33,7 @@ message SetupRequest {
   string cancel_return_url = 9;
   bool allow_guest_checkout = 10;
   Provider provider = 11;
-  oneof authorization_mode {
+  oneof authorization {
     io.restorecommerce.auth.Subject subject = 12;
     io.restorecommerce.auth.ApiKey api_key = 13;
   }
@@ -55,7 +55,7 @@ message PaymentRequest {
   string payment_id = 4;
   string payer_id = 5;
   string token = 6;
-  oneof authorization_mode {
+  oneof authorization {
     io.restorecommerce.auth.Subject subject = 7;
     io.restorecommerce.auth.ApiKey api_key = 8;
   }
@@ -67,7 +67,7 @@ message CaptureRequest {
   int32 payment_sum = 2;
   string currency = 3;
   string payment_id = 4;
-  oneof authorization_mode {
+  oneof authorization {
     io.restorecommerce.auth.Subject subject = 5;
     io.restorecommerce.auth.ApiKey api_key = 6;
   }
