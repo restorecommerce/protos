@@ -89,8 +89,8 @@ message FindRequest {
 }
 
 enum UserType {
-  INDIVIDUAL_USER = 0;
-  ORG_USER = 1;
+  ORG_USER = 0;
+  INDIVIDUAL_USER = 1;
   GUEST = 2;
   TECHNICAL_USER = 3;
 }
