@@ -1,3 +1,9 @@
+### 0.0.10 (October 2nd, 2020)
+
+- restructuring of protos (auth, tokens, attributes)
+- added token and authenticaion_log proto
+- updated user proto to include last_login and last_access
+
 ### 0.0.9 (September 9th, 2020)
 
 - updated all protos to include subject in request
