@@ -1,3 +1,7 @@
+### 0.0.11 (October 3rd, 2020)
+
+- restructuring of user proto
+
 ### 0.0.10 (October 2nd, 2020)
 
 - restructuring of protos (auth, tokens, attributes)
