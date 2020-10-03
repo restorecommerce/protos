@@ -12,7 +12,7 @@ message Subject {
   repeated RoleAssociation role_associations = 3; //  role_associations of user creating the user
   repeated HierarchicalScope hierarchical_scopes = 4; // HR scope of user creating the User
   bool unauthenticated = 5; // for unauthenticated context
-  string token_name = 6;
+  string token = 6;
 }
 
 /**
