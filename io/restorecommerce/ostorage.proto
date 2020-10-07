@@ -4,6 +4,7 @@ package io.restorecommerce.ostorage;
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
+import "google/protobuf/any.proto";
 import "io/restorecommerce/meta.proto";
 import "io/restorecommerce/auth.proto";
 import "io/restorecommerce/attribute.proto";
@@ -53,6 +54,7 @@ message Options {
   string version = 6;
   string md5 = 7;
   repeated io.restorecommerce.attribute.Attribute tags = 8;
+  google.protobuf.Any data = 9; // optional meta data ex: from and to dates
 }
 
 message Object {
