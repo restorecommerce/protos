@@ -32,6 +32,7 @@ message Response {
   }
   Decision decision = 1;
   string obligation = 2;
+  bool evaluation_cacheable = 3;
 }
 
 

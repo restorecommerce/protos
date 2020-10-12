@@ -36,6 +36,7 @@ message Rule {
   ContextQuery context_query = 6;
   string condition = 7; // JS code
   Effect effect = 8;
+  bool evaluation_cacheable = 9;
 }
 
 message RuleRQ { // used for `whatIsAllowed` / reverse queries
@@ -44,6 +45,7 @@ message RuleRQ { // used for `whatIsAllowed` / reverse queries
   Effect effect = 3;
   string condition = 4;
   ContextQuery context_query = 5; 
+  bool evaluation_cacheable = 6;
 }
 
 message RuleList {

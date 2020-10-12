@@ -21,6 +21,7 @@ message Policy {
   io.restorecommerce.rule.Target target = 6;  // general policy target
   io.restorecommerce.rule.Effect effect = 7;
   string combining_algorithm = 8;
+  bool evaluation_cacheable = 9;
 }
 
 message PolicyRQ {
@@ -30,6 +31,7 @@ message PolicyRQ {
   repeated io.restorecommerce.rule.RuleRQ rules = 4;
   io.restorecommerce.rule.Effect effect = 5;
   bool has_rules = 6;
+  bool evaluation_cacheable = 7;
 }
 
 message PolicyList {
