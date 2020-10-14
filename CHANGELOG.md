@@ -1,3 +1,8 @@
+### 0.0.12 (October 14th, 2020)
+
+- updated ostorage proto to include data (google.protobuf.any) in options
+- update rule and policy proto with field evaluation_cacheable
+
 ### 0.0.11 (October 3rd, 2020)
 
 - restructuring of user proto
