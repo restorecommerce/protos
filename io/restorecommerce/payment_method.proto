@@ -7,6 +7,7 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
 import "io/restorecommerce/meta.proto";
 import "io/restorecommerce/user.proto";
+import "io/restorecommerce/auth.proto";
 
 /*
 * Microservice definition.
@@ -26,7 +27,7 @@ message Deleted {
 message PaymentMethodList {
     repeated PaymentMethod items = 1;
     uint32 total_count = 2;
-    oneof authorization_mode {
+    oneof authorization {
         io.restorecommerce.auth.Subject subject = 3;
         io.restorecommerce.auth.ApiKey api_key = 4;
     }
