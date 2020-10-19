@@ -48,6 +48,6 @@ message PaymentMethod {
     string id = 1;
     io.restorecommerce.meta.Meta meta = 2;
     PaymentMethod payment_method = 3;
-    TransferType transferType = 4;
+    TransferType transfer_type = 4;
     google.protobuf.Any data = 5;
 }
