@@ -33,15 +33,21 @@ message PaymentMethodList {
     }
 }
 
+enum PaymentMethod {
+    WIRETRANSFER = 0;
+    DIRECTDEBIT = 1;
+    PAYPAL = 2;
+}
+enum TransferType {
+    RECEIVE = 0;
+    SEND = 1;
+    BOTH = 2;
+}
+
 message PaymentMethod {
     string id = 1;
     io.restorecommerce.meta.Meta meta = 2;
     PaymentMethod payment_method = 3;
-    google.protobuf.Any data = 4;
-
-    enum PaymentMethod {
-        WIRETRANSFER = 0;
-        DIRECTDEBIT = 1;
-        PAYPAL = 2;
-    }
+    TransferType transferType = 4;
+    google.protobuf.Any data = 5;
 }
