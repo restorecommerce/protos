@@ -33,7 +33,7 @@ service Service {
   rpc DeleteUsersByOrg (OrgIDRequest) returns (UserIDs);
   rpc ConfirmUserInvitation (ConfirmUserInvitationRequest) returns (google.protobuf.Empty);
   rpc SendInvitationEmail (SendInvitationEmailRequest) returns (google.protobuf.Empty);
-  rpc populateRoleAssocCache(PopulateRoleAssocCacheRequest) returns (google.protobuf.Empty);
+  rpc PopulateRoleAssocCache(PopulateRoleAssocCacheRequest) returns (google.protobuf.Empty);
 }
 
 /**
