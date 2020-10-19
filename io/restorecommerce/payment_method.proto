@@ -34,8 +34,8 @@ message PaymentMethodList {
 }
 
 enum PaymentMethodEnum {
-    WIRETRANSFER = 0;
-    DIRECTDEBIT = 1;
+    WIRE_TRANSFER = 0;
+    DIRECT_DEBIT = 1;
     PAYPAL = 2;
 }
 enum TransferTypeEnum {
