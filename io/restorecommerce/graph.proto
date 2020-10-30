@@ -26,10 +26,7 @@ message TraversalRequest {
   bool data = 6;
   bool path = 7;
   bool aql = 8;
-  oneof authorization {
-    io.restorecommerce.auth.Subject subject = 9;
-    io.restorecommerce.auth.ApiKey api_key = 10;
-  }
+  io.restorecommerce.auth.Subject subject = 9;
 }
 
 message TraversalResponse {

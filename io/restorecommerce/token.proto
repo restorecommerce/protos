@@ -23,40 +23,25 @@ message TokenData {
   string id = 1;
   google.protobuf.Any payload = 2;
   double expires_in = 3;
-  oneof authorization {
-    io.restorecommerce.auth.Subject subject = 4;
-    io.restorecommerce.auth.ApiKey api_key = 5;
-  }
+  io.restorecommerce.auth.Subject subject = 4;
 }
 
 message Identifier {
   string id = 1;
-  oneof authorization {
-    io.restorecommerce.auth.Subject subject = 2;
-    io.restorecommerce.auth.ApiKey api_key = 3;
-  }
+  io.restorecommerce.auth.Subject subject = 2;
 }
 
 message UniqueIdentifier {
   string uid = 1;
-  oneof authorization {
-    io.restorecommerce.auth.Subject subject = 2;
-    io.restorecommerce.auth.ApiKey api_key = 3;
-  }
+  io.restorecommerce.auth.Subject subject = 2;
 }
 
 message UserCode {
  string user_code = 1;
- oneof authorization {
-    io.restorecommerce.auth.Subject subject = 2;
-    io.restorecommerce.auth.ApiKey api_key = 3;
-  }
+ io.restorecommerce.auth.Subject subject = 2;
 }
 
 message GrantId {
   string grant_id = 1;
-  oneof authorization {
-    io.restorecommerce.auth.Subject subject = 2;
-    io.restorecommerce.auth.ApiKey api_key = 3;
-  }
+  io.restorecommerce.auth.Subject subject = 2;
 }
