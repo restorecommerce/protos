@@ -57,7 +57,6 @@ message UserIDs {
 }
 
 message HierarchicalScopesRequest {
-  string subject_id = 1;
   string token = 2;
 }
 

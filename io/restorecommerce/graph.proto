@@ -36,9 +36,9 @@ message TraversalResponse {
 }
 
 message VertexFields {
-  string _id = 1;
-  string _key = 2;
-  string _rev = 3;
+  string id = 1;
+  string key = 2;
+  string rev = 3;
   string id = 4;
 }
 
