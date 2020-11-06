@@ -33,7 +33,6 @@ service Service {
   rpc DeleteUsersByOrg (OrgIDRequest) returns (UserIDs);
   rpc ConfirmUserInvitation (ConfirmUserInvitationRequest) returns (google.protobuf.Empty);
   rpc SendInvitationEmail (SendInvitationEmailRequest) returns (google.protobuf.Empty);
-  rpc PopulateRoleAssocCache (PopulateRoleAssocCacheRequest) returns (google.protobuf.Empty);
   rpc FindByToken (FindByTokenRequest) returns (User);
 }
 
@@ -54,22 +53,6 @@ message OrgIDRequest {
 
 message UserIDs {
   repeated string user_ids = 1;
-}
-
-message HierarchicalScopesRequest {
-  string token = 2;
-}
-
-message HierarchicalScopesResponse {
-  string subject_id = 1;
-  repeated io.restorecommerce.auth.HierarchicalScope hierarchical_scopes = 2;
-  string token = 3;
-}
-
-message PopulateRoleAssocCacheRequest {
-  string id = 1; /// User ID
-  string token = 2;
-  io.restorecommerce.auth.Subject subject = 3;
 }
 
 message FindRequest {

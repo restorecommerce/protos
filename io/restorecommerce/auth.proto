@@ -26,6 +26,7 @@ message Tokens {
   double expires_at = 2; // expiration date for token
   string token = 3; // token
   repeated string scopes = 4; // identifier for role_association
+  string token_type = 5; // type of token eg: access_token, refresh_token
 }
 
 message HierarchicalScope {
@@ -40,3 +41,12 @@ message RoleAssociation {
   string id = 3; // identifier for role_association
 }
 
+message HierarchicalScopesRequest {
+  string token = 1;
+}
+
+message HierarchicalScopesResponse {
+  string subject_id = 1;
+  repeated HierarchicalScope hierarchical_scopes = 2;
+  string token = 3;
+}
