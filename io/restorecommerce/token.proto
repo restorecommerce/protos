@@ -20,13 +20,13 @@ message TokenData {
   string id = 1;
   google.protobuf.Any payload = 2;
   double expires_in = 3;
-  string token_type = 4;
+  string type = 4;
   io.restorecommerce.auth.Subject subject = 5;
 }
 
 message Identifier {
   string id = 1;
-  string token_type = 2;
+  string type = 2;
   io.restorecommerce.auth.Subject subject = 3;
 }
 

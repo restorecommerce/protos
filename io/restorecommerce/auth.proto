@@ -15,10 +15,10 @@ message Subject {
 
 message Tokens {
   string name = 1; // token name
-  double expires_at = 2; // expiration date for token
+  double expires_in = 2; // expiration date for token
   string token = 3; // token
   repeated string scopes = 4; // identifier for role_association
-  string token_type = 5; // type of token eg: access_token, refresh_token
+  string type = 5; // type of token eg: access_token, refresh_token
   bool interactive = 6;
 }
 
