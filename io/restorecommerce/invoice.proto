@@ -67,6 +67,7 @@ message InvoicePositions {
   BillingAddress sender_billing_address = 5;
   io.restorecommerce.organization.Organization recipient_organization = 6;
   io.restorecommerce.organization.Organization sender_organization = 7;
+  google.protobuf.Any payment_method_details = 8;
 }
 
 message RecipientCustomer {
