@@ -7,6 +7,7 @@ import "google/protobuf/empty.proto";
 import "io/restorecommerce/meta.proto";
 import "io/restorecommerce/organization.proto";
 import "io/restorecommerce/auth.proto";
+import "google/protobuf/any.proto";
 
 /*
 * Microservice definition.
