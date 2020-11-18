@@ -1,3 +1,7 @@
+### 0.0.15 (November 18th, 2020)
+
+- removed duplicate field from graph proto
+
 ### 0.0.14 (November 18th, 2020)
 
 - updated graph proto to rename vertex fields
