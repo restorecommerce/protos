@@ -1,6 +1,9 @@
-### 0.0.14 (November 4th, 2020)
+### 0.0.14 (November 18th, 2020)
 
-- renamed vertex fields
+- updated graph proto to rename vertex fields
+- updated user proto to remove populateRoleAssocCache rpc, updated token proto to remove findByUid and findByuserCode, added token_type to Tokens and moved HRScopeReq and Response from user proto to auth proto
+- added interactive flag for tokens
+- up token type and expires in fields to match oidc keys
 
 ### 0.0.13 (October 30th, 2020)
 
