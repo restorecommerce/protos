@@ -1,3 +1,7 @@
+### 0.0.16 (November 22nd, 2020)
+
+- added role_associations and HR scopes to subject
+
 ### 0.0.15 (November 18th, 2020)
 
 - removed duplicate field from graph proto
