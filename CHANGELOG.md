@@ -1,3 +1,7 @@
+### 0.0.17 (December 4th, 2020)
+
+- moved last_login from user proto to token proto
+
 ### 0.0.16 (November 22nd, 2020)
 
 - added role_associations and HR scopes to subject
