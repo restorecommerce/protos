@@ -1,3 +1,7 @@
+### 0.0.18 (January 18th, 2021)
+
+- changed the input field to `identifier` to support both user-name and email for requestPasswordChange, confirmPasswordChange and confirmEmailChange operations
+
 ### 0.0.17 (December 4th, 2020)
 
 - moved last_login from user proto to token proto

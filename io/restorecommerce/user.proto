@@ -118,28 +118,24 @@ message ChangePasswordRequest {
 }
 
 message RequestPasswordChangeRequest {
-  oneof input_field {
-    string name = 1;
-    string email = 2;
-  }
-  io.restorecommerce.auth.Subject subject = 3;
+  string identifier = 1; // user name or email
+  io.restorecommerce.auth.Subject subject = 2;
 }
 
 message ConfirmPasswordChangeRequest {
-  string name = 1;
+  string identifier = 1; // user name or email
   string activation_code = 2;
   string password = 3;
   io.restorecommerce.auth.Subject subject = 4;
 }
 
 message ChangeEmailRequest {
-  string id = 1; /// User ID
-  string email = 2;
-  io.restorecommerce.auth.Subject subject = 3;
+  string email = 1;
+  io.restorecommerce.auth.Subject subject = 2;
 }
 
 message ConfirmEmailChangeRequest {
-  string name = 1;
+  string identifier = 1; // user name or email
   string activation_code = 2;
   io.restorecommerce.auth.Subject subject = 3;
 }
