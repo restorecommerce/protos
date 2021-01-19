@@ -1,6 +1,6 @@
-### 0.0.18 (January 18th, 2021)
+### 0.0.18 (January 19th, 2021)
 
-- changed the input field to `identifier` to support both user-name and email for requestPasswordChange, confirmPasswordChange and confirmEmailChange operations
+- changed the input field to `identifier` to support both user-name and email for all operations from `id`.
 
 ### 0.0.17 (December 4th, 2020)
 
