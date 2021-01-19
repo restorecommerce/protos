@@ -34,6 +34,7 @@ service Service {
   rpc ConfirmUserInvitation (ConfirmUserInvitationRequest) returns (google.protobuf.Empty);
   rpc SendInvitationEmail (SendInvitationEmailRequest) returns (google.protobuf.Empty);
   rpc FindByToken (FindByTokenRequest) returns (User);
+  rpc SendActivationEmail (SendActivationEmailRequest) returns (google.protobuf.Empty);
 }
 
 /**
@@ -142,6 +143,11 @@ message ConfirmEmailChangeRequest {
 
 message UnregisterRequest {
   string identifier = 1; /// User ID
+  io.restorecommerce.auth.Subject subject = 2;
+}
+
+message SendActivationEmailRequest {
+  string identifier = 1; /// User name or email
   io.restorecommerce.auth.Subject subject = 2;
 }
 

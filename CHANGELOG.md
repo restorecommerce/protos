@@ -1,3 +1,7 @@
+### 0.0.19 (January 19th, 2021)
+
+- added `sendActivationEmail` to resend registration emails
+
 ### 0.0.18 (January 19th, 2021)
 
 - changed the input field to `identifier` to support both user-name and email for all operations from `id`.
