@@ -1,3 +1,9 @@
+### 0.0.20 (January 21st, 2021)
+
+- rename `notification.proto` to `notification_req.proto` as this is being 
+required for the notification resource.
+- add `notification_channel.proto` and `notification.proto`
+
 ### 0.0.19 (January 19th, 2021)
 
 - added `sendActivationEmail` to resend registration emails
