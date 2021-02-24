@@ -1,3 +1,6 @@
+### 0.0.21 (February 24th, 2021)
+- add `OstorageMessage` to `ostorage.proto`
+
 ### 0.0.20 (January 21st, 2021)
 
 - rename `notification.proto` to `notification_req.proto` as this is being 
