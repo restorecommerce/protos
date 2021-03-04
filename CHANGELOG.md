@@ -1,4 +1,9 @@
+### 0.0.22 (March 4th, 2021)
+
+- updated job proto to introduce job identifier for Job options and repeat options
+
 ### 0.0.21 (February 24th, 2021)
+
 - add `OstorageMessage` to `ostorage.proto`
 
 ### 0.0.20 (January 21st, 2021)
