@@ -1,3 +1,7 @@
+### 0.0.23 (June 15th, 2021)
+
+- updated ostorage proto to include auth subject
+
 ### 0.0.22 (March 4th, 2021)
 
 - updated job proto to introduce job identifier for Job options and repeat options
